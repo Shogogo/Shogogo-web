@@ -1,0 +1,8 @@
+Hourly:
+ Compares user interests to events
+
+Daily: 
+ Purge past events
+ Fetch new events 1 month into future
+
+ 
