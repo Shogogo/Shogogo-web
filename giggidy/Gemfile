@@ -19,7 +19,7 @@ end
 
 group :test do
   gem 'timecop'
-  gem 'minitest'
+  gem 'rspec-rails'
   gem 'capybara'
 end
 
