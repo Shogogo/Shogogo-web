@@ -1,0 +1,92 @@
+4 sprints a day 
+5 days
+20 sprints in total
+
+
+Create repo under peepers
+Commits: 
+1: readme
+2: barebone rails
+
+
+as a user, you pick events you want to track. 
+ When you sign up you get a text message and email
+
+
+ should be rails app
+
+
+ gigo
+
+
+ timecop gem, 
+
+
+ Setup CI
+ Setup server
+ Setup
+
+
+As a user I never want to miss my favorite band again
+As a user I want to track my favorite bands events near me
+As a user I want the option to recieve a text, email or both
+As a user I want be able to easily purchase a ticket
+As a user I want I want to be notified when tickets are running low
+As a user I want local show suggestions
+As a user I want edit my favorite bands
+As a user I want to be able to easily share this app
+As a user I want to be able to easily share my ticket purchases
+As a user I don't want to be confused using the site 
+
+Features:
+ Search for events begfore signup
+ Signin/up
+ List up to 20 bands to be tracket
+ Set when you get alerts
+ Notified when ticket availability goes below X
+ Link to purchase tickets
+ CRUD interests
+ set location
+ trending
+
+Technology: 
+Rails
+Postgres
+Js/Jq
+Custom CSS/html
+
+
+Gems: 
+ AddThis
+ Twilio
+ TimeCop
+ Email
+
+
+ Tasks
+ -DB models
+ -API rewsearch
+ -Design Plan
+ -Routes
+ -Which third party gems
+ -Server setup
+ -Domain registration
+
+
+ Plan: 
+
+
+
+ IceBox:
+ Oauth
+ FB/Spotify/last.fm preference population
+
+
+ @alexanderdavidpan
+ @zkarst
+ @reboryan
+ @justinphelps
+
+APIs: 
+Seatgeek
+Chairnerd
