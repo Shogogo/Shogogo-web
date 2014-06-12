@@ -20,6 +20,7 @@ end
 group :test do
   gem 'timecop'
   gem 'minitest'
+  gem 'capybara'
 end
 
 
