@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: giggidy_development
+
+test:
+  <<: *default
+  database: giggidy_test
+
+production:
+  <<: *default
+  database: giggidy_production
+  username: giggidy
+  password: <%= ENV['GIGGIDY_DATABASE_PASSWORD'] %>
