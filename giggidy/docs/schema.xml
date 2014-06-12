@@ -81,7 +81,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="409" y="14" name="interests">
+<table x="368" y="22" name="interests">
 <row name="user_id" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default><relation table="Users" row="id" />
@@ -93,31 +93,106 @@
 <key type="PRIMARY" name="">
 </key>
 </table>
-<table x="423" y="297" name="events">
+<table x="392" y="255" name="user_events">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
 <row name="event_id" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
-<default>NULL</default></row>
+<default>NULL</default><relation table="events" row="id" />
+</row>
 <row name="user_id" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
+<default>NULL</default><relation table="Users" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="630" y="11" name="artists">
+<row name="id" null="1" autoincrement="1">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="artist_event" row="artist_id" />
+</row>
+<row name="name" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="image_url" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="seatgeek_id" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="type" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="652" y="81" name="artists">
+<table x="640" y="271" name="events">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
+<row name="title" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="url" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="datetime_local" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<row name="venue_name" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="venue_Id" null="1" autoincrement="0">
+<datatype>INT</datatype>
+<default>NULL</default><relation table="venues" row="id" />
+</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="672" y="251" name="events">
+<table x="844" y="136" name="artist_event">
+<row name="artist_id" null="1" autoincrement="1">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="event_id" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="events" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>artist_id</part>
+</key>
+</table>
+<table x="862" y="284" name="venues">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="name" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="address" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="city" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="url" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="state" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="postal_code" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="long" null="1" autoincrement="0">
+<datatype>DECIMAL</datatype>
+<default>NULL</default></row>
+<row name="lat" null="1" autoincrement="0">
+<datatype>DECIMAL</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
