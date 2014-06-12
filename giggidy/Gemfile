@@ -14,11 +14,12 @@ gem 'sprint'
 gem 'twilio-ruby', '~> 3.11'
 
 group :development do 
-    gem 'timecop'
+  gem 'timecop'
 end
 
 group :test do
-    gem 'timecop'
+  gem 'timecop'
+  gem 'minitest'
 end
 
 
