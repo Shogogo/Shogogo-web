@@ -5,3 +5,11 @@ rvm:
 #script: bundle exec rspec spec
 #before_script:
 #  - psql -c 'create database travelblog_test;' -U postgres
+
+env:
+  - DB=postgresql
+
+before_script: 
+  - psql -c 'create database giggidy_test' -U postgres
+script: 
+bundle exec rails -s
