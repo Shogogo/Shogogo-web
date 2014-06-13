@@ -12,3 +12,13 @@ function prepareArtistQuery(artistName){
   preparedAristName = words.join('-');
   return preparedAristName;
 }
+
+function getArtistInfo(preparedAristName){
+  $.ajax({
+    type: 'GET',
+    url: 'http://api.seatgeek.com/2/performers?slug=' + preparedAristName,
+    dataType: 'json'
+  }).done(function(response){
+    return response;
+  })
+}
