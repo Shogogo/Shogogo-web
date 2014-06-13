@@ -17,17 +17,18 @@ SearchBox.prototype.preparedAristQuery = function(artistName){
   return 'http://api.seatgeek.com/2/performers?slug=' + preparedAristName.toLowerCase();
 }
 
-SearchBox.prototype.getArtistInfo = function(preparedQuery){
-  $.ajax({
-    type: 'GET',
-    url: preparedQuery,
-    dataType: 'json'
-  }).done(function(artistInfo){
-    console.log(preparedQuery);
-    console.log(artistInfo.performers[0]);
-    return artistInfo.performers[0];
-  })
-}
+// SearchBox.prototype.getArtistInfo = function(preparedQuery){
+//   $.ajax({
+//     type: 'GET',
+//     url: preparedQuery,
+//     dataType: 'json'
+//   }).done(function(artistInfo){
+//     console.log(preparedQuery);
+//     console.log(artistInfo.performers[0]);
+//     debugger
+//     return artistInfo.performers[0];
+//   })
+// }
 
 SearchBox.prototype.parseArtistInfo = function(artistInfo){
   var artist = new Object();

@@ -5,11 +5,28 @@ $(document).ready(function(){
     if(e.which == 13) {
       var artistName = searchBox.getArtistName();
       var preparedArtistName = searchBox.preparedAristQuery(artistName);
-      var artistData = searchBox.getArtistInfo(preparedArtistName);
-      console.log(artistData);
-      var artist = searchBox.parseArtistInfo(artistData);
-      // return artist;
-      console.log(artist);
+      
+        $.ajax({
+            type: 'GET',
+            url: preparedQuery,
+            dataType: 'json'
+        }).done(function(artistInfo){
+            var artistData = artistInfo.performers[0];
+            var artist = searchBox.parseArtistInfo(artistData);
+            debugger
+            return artist
+            // console.log(preparedQuery);
+            // console.log(artistInfo.performers[0]);
+            // debugger
+            // return 
+        });
+
+
+
+     
+      
+      // // return artist;
+      // console.log(artist);
     }
   })
 });
