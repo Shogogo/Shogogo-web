@@ -1,21 +1,23 @@
-// Search Suggestions
-function searchSuggest() {
-  $("#search_box").suggest({filter:'(all type:/music/artist)'});
+var SearchBox = function(){
+  //
 };
 
-// Get Artist Info
-function getArtistName() {
+SearchBox.prototype.searchSuggest = function(){
+  $("#search_box").suggest({filter:'(all type:/music/artist)'});  
+}
+
+SearchBox.prototype.getArtistName = function(){
   artistName = $("#search_box").val();
   return artistName;
 }
 
-function prepareArtistQuery(artistName){
+SearchBox.prototype.preparedAristQuery = function(artistName){
   words = artistName.split(' ');
   preparedAristName = words.join('-');
   return preparedAristName;
 }
 
-function getArtistInfo(preparedAristName){
+SearchBox.prototype.getArtistInfo = function(preparedAristName){
   $.ajax({
     type: 'GET',
     url: 'http://api.seatgeek.com/2/performers?slug=' + preparedAristName,
@@ -25,7 +27,7 @@ function getArtistInfo(preparedAristName){
   })
 }
 
-function parseArtistInfo(artistInfo){
+SearchBox.prototype.parseArtistInfo = function(artistInfo){
   artist = new Object();
   artist.name = artistInfo.performers[0].name
   artist.images = artistInfo.performers[0].images
