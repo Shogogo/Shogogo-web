@@ -7,31 +7,33 @@ SearchBox.prototype.searchSuggest = function(){
 }
 
 SearchBox.prototype.getArtistName = function(){
-  artistName = $("#search_box").val();
+  var artistName = $("#search_box").val();
   return artistName;
 }
 
 SearchBox.prototype.preparedAristQuery = function(artistName){
-  words = artistName.split(' ');
-  preparedAristName = words.join('-');
-  return preparedAristName;
+  var words = artistName.split(' ');
+  var preparedAristName = words.join('-');
+  return 'http://api.seatgeek.com/2/performers?slug=' + preparedAristName.toLowerCase();
 }
 
-SearchBox.prototype.getArtistInfo = function(preparedAristName){
+SearchBox.prototype.getArtistInfo = function(preparedQuery){
   $.ajax({
     type: 'GET',
-    url: 'http://api.seatgeek.com/2/performers?slug=' + preparedAristName,
+    url: preparedQuery,
     dataType: 'json'
   }).done(function(artistInfo){
-    return artistInfo;
+    console.log(preparedQuery);
+    console.log(artistInfo.performers[0]);
+    return artistInfo.performers[0];
   })
 }
 
 SearchBox.prototype.parseArtistInfo = function(artistInfo){
-  artist = new Object();
-  artist.name = artistInfo.performers[0].name
-  artist.images = artistInfo.performers[0].images
-  artist.id = artistInfo.performers[0].id
-  artist.type = artistInfo.performers[0].type
+  var artist = new Object();
+  artist.name = artistInfo.name;
+  artist.img = artistInfo.img;
+  artist.id = artistInfo.id;
+  artist.type = artistInfo.type;
   return artist;
 }
