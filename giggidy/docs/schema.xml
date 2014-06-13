@@ -81,7 +81,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="368" y="22" name="interests">
+<table x="302" y="70" name="interests">
 <row name="user_id" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default><relation table="Users" row="id" />
@@ -93,7 +93,7 @@
 <key type="PRIMARY" name="">
 </key>
 </table>
-<table x="392" y="255" name="user_events">
+<table x="303" y="262" name="user_events">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -109,7 +109,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="630" y="11" name="artists">
+<table x="520" y="71" name="artists">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default><relation table="artist_event" row="artist_id" />
@@ -130,7 +130,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="640" y="271" name="events">
+<table x="521" y="263" name="events">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -143,9 +143,6 @@
 <row name="datetime_local" null="1" autoincrement="0">
 <datatype>DATETIME</datatype>
 <default>NULL</default></row>
-<row name="venue_name" null="1" autoincrement="0">
-<datatype>VARCHAR</datatype>
-<default>NULL</default></row>
 <row name="venue_Id" null="1" autoincrement="0">
 <datatype>INT</datatype>
 <default>NULL</default><relation table="venues" row="id" />
@@ -154,7 +151,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="844" y="136" name="artist_event">
+<table x="694" y="71" name="artist_event">
 <row name="artist_id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -166,7 +163,7 @@
 <part>artist_id</part>
 </key>
 </table>
-<table x="862" y="284" name="venues">
+<table x="700" y="259" name="venues">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
