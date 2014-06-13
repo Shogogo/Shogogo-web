@@ -1,3 +1,7 @@
 language: ruby
 rvm:
-  - 2.1.1
+  - "2.1.1"
+
+script: bundle exec rspec spec
+before_script:
+  - psql -c 'create database travelblog_test;' -U postgres
