@@ -1,0 +1,17 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: giggidy_dev
+  pool: 5
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: giggidy_test
+  pool: 5
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: giggidy_production
+  pool: 5
