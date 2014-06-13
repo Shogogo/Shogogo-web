@@ -17,12 +17,13 @@ feature "Artist search box" do
   scenario "selects an artist", js: true do
     visit root_path
     fill_in "artist-search", with: "Fleetwood"
-    page.find('fbs-selected').click
-    expect(find_field('artist_search').value).to eq "Fleetwood Mac"
+
+    page.execute_script %Q{ $('.fbs-item').first().trigger("mouseenter").click(); }
+    expect(find_field('search_box').value).to eq "Fleetwood Mac"
   end
 
   scenario "renders artist bio"
 
-  
+
 
 end
