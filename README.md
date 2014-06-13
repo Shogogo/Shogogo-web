@@ -1,17 +1,17 @@
-#Giggidy is an exciting new platform where you can track all of your favorite bands upcoming performances.  Never miss another show.
-## Contributors
+##Giggidy is an exciting new platform where you can track all of your favorite bands upcoming performances.  Never miss another show.
+### Contributors
 @alexanderdavidpan
 @zkarst
 @reboryan
 @justinphelps
 
-## Dependencies 
+### Dependencies 
 1. Twillio
 2. Addthis
 3. timecop
 
 
-## Contributing
+### Contributing
 1. Don't
 
 
