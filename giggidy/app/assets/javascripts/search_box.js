@@ -3,7 +3,6 @@ function searchSuggest() {
 };
 
 function getArtistName() {
-  artist = $("#search_box").val();
-  return artist;
+  artistName = $("#search_box").val();
+  return artistName;
 }
-
