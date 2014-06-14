@@ -1,5 +1,7 @@
 $(document).ready(function() {
     var bandView = new BandView();
+    var favoritesView = new FavoritesView();
+    var artist = null;
 
     searchBox = new SearchBox();
     // searchBox.searchSuggest();
@@ -12,13 +14,18 @@ $(document).ready(function() {
             
             $.getJSON(preparedArtistName).done(function(artistInfo) {
                 var artistData = artistInfo.performers[0];
-                var artist = searchBox.parseArtistInfo(artistData);
+                artist = searchBox.parseArtistInfo(artistData);
                 bandView.draw(artist);
             });
     });
 
-    $("#add_band").on("click", function(e) {
+    $("button").click(function(e) {
         // $(this).closest(".band_name")
             // Use to identify band to add to selected list // 
+        e.preventDefault();
+        alert("works")
+        debugger
+        favoritesView.draw(artist);
+
     });
 });
