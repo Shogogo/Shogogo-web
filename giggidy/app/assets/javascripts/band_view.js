@@ -5,6 +5,7 @@ BandView = function() {
 BandView.prototype = {
     draw:function(band) {
         var new_band_container = new BandPresenter(band).present();
-        $(this.bandNode).replaceWith(new_band_container);
+        this.bandNode.innerHTML = new_band_container.innerHTML;
+        $(this.bandNode).show();
     }
 };
