@@ -19,13 +19,13 @@ BandPresenter.prototype = {
         nameNode.className = "band_name";
      
         tourNode.className = "tour_status";
-        // if(this.band.tour_status === true) {
-        //     tourNode.innerText("Touring");
-        // }
-        // else {
-        //     tourNode.innerText("Not Touring");
-        // }
-        // 
+        if(this.band.tour_status === true) {
+            tourNode.innerText = "Touring";
+        }
+        else {
+            tourNode.innerText = "Not Touring";
+        }
+        
         addNode.innerText = "Add Band";
         addNode.setAttribute("id", "add_band");
 
