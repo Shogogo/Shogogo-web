@@ -1,4 +1,8 @@
-##Giggidy is an exciting new platform where you can track all of your favorite bands upcoming performances.  Never miss another show.
+**ShoGoGo**
+=====================
+
+**ShowGoGo** is an exciting new platform where you can track all of your favorite bands' upcoming performances. Never miss another show.
+
 ### Contributors
 @alexanderdavidpan
 @zkarst
