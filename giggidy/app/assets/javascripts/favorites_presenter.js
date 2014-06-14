@@ -1,18 +1,15 @@
 FavoritesPresenter = function(band) {
     this.band = band;
-    var div = document.createElement('div');
-    var button = document.createElement('button');
-    var img = document.createElement('img');
 };
 
 FavoritesPresenter.prototype = {
     present: function() {
-        var favoritesMenuNode = div;
-        var bandContainerNode = div;
-        var bandNameNode = div;
-        var bandImageNode = img;
-        var removeBandNode = button;
-        var saveNode = button;
+        var favoritesMenuNode = document.createElement('div');
+        var bandContainerNode = document.createElement('div');
+        var bandNameNode = document.createElement('div');
+        var bandImageNode = document.createElement('img');
+        var removeBandNode = document.createElement('button');
+        var saveNode = document.createElement('button');
 
         favoritesMenuNode.className = "favorites_menu";
 
@@ -32,7 +29,7 @@ FavoritesPresenter.prototype = {
         saveNode.className = "favorites_save";
         saveNode.innerText = "Notify Me!";
             // Button will add favorites to notify list and request user phone - change text to something more descriptive.
-        
+            
         bandContainerNode.appendChild(bandImageNode);
         bandContainerNode.appendChild(bandNameNode);
         bandContainerNode.appendChild(removeBandNode);
