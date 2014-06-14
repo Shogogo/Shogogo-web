@@ -17,10 +17,11 @@ SearchBox.prototype.preparedAristQuery = function(artistName) {
 };
 
 SearchBox.prototype.parseArtistInfo = function(artistInfo) {
-    var artist = new Object();
-    artist.name = artistInfo.name;
-    artist.img = artistInfo.img;
-    artist.id = artistInfo.id;
-    artist.type = artistInfo.type;
+    var artist = {
+        name: artistInfo.name,
+        img: artistInfo.img,
+        id: artistInfo.id,
+        type: artistInfo.type
+    };
     return artist;
 };
