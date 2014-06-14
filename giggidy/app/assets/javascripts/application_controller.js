@@ -18,9 +18,9 @@ $(document).ready(function() {
                 bandView.draw(artist);
             });
     });
+    
     $('#band_container').on('click', 'button', function(e) {
         e.preventDefault();
-        debugger
         favoritesView.draw(artist);
     });
 });
