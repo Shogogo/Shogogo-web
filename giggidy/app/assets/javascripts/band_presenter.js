@@ -12,7 +12,7 @@ BandPresenter.prototype = {
        
         bandPanelNode.id = "band_container";
 
-        imageNode.src = this.band.image_url;
+        imageNode.src = this.band.image_url_large;
         imageNode.className = "band_image";
         
         nameNode.innerText = this.band.name;
