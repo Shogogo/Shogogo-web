@@ -67,6 +67,9 @@ input[type=text] {
   font-size: 1.5em;
 }
 
+.suggest_pane{
+  width: 50%;
+}
 
 #band_container {
 	position: fixed;
