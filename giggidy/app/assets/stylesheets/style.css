@@ -67,6 +67,21 @@ input[type=text] {
   font-size: 1.5em;
 }
 
+.suggest_pane{
+  width: 50%;
+}
+
+.suggest_list li{
+  font-family: 'Roboto', Arial, sans-serif !important;
+}
+
+.suggest_list li:nth-child(n+6){
+  visibility: hidden;
+}
+
+.suggest_status{
+  visibility: hidden;
+}
 
 #band_container {
 	position: fixed;
