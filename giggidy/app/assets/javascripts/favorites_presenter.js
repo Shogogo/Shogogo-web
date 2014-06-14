@@ -11,7 +11,7 @@ FavoritesPresenter.prototype = {
         var bandContainerNode = div;
         var bandNameNode = div;
         var bandImageNode = img;
-        var removeArtistNode = button;
+        var removeBandNode = button;
         var saveNode = button;
 
         favoritesMenuNode.className = "favorites_menu";
@@ -24,14 +24,22 @@ FavoritesPresenter.prototype = {
         bandImageNode.class = "favorites_band_image";
         bandImageNode.src = this.band.image_url_small;
 
-        removeArtistNode.className = "favorites_band_remove";
-        removeArtistNode.innerText = "RM";
+        removeBandNode.className = "favorites_band_remove";
+        removeBandNode.innerText = "RM";
             // Testing only - remove text - use img of negative sign
-        // removeArtistNode.src = "button image url";
+        // removeBandNode.src = "button image url";
 
         saveNode.className = "favorites_save";
         saveNode.innerText = "Notify Me!";
             // Button will add favorites to notify list and request user phone - change text to something more descriptive.
+        
+        bandContainerNode.appendChild(bandImageNode);
+        bandContainerNode.appendChild(bandNameNode);
+        bandContainerNode.appendChild(removeBandNode);
 
+        favoritesMenuNode.appendChild(bandContainerNode);
+        favoritesMenuNode.appendChild(saveNode);
+
+        return favoritesMenuNode;
     }
 };
