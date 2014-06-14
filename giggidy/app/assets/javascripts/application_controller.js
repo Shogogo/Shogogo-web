@@ -2,10 +2,11 @@ $(document).ready(function() {
     var bandView = new BandView();
 
     searchBox = new SearchBox();
-    searchBox.searchSuggest();
-    
-    $(document).keypress(function(e) {
-        if(e.which == 13) {
+    // searchBox.searchSuggest();
+ 
+    $("#search_box")
+        .suggest({filter:'(all type:/music/artist)'})
+        .bind('fb-select', function(e) {
             var artistName = searchBox.getArtistName();
             var preparedArtistName = searchBox.preparedAristQuery(artistName);
             
@@ -14,7 +15,5 @@ $(document).ready(function() {
                 var artist = searchBox.parseArtistInfo(artistData);
                 bandView.draw(artist);
             });
-        }
     });
 });
-
