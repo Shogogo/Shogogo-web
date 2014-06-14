@@ -1,0 +1,4 @@
+EventListener = function() {};
+
+EventListener.prototype = {
+};
