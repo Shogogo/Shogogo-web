@@ -8,25 +8,13 @@ $(document).ready(function(){
       
         $.ajax({
             type: 'GET',
-            url: preparedQuery,
+            url: preparedArtistName,
             dataType: 'json'
         }).done(function(artistInfo){
             var artistData = artistInfo.performers[0];
             var artist = searchBox.parseArtistInfo(artistData);
-            debugger
             return artist
-            // console.log(preparedQuery);
-            // console.log(artistInfo.performers[0]);
-            // debugger
-            // return 
         });
-
-
-
-     
-      
-      // // return artist;
-      // console.log(artist);
     }
   })
 });
