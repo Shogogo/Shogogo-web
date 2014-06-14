@@ -6,6 +6,7 @@ html {
   background-size: cover;
 }
 
-.band_container {
+#band_container {
   display: none;
+  background-color: white;
 }
