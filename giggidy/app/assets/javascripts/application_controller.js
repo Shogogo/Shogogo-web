@@ -18,14 +18,9 @@ $(document).ready(function() {
                 bandView.draw(artist);
             });
     });
-
-    $("button").click(function(e) {
-        // $(this).closest(".band_name")
-            // Use to identify band to add to selected list // 
+    $('#band_container').on('click', 'button', function(e) {
         e.preventDefault();
-        alert("works")
         debugger
         favoritesView.draw(artist);
-
     });
 });
