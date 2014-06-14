@@ -8,7 +8,7 @@ BandPresenter.prototype = {
         var imageNode = document.createElement('img');
         var nameNode = document.createElement('div');
         var tourNode = document.createElement('div');
-        var addNode = document.createElement('h2');
+        var addNode = document.createElement('button');
        
         bandPanelNode.id = "band_container";
 
