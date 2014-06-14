@@ -79,6 +79,10 @@ input[type=text] {
   visibility: hidden;
 }
 
+.suggest_status{
+  visibility: hidden;
+}
+
 #band_container {
 	position: fixed;
 	width: 50%;
