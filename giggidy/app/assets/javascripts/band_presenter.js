@@ -12,20 +12,21 @@ BandPresenter.prototype = {
        
         bandPanelNode.id = "band_container";
 
-        imageNode.src = this.band.image_url;
+        imageNode.src = this.band.image_url_large;
         imageNode.className = "band_image";
         
         nameNode.innerText = this.band.name;
         nameNode.className = "band_name";
      
         tourNode.className = "tour_status";
-        // if(this.band.tour_status === true) {
-        //     tourNode.innerText("Touring");
-        // }
-        // else {
-        //     tourNode.innerText("Not Touring");
-        // }
-        // 
+
+        if(this.band.tour_status === true) {
+            tourNode.innerText = "Touring";
+        }
+        else {
+            tourNode.innerText = "Not Touring";
+        }
+
         addNode.innerText = "Add+";
         addNode.setAttribute("id", "add_band");
 
