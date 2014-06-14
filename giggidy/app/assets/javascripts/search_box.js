@@ -19,7 +19,8 @@ SearchBox.prototype.preparedAristQuery = function(artistName) {
 SearchBox.prototype.parseArtistInfo = function(artistInfo) {
     var artist = {
         name: artistInfo.name,
-        image_url: artistInfo.image,
+        image_url_large: artistInfo.images.huge,
+        image_url_small: artistInfo.images.small,
         id: artistInfo.id,
         type: artistInfo.type,
         tour_status: artistInfo.has_upcoming_events
