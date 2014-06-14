@@ -5,3 +5,8 @@ html {
   -o-background-size: cover;
   background-size: cover;
 }
+
+#band_container {
+  display: none;
+  background-color: white;
+}
