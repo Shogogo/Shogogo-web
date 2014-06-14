@@ -1,6 +1,7 @@
 $(document).ready(function() {
     var bandView = new BandView();
     var favoritesView = new FavoritesView();
+    var favoriteList = new FavoriteList();
     var artist = null;
 
     searchBox = new SearchBox();
