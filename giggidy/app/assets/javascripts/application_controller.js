@@ -27,6 +27,8 @@ $(document).ready(function() {
     
     $('#band_container').on('click', 'button', function(e) {
         e.preventDefault();
-        favoritesView.draw(artist);
+        favoriteList.addBand(artist);
+        favoritesView.draw(favoriteList.list);
+        $('#band_container').empty();
     });
 });
