@@ -26,7 +26,7 @@ BandPresenter.prototype = {
         //     tourNode.innerText("Not Touring");
         // }
         // 
-        addNode.setAttribute("value", "Add Band");
+        addNode.innerText = "Add Band";
         addNode.setAttribute("id", "add_band");
 
         bandPanelNode.appendChild(imageNode);
