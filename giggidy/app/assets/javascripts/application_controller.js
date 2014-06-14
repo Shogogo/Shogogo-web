@@ -5,7 +5,7 @@ $(document).ready(function() {
     // searchBox.searchSuggest();
  
     $("#search_box")
-        .suggest({filter:'(all type:/music/artist)'})
+        .suggest({filter:'(all type:/music/artist)', flyout: false})
         .bind('fb-select', function(e) {
             var artistName = searchBox.getArtistName();
             var preparedArtistName = searchBox.preparedAristQuery(artistName);
