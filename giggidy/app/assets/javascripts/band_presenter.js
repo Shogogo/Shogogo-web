@@ -25,7 +25,7 @@ BandPresenter.prototype = {
         // else {
         //     tourNode.innerText("Not Touring");
         // }
-
+        // 
         addNode.setAttribute("value", "Add Band");
         addNode.setAttribute("id", "add_band");
 
