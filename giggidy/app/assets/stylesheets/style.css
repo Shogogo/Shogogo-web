@@ -71,6 +71,10 @@ input[type=text] {
   width: 50%;
 }
 
+.suggest_list li{
+  font-family: 'Roboto', Arial, sans-serif !important;
+}
+
 #band_container {
 	position: fixed;
 	width: 50%;
