@@ -21,7 +21,8 @@ SearchBox.prototype.parseArtistInfo = function(artistInfo) {
         name: artistInfo.name,
         image_url: artistInfo.image,
         id: artistInfo.id,
-        type: artistInfo.type
+        type: artistInfo.type,
+        upcoming_events: artistInfo.has_upcoming_events
     };
     return artist;
 };
