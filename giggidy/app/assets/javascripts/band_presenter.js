@@ -8,7 +8,7 @@ BandPresenter.prototype = {
         var imageNode = document.createElement('img');
         var nameNode = document.createElement('div');
         var tourNode = document.createElement('div');
-        var addNode = document.createElement('button');
+        var addNode = document.createElement('h2');
        
         bandPanelNode.id = "band_container";
 
@@ -26,7 +26,7 @@ BandPresenter.prototype = {
         //     tourNode.innerText("Not Touring");
         // }
         // 
-        addNode.innerText = "Add Band";
+        addNode.innerText = "Add Band+";
         addNode.setAttribute("id", "add_band");
 
         bandPanelNode.appendChild(imageNode);
