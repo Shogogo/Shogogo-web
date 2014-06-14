@@ -4,8 +4,7 @@ BandView = function() {
 
 BandView.prototype = {
     draw:function(band) {
-
         var new_band_container = new BandPresenter(band).present();
-        this.bandNode.innerHTML(new_band_container);
+        $(this.bandNode).replaceWith(new_band_container);
     }
 };
