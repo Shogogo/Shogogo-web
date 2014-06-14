@@ -30,7 +30,7 @@ input[type=text] {
 	position: fixed;
 	width: 50%;
 	height: 65px;
-	top: 50%;
+	top: 45%;
 	left: 25%;
 	border-radius: 10px;
 	border-style: none;
@@ -39,10 +39,10 @@ input[type=text] {
 }
 
 
-#search_box::-webkit-input-placeholder { color:#C2C2C2; font-style: italic; }
-#search_box::-moz-placeholder { color:#C2C2C2; font-style: italic; } /* firefox 19+ */
-#search_box:-ms-input-placeholder { color:#C2C2C2; font-style: italic; } /* ie */
-#search_box input:-moz-placeholder { color:#C2C2C2; font-style: italic; }
+#search_box::-webkit-input-placeholder { color:#C2C2C2; font-style: italic; font-size: 1em; }
+#search_box::-moz-placeholder { color:#C2C2C2; font-style: italic; font-size: 1em; } /* firefox 19+ */
+#search_box:-ms-input-placeholder { color:#C2C2C2; font-style: italic; font-size: 1em; } /* ie */
+#search_box input:-moz-placeholder { color:#C2C2C2; font-style: italic; font-size: 1em; }
 
 
 #search_box:focus {
@@ -55,7 +55,7 @@ input[type=text] {
 #search_message {
 	position: fixed;
 	width: 40%;
-	top: 60%;
+	top: 55%;
 	left: 30%;
 	text-align: center;
 	color: white;
@@ -85,18 +85,43 @@ input[type=text] {
 
 #band_container {
 	position: fixed;
-	width: 50%;
-	top: 60%;
+	width: 48.7%;
+	top: 55%;
 	left: 25%;
   display: none;
-  background-color: white;
-  background: rgba(255, 255, 255, .9);
+  background: rgba(255, 255, 255, 1.0);
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  padding: 10px 10px;
+}
+
+.band_name {
+	float: right;
+	margin-right: 15px;
+	margin-top: 10px;
+	width: 55%;
+	max-height: 100px;
+	font-family: 'Roboto', Arial, sans-serif;
+	font-weight: 500;
+	font-size: 3em;
+	font-style: italic;
+	color: #858585;
+	text-align: center;
+	line-height: 105%;
+}
+
+.band_image {
+	float: left;
+	border: 1px solid #;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 5px; 
 }
 
 #add_band {
-	float: right;
+	position: absolute;
+	bottom: 0;
+	right: 0;
 	margin-right: 20px;
 	color: white;
 	font-family: 'Roboto', Arial, sans-serif;
