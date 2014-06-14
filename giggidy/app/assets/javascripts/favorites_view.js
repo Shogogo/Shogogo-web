@@ -1,5 +1,5 @@
 FavoritesView = function() {
-    this.favoritesMenuNode = document.getElementsByClassName('favorites_menu').first;
+    this.favoritesMenuNode = document.getElementsByClassName('favorites_menu')[0];
 };
 
 FavoritesView.prototype = {
