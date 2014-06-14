@@ -6,7 +6,30 @@ html {
   background-size: cover;
 }
 
+input:focus {
+  outline:none;
+}
+
+#search_box {
+	position: fixed;
+	width: 50%;
+	height: 50px;
+	top: 50%;
+	left: 25%;
+	border-radius: 15px;
+	/*margin-top: -50%;*/
+	/*margin-left: -100px;*/
+}
+
 #band_container {
   display: none;
   background-color: white;
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -100px;
 }
