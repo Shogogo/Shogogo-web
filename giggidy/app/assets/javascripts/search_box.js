@@ -22,7 +22,7 @@ SearchBox.prototype.parseArtistInfo = function(artistInfo) {
         image_url: artistInfo.image,
         id: artistInfo.id,
         type: artistInfo.type,
-        upcoming_events: artistInfo.has_upcoming_events
+        tour_status: artistInfo.has_upcoming_events
     };
     return artist;
 };
