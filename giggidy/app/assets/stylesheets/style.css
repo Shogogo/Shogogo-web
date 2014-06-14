@@ -18,6 +18,7 @@ input:focus {
   outline: none;
 }
 
+
 input[type=text] {
 	font-family: 'Roboto', Arial, sans-serif;
 	font-weight: 500;
@@ -36,6 +37,13 @@ input[type=text] {
 	opacity: 0.85;
 	margin-bottom: 15px;
 }
+
+
+#search_box::-webkit-input-placeholder { color:#C2C2C2; font-style: italic; }
+#search_box::-moz-placeholder { color:#C2C2C2; font-style: italic; } /* firefox 19+ */
+#search_box:-ms-input-placeholder { color:#C2C2C2; font-style: italic; } /* ie */
+#search_box input:-moz-placeholder { color:#C2C2C2; font-style: italic; }
+
 
 #search_box:focus {
 	opacity: 1.0;
@@ -78,7 +86,7 @@ input[type=text] {
 	color: white;
 	font-family: 'Roboto', Arial, sans-serif;
 	font-weight: 500;
-	padding: 4px 6px;
+	padding: 4px 8px;
 	background-color: #858585;
 	opacity: 1.0;
 	border-radius: 3px;
