@@ -75,6 +75,10 @@ input[type=text] {
   font-family: 'Roboto', Arial, sans-serif !important;
 }
 
+.suggest_list li:nth-child(n+6){
+  visibility: hidden;
+}
+
 #band_container {
 	position: fixed;
 	width: 50%;
