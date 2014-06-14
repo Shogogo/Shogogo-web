@@ -19,7 +19,7 @@ SearchBox.prototype.preparedAristQuery = function(artistName) {
 SearchBox.prototype.parseArtistInfo = function(artistInfo) {
     var artist = {
         name: artistInfo.name,
-        img: artistInfo.img,
+        image_url: artistInfo.image,
         id: artistInfo.id,
         type: artistInfo.type
     };
