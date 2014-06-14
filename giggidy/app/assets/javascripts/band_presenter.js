@@ -10,7 +10,7 @@ BandPresenter.prototype = {
         var tourNode = document.createElement('div');
         var addNode = document.createElement('button');
        
-        bandPanelNode.className = "band_container";
+        bandPanelNode.id = "band_container";
 
         imageNode.src = this.band.image_url;
         imageNode.className = "band_image";
