@@ -14,6 +14,12 @@ $(document).ready(function() {
 
     searchBox = new SearchBox();
     // searchBox.searchSuggest();
+    // 
+    
+    if (localStorage.favoriteList) {
+        favoriteList.list = JSON.parse(localStorage.favoriteList);
+        favoritesView.draw(favoriteList.list);
+    }
 
     $("#search_box")
         .suggest({filter:'(all type:/music/artist)'
@@ -45,5 +51,10 @@ $(document).ready(function() {
         var band = $(this).closest('.favorites_band_item').find('.favorites_band_name').text();
         favoriteList.removeBand(band);
         favoritesView.draw(favoriteList.list);
+    });
+
+    $( document ).on( "click", ".favorites_save", function(e) {
+        e.preventDefault();
+        alert("It works");
     });
 });
