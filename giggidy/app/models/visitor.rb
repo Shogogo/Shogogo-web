@@ -1,13 +1,11 @@
-# require 'json'
-
 class Visitor
 
+  def self.session_exists?(session_id)
+    $redis.exists(session_id)
+  end
+
   def self.check_session(session_id)
-    if $redis.exists(session_id)
-      $redis.smembers(session_id).to_json
-    else
-      return 'no existing session'
-    end
+    $redis.smembers(session_id).to_json
   end
 
   def self.set_prefs(session_id, user_prefs)
