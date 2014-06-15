@@ -1,5 +1,5 @@
 FavoriteList = function() {
-    this.list = JSON.parse(localStorage.favoriteList);
+    this.list = [];
 };
 
 FavoriteList.prototype = {

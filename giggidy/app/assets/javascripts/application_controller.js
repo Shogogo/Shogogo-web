@@ -7,7 +7,11 @@ $(document).ready(function() {
     searchBox = new SearchBox();
     // searchBox.searchSuggest();
     // 
-    favoritesView.draw(JSON.parse(localStorage.favoriteList));
+    
+    if (localStorage.favoriteList) {
+        favoriteList.list = JSON.parse(localStorage.favoriteList);
+        favoritesView.draw(favoriteList.list);
+    }
 
     $("#search_box")
         .suggest({filter:'(all type:/music/artist)'
