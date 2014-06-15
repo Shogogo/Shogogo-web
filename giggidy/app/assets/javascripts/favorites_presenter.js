@@ -10,7 +10,7 @@ FavoritesPresenter.prototype = {
         saveNode.className = "favorites_save";
             // Button will add favorites to notify list and request user phone - change text to something more descriptive.
         saveNode.innerText = "Notify Me!";
-        
+
         for (i = 0; i < favoriteList.length; i++) {
             var bandContainerNode = document.createElement('div');
             var bandNameNode = document.createElement('span');
@@ -21,10 +21,10 @@ FavoritesPresenter.prototype = {
 
             bandNameNode.className = "favorites_band_name";
             bandNameNode.innerText = favoriteList[i].name;
-            
+
             bandImageNode.className = "favorites_band_image";
             bandImageNode.src = favoriteList[i].image_url_small;
-            
+
             removeBandNode.className = "favorites_band_remove";
             removeBandNode.innerText = "RM";
 
@@ -35,7 +35,8 @@ FavoritesPresenter.prototype = {
                 // removeBandNode.src = "button image url";
             favoritesMenuNode.appendChild(bandContainerNode);
         }
-        
+
+        jQuery('#favorites-menu').removeClass('nofaves').addClass('faves');
         favoritesMenuNode.appendChild(saveNode);
 
         return favoritesMenuNode;
