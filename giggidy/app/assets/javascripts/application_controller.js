@@ -43,7 +43,8 @@ $(document).ready(function() {
         e.preventDefault();
         favoriteList.addBand(artist);
         favoritesView.draw(favoriteList.list);
-        $('#band_container').empty();
+        $('#band_container').empty().hide();
+        $('#favorites-menu').removeClass('nofaves').addClass('faves');
     });
 
     $( document ).on( "click", ".favorites_band_remove", function(e) {

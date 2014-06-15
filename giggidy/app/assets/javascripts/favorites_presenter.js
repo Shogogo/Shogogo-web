@@ -36,7 +36,6 @@ FavoritesPresenter.prototype = {
             favoritesMenuNode.appendChild(bandContainerNode);
         }
 
-        jQuery('#favorites-menu').removeClass('nofaves').addClass('faves');
         favoritesMenuNode.appendChild(saveNode);
 
         return favoritesMenuNode;
