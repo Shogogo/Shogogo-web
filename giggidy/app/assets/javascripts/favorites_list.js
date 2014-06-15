@@ -1,5 +1,5 @@
 FavoriteList = function() {
-    this.list = JSON.parse(localStorage.favoriteList) || [];
+    this.list = JSON.parse(localStorage.favoriteList);
 };
 
 FavoriteList.prototype = {
@@ -7,11 +7,13 @@ FavoriteList.prototype = {
         this.list.push(band);
         localStorage.favoriteList = JSON.stringify(this.list);
     },
-    removeBand: function(band_literal) {
-        this.list.forEach(function(band) {
-            if (list[band_literal] === band)
-                list.splice(band_literal, 1);
+    removeBand: function(bandName) {
+        // var savedFavoriteList = JSON.parse(localStorage.favoriteList);
+        
+        for (i = 0; i < this.list.length; i++) {
+            if (this.list[i].name === bandName)
+                this.list.splice(this.list[i],1);
+        }
         localStorage.favoriteList = JSON.stringify(this.list);
-        });
     }
 };
