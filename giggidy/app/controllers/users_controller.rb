@@ -10,6 +10,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def login
+    @user = User.find_by_username(user_params[:username])
+    session[:user_id] = @user.id
+    redirect_to root_path
+  end
+
   private
 
   def user_params
