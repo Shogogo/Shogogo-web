@@ -4,6 +4,14 @@ $(document).ready(function() {
     var favoriteList = new FavoriteList();
     var artist = null;
 
+    $.ajax({
+        url: "/get_session",
+        dataType: "json"
+    }).done(function(response){
+        sessionDetails = response;
+        console.log(response);
+    });
+
     searchBox = new SearchBox();
     // searchBox.searchSuggest();
 
@@ -29,6 +37,6 @@ $(document).ready(function() {
         e.preventDefault();
         favoriteList.addBand(artist);
         favoritesView.draw(favoriteList.list);
-        $('#band_container').empty().hide();
+        $('#band_container').empty();
     });
 });
