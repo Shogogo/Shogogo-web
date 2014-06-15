@@ -23,7 +23,10 @@ html, body {
   height: 100%;
   background-color: black;
   opacity: 0.8;
-  border-left: 5px solid #FFFF00
+  border-left: 5px solid #FFFF00;
+  transition: width 0.4s;
+  -webkit-transition: width 0.4s;
+  -moz-transition: width 0.4s;
 }
 
 
@@ -165,10 +168,12 @@ input[type=text] {
   border-radius: 3px;
 }
 
-/*.favorites_menu {
-  position: absolute;
-  width: 100px;
-  right: 20px;
-  top: 20px;
+.nofaves {
+  width: 0px !important;
+  right: -38px;
+}
+
+.faves {
+  width: 25% !important;
 }
 
