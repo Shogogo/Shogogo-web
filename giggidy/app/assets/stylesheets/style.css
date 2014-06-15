@@ -60,6 +60,7 @@ input[type=text] {
   position: fixed;
   width: 50%;
   height: 65px;
+  height: 10vh;
   top: 45%;
   margin-left: 12.5%;
   margin-right: 12.5%;
@@ -119,7 +120,7 @@ input[type=text] {
 #band_container {
   position: fixed;
   width: 50%;
-  height: 28vh;
+  height: 26.5vh;
   top: 57%;
   margin-left: 12.5%;
   margin-right: 12.5%;
@@ -132,13 +133,15 @@ input[type=text] {
 
 .band_name {
   float: right;
-  margin-right: 15px;
+  margin-right: 20px;
   margin-top: 10px;
+  margin-bottom: 15px;
   width: 55%;
   max-height: 100px;
   font-family: 'Roboto', Arial, sans-serif;
   font-weight: 500;
   font-size: 3em;
+  font-size: 3.5vw;
   font-style: italic;
   color: #858585;
   text-align: center;
@@ -156,9 +159,10 @@ input[type=text] {
 
 #add_band {
   position: absolute;
-  bottom: 0;
   right: 0;
-  margin-right: 20px;
+  bottom: 0;
+  margin-right: 10px;
+  margin-bottom: 10px;
   color: white;
   font-family: 'Roboto', Arial, sans-serif;
   font-weight: 500;
@@ -166,6 +170,19 @@ input[type=text] {
   background-color: #858585;
   opacity: 1.0;
   border-radius: 3px;
+  width: 8%;
+  height: 15%;
+}
+
+.tour_status {
+  float: right;
+  text-align: center;
+  margin-right: 30px;
+  font-size: 2em;
+  width: 50%;
+  text-align: center;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-weight: 500;
 }
 
 .nofaves {
