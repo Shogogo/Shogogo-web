@@ -8,11 +8,9 @@ FavoriteList.prototype = {
         localStorage.favoriteList = JSON.stringify(this.list);
     },
     removeBand: function(bandName) {
-        // var savedFavoriteList = JSON.parse(localStorage.favoriteList);
-        
         for (i = 0; i < this.list.length; i++) {
             if (this.list[i].name === bandName)
-                this.list.splice(this.list[i],1);
+                this.list.splice(i,1);
         }
         localStorage.favoriteList = JSON.stringify(this.list);
     }

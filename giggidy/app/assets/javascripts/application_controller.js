@@ -26,17 +26,16 @@ $(document).ready(function() {
     });
 
     $('#band_container').on('click', 'button', function(e) {
+        debugger;
         e.preventDefault();
         favoriteList.addBand(artist);
         favoritesView.draw(favoriteList.list);
         $('#band_container').empty().hide();
     });
 
-
     $('.favorites_band_item').on('click', 'button', function(e) {
         e.preventDefault();
-        debugger
-        var band = $(this).closest('.favorites_band_item').find('.favorites_band_name').text()
+        var band = $(this).closest('.favorites_band_item').find('.favorites_band_name').text();
         favoriteList.removeBand(band);
         favoritesView.draw(favoriteList.list);
         $('#band_container').empty().hide();
