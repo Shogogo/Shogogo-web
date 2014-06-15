@@ -5,7 +5,7 @@ class Visitor
   end
 
   def self.check_session(session_id)
-    $redis.smembers(session_id).to_json
+    $redis.smembers(session_id)
   end
 
   def self.set_prefs(session_id, user_prefs)
