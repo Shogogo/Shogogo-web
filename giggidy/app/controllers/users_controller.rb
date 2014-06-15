@@ -19,6 +19,12 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def logout
+    @user = User.find(session[:user_id])
+    reset_session
+    redirect_to root_path
+  end
+
   private
 
   def user_params
