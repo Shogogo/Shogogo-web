@@ -1,0 +1,20 @@
+<h4>Sign Up<h4>
+<%= form_for (:user) do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username %><br />
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %><br />
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %><br />
+  <%= f.label :password %>
+  <%= f.password_field :password_digest %><br />
+  <%= f.label :email %>
+  <%= f.text_field :email %><br />
+  <%= f.label :phone_number %><br />
+  <%= f.text_field :phone_number %><br />
+  <%= check_box_tag(:wants_email) %>
+  <%= label_tag(:wants_email, "I want email notifications") %><br />
+  <%= check_box_tag(:wants_text) %>
+  <%= label_tag(:wants_text, "I want text notifications") %><br />
+  <%= f.submit "Sign Me Up!"%>
+<% end %>
