@@ -13,7 +13,7 @@ FavoritesPresenter.prototype = {
         
         for (i = 0; i < favoriteList.length; i++) {
             var bandContainerNode = document.createElement('div');
-            var bandNameNode = document.createElement('div');
+            var bandNameNode = document.createElement('span');
             var bandImageNode = document.createElement('img');
             var removeBandNode = document.createElement('button');
 
