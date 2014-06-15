@@ -1,5 +1,5 @@
 <h4>Sign Up<h4>
-<%= form_for (:user) do |f| %>
+<%= form_for (:user), :url => signup_path(:user) do |f| %>
   <%= f.label :username %>
   <%= f.text_field :username %><br />
   <%= f.label :first_name %>
