@@ -13,8 +13,14 @@
     </div>
 
   </div>
-  <div class="small-3 large-3 columns favorites_menu nofaves" id="favorites-menu"></div>
+  <div class="small-3 large-3 columns favorites_menu nofaves" id="favorites-menu">
  <!--    <div class="favorites_band_item"></div> -->
   </div>
 </div>
 
+<%= javascript_tag do %>
+  var GEOIP = {};
+  GEOIP.lon = '<%= @geoinfo.location.longitude %> ' ;
+  GEOIP.lat = '<%= @geoinfo.location.latitude %> ' ;
+
+  <% end %>

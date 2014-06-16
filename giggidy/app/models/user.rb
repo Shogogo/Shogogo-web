@@ -1,16 +1,14 @@
 class User < ActiveRecord::Base
-	has_secure_password
-	validates :username, presence: true
-	# validates :first_name, presence: true
-	# validates :last_name, presence: true
-	# validates :email, presence: true
-		
-	has_many :interests
+
+	validates :phone_number, presence: true, 
+	uniqueness: true
+	validates_format_of :phone_number, :with => /\A\d{10}\z/, message: "Only numbers allowed, i.e. 5551234567"
+	
+	has_many :favorites
 
 	def self.location(ip)
 		$geoloc.lookup(ip)
 	end
-
 
 end
 

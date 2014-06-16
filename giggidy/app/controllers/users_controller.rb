@@ -1,13 +1,33 @@
 class UsersController < ApplicationController
+  protect_from_forgery except: :create
+
   def index
   end
 
+  def new
+    @user = User.new
+    render :partial => 'phone_form'
+  end
+
   def create
-    @user = User.new(user_params)
-    @user.password = user_params[:password]
+    bands = params[:user][:bands]
+    band_array = bands.chomp.split(',').map { |x| x.to_i }
+
+    @user = User.new(phone_number: params[:user][:phone_number])
+    
     if @user.save
-      session[:user_id] = @user.id
-      redirect_to root_path
+      band_array.each do |band|
+        @user.favorites.build(seatgeek_artist_id: band)
+        @user.save
+      end
+
+      respond_to do |format|
+        format.json { render :json => {:status => 'ok', :message => 'Success!'} }
+        # format.js { render :partial => 'verify_phone' }
+      end
+      
+    else
+      render :partial => 'shared/errors', :locals => { :object => @user }, :status => :unprocessable_entity
     end
   end
 
@@ -28,16 +48,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, 
-                                 :password, 
-                                 :first_name, 
-                                 :last_name, 
-                                 :email, 
-                                 :latitude, 
-                                 :longitude, 
-                                 :phone_number, 
-                                 :wants_email, 
-                                 :wants_text)
+    params.require(:user).permit(:phone_number, :bands)                          
   end
-
 end
