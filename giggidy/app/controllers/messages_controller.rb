@@ -1,4 +1,4 @@
-class SendTextController < ApplicationController
+class MessagesController < ApplicationController
   def index
   end
 
