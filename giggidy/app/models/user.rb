@@ -1,9 +1,11 @@
 class User < ActiveRecord::Base
-	has_secure_password
-	# validates :first_name, presence: true
-	# validates :last_name, presence: true
-	# validates :email, presence: true
-	validates :phone_number, presence: true		
+	
+	before_save 
+
+	validates :phone_number, presence: true, 
+	uniqueness: true,
+	format: { with: /^\d{10}$/ }, message: "Only numbers allowed, i.e. 5551234567"
+	
 	has_many :favorites
 
 	def self.location(ip)
