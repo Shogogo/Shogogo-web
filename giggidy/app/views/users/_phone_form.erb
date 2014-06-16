@@ -1,12 +1,9 @@
 <div class="signup">
- <!--  <form name="user" id="phone" action="/users/create" method="post">
-    <input type='text' name="number"> 
-    <input type="submit" value="Submit"> -->
-    <%= form_for @user do |f| %>
-<%= f.text_field :phone_number %>
-
-<%= f.submit 'Submit' %>
-<% end %>
+  <form name="user_phone" id="phone" action="/users/create" method="post">
+    <input type='text' name="phone_number"> 
+    <input type="submit" value="Submit">
+   
+  </form>
 </div>
 
 
