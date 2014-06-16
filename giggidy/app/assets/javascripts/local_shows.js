@@ -21,6 +21,8 @@ LocalShows.prototype.parseLocalShows = function(artistInfo) {
         parsedLocalShows.push({
             "event_name": localShows[i].title,
             "venue": localShows[i].venue.name,
+            "city": localShows[i].venue.city,
+            "state": localShows[i].venue.state,
             "event_time": localShows[i].datetime_local,
             "tickets_left": localShows[i].stats.listing_count,
             "lowestPrice": localShows[i].stats.lowest_price,
