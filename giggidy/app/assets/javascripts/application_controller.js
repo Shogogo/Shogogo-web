@@ -4,13 +4,13 @@ $(document).ready(function() {
     var favoriteList = new FavoriteList();
     var artist = null;
 
-    $.ajax({
-        url: "/get_session",
-        dataType: "json"
-    }).done(function(response){
-        sessionDetails = response;
-        console.log(response);
-    });
+    // $.ajax({
+    //     url: "/get_session",
+    //     dataType: "json"
+    // }).done(function(response){
+    //     sessionDetails = response;
+    //     console.log(response);
+    // });
 
     searchBox = new SearchBox();
     // searchBox.searchSuggest();
@@ -51,11 +51,33 @@ $(document).ready(function() {
         e.preventDefault();
         var band = $(this).closest('.favorites_band_item').find('.favorites_band_name').text();
         favoriteList.removeBand(band);
-        favoritesView.draw(favoriteList.list);
+        favoritesView.draw(JSON.parse(localStorage.favoriteList));
     });
 
     $( document ).on( "click", ".favorites_save", function(e) {
         e.preventDefault();
-        alert("It works");
+        
+        $.get("/users/new", function(data) {
+            $('#favorites-menu').html(data);
+        }, "html");
     });
+
+    $( document ).on( "submit", "#phone", function(e) {
+        e.preventDefault(); 
+        var data = $("#phone").serialize();
+        var saveFavoriteList = new SaveFavoriteList();
+        var bandIds = JSON.stringify(saveFavoriteList.save());
+
+       debugger
+
+    $.ajax({
+        url: '/signup',
+        data: {phone_number: data, bands: bandIds},
+        type: 'POST',
+        success: function ( data ) {
+            alert( data );
+        }
+    });
+});
+
 });
