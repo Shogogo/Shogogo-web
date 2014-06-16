@@ -25,7 +25,7 @@ LocalShows.prototype.parseLocalShows = function(artistInfo) {
             "state": localShows[i].venue.state,
             "event_time": localShows[i].datetime_local,
             "tickets_left": localShows[i].stats.listing_count,
-            "lowestPrice": localShows[i].stats.lowest_price,
+            "lowest_price": localShows[i].stats.lowest_price,
             "but_tix_url": localShows[i].url
         })
     }
