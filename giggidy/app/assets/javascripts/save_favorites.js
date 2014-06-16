@@ -1,11 +1,13 @@
-// SaveFavoriteList = function() {
-//     this.list = JSON.parse(localStorage.favoriteList);
-// };
+SaveFavoriteList = function() {
+    this.list = JSON.parse(localStorage.favoriteList);
+    this.bandIdArray =[];
+};
 
-// FavoriteList.prototype = {
-//     save: function(this.list) {
-        
-        
-//     }
-
-// }
+SaveFavoriteList.prototype = {
+    save: function() {
+        for (i = 0; i < this.list.length; i++) {
+            this.bandIdArray.push(this.list[i].id);
+        }
+    return this.bandIdArray.toString();
+    }
+};
