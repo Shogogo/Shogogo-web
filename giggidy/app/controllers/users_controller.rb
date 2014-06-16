@@ -11,16 +11,23 @@ class UsersController < ApplicationController
 
   def create
     bands = params[:user][:bands]
-    bandstring = bands.chomp.split(',').map! { |x| x.to_i }
-     
-    # p @user.phone_number
+    band_array = bands.chomp.split(',').map! { |x| x.to_i }
 
-    # @user = User.new(user_params)
-    # @user.password = user_params[:password]
-    # if @user.save
-    #   session[:user_id] = @user.id
-    #   redirect_to root_path
-    # end
+    @user = User.new(phone_number: params[:user][:phone_number])
+    
+    if @user.save
+      band_array.each do |band|
+        @user.interests.build(geekseat_artist_id: band)
+        @user.save
+      end
+
+      respond_to do |format|
+        format.js { render :partial => 'verify_phone' }
+      end
+      
+    else
+      render :partial => 'shared/errors', :locals => { :object => @user }, :status => :unprocessable_entity
+    end
   end
 
   def login
