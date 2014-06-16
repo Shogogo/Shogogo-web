@@ -5,8 +5,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :first_name
       t.string :last_name
       t.string :email
-      t.decimal :latitude, {:precision=>10, :scale=>6}
-      t.decimal :longitude, {:precision=>10, :scale=>6}
+      t.float :latitude
+      t.float :longitude
       t.string :phone_number
       t.boolean :wants_email
       t.boolean :wants_text
