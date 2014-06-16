@@ -8,6 +8,6 @@ SaveFavoriteList.prototype = {
         for (i = 0; i < this.list.length; i++) {
             this.bandIdArray.push(this.list[i].id);
         }
-    return this.bandIdArray;
+    return this.bandIdArray.toString();
     }
 };
