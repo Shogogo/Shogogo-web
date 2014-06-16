@@ -67,26 +67,35 @@ $(document).ready(function() {
         var data = $("#phone").serialize();
         var saveFavoriteList = new SaveFavoriteList();
         var bandIds = saveFavoriteList.save();
-
-       
-
-    $.ajax({
-        url: '/signup',
-        type: 'POST',
-        contentType: 'application/json',
-        dataType: 'json',
-        data:  JSON.stringify( { user: { phone_number: $("#phone input[name='phone_number']").val(), bands: bandIds } }),
-        success: function ( data ) {
-            alert( data );
-        }
+        $.ajax({
+            url: '/signup',
+            type: 'POST',
+            contentType: 'application/json',
+            dataType: 'json',
+            data:  JSON.stringify( { user: { phone_number: $("#phone input[name='phone_number']").val(), bands: bandIds } }),
+            success: function ( data ) {
+                alert( data );
+            }
+        });
     });
 
-    $( document ).mouseup(function (e){
-        var container = $("#favorites-menu");
-        if (!container.is(e.target) && container.has(e.target).length === 0){
-        container.hide('slow');
-    }
-});
-});
+
+    
+
+    // $(document).on('ajax:success', 'form', function(evt, data) {
+    //     alert(data);
+    // });
+
+
+    // $(document)
+    // .bind("ajax:success", function(xhr, data, status) {
+    //   console.log(status);
+    //   console.log(data);
+    // });
+        // $( document ).mouseup(function (e){
+        //     var container = $("#favorites-menu");
+        //     if (!container.is(e.target) && container.has(e.target).length === 0){
+        //     container.hide('slow');
+        // }
 
 });
