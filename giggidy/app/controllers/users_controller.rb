@@ -10,11 +10,9 @@ class UsersController < ApplicationController
   end
 
   def create
-
-    
-    p user_params
-
-  
+    bands = params[:user][:bands]
+    bandstring = bands.chomp.split(',').map! { |x| x.to_i }
+     
     # p @user.phone_number
 
     # @user = User.new(user_params)
@@ -48,7 +46,8 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(
-                                 :phone_number)
+                                 :phone_number,
+                                 :bands)
                             
   end
 
