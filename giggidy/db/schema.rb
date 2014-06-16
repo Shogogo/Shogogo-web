@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 20140612230818) do
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "username"
     t.string   "password"
     t.string   "first_name"
     t.string   "last_name"
