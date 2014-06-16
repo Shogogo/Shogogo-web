@@ -22,7 +22,8 @@ class UsersController < ApplicationController
       end
 
       respond_to do |format|
-        format.js { render :partial => 'verify_phone' }
+        format.json { render :json => {:status => 'ok', :message => 'Success!'} }
+        # format.js { render :partial => 'verify_phone' }
       end
       
     else
@@ -46,16 +47,7 @@ class UsersController < ApplicationController
 
   private
 
-  # def phone_params
-  #   params.require(:phone_number).permit!
-  # end
-
-
   def user_params
-    params.require(:user).permit(
-                                 :phone_number,
-                                 :bands)
-                            
+    params.require(:user).permit(:phone_number, :bands)                          
   end
-
 end
