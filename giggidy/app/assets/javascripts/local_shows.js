@@ -23,6 +23,7 @@ SearchBox.prototype.parseLocalShows = function(artistInfo) {
             "event_name": localShows[i].title,
             "venue": localShows[i].venue.name,
             "event_time": localShows[i].datetime_local,
+            "tickets_left": localShows[i].stats.listing_count,
             "lowestPrice": localShows[i].stats.lowest_price,
             "but_tix_url": localShows[i].url
         })
