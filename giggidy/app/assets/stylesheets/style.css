@@ -191,6 +191,10 @@ input[type=text] {
   -moz-transition: width 0.4s;
 }
 
+.favorites_menu div{
+  display: list-item;
+}
+
 .nofaves {
   width: 0px !important;
   right: -150px;
