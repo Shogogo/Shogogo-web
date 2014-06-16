@@ -9,9 +9,7 @@ LocalShows.prototype.getArtistName = function() {
 LocalShows.prototype.preparedLocalShowsQuery = function(artistName) {
     var words = artistName.replace(/\./g,'').split(' ');
     var preparedAristName = words.join('-').toLowerCase();
-    $.getJSON("http://smart-ip.net/geoip-json?callback=?", function(data){
-        console.log( 'http://api.seatgeek.com/2/events?geoip='+ data.host + '&range=10mi&performers.slug=' + preparedAristName)
-    });
+    return preparedArtistName;
 };
 
 LocalShows.prototype.parseLocalShows = function(artistInfo) {

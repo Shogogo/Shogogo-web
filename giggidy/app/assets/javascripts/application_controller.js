@@ -3,6 +3,7 @@ $(document).ready(function() {
     var localShowsView = new LocalShowsView();
     var favoritesView = new FavoritesView();
     var favoriteList = new FavoriteList();
+    var localShows = new LocalShows();
     var artist = null;
 
     $.ajax({
@@ -38,7 +39,17 @@ $(document).ready(function() {
                 artist = searchBox.parseArtistInfo(artistData);
                 bandView.draw(artist);
             });
-    });
+        });
+
+             
+            // $.getJSON("http://smart-ip.net/geoip-json?callback=?", function(data) {
+            //     ('http://api.seatgeek.com/2/events?geoip='+ data.host + '&range=10mi&performers.slug=' + preparedAristName);
+            // });
+
+            //     .done(function(seatGeekEvents) {
+            //         var parsedLocalShows = localShows.parseLocalShows(seatGeekEvents);
+            //         localShowsView.draw(parsedLocalShows);
+            // });
 
     $('#band_container').on('click', 'button', function(e) {
         e.preventDefault();
@@ -64,6 +75,6 @@ $(document).ready(function() {
         var container = $("#favorites-menu");
         if (!container.is(e.target) && container.has(e.target).length === 0){
         container.hide('slow');
-    }
-});
+        }
+    });
 });

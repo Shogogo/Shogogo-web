@@ -32,8 +32,8 @@ LocalShowsPresenter.prototype = {
             showContainerNode.appendChild(tixLeftNode); 
             showContainerNode.appendChild(buyTixNode); 
 
-            localShowsContainerPanelNode.appendChild(showContainerNode);
             localShowsContainerPanelNode.className(local_shows_list);
+            localShowsContainerPanelNode.appendChild(showContainerNode);
         }
         return localShowsContainerNode;
     }
