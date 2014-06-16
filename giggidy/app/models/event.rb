@@ -13,12 +13,10 @@ class Event < ActiveRecord::Base
 			$redis.sadd("artist_ids", artist_id) #keep it unique, suckah
 			$redis.set(artist_id, results)
 	end
-	def self.fetch_artist(artist_id)
+	def self.fetch_artist_events(artist_id)
 			JSON.parse(open("http://api.seatgeek.com/2/events?performers.id=#{artist_id}").read)	 
 	end
 
-	def self.build_alert_queue
-		#here we traverse the Favorites table to correlate with Events and Users 
-	end
+
 
 end
