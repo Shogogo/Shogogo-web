@@ -15,3 +15,19 @@ SearchBox.prototype.preparedLocalShowsQuery = function(artistName) {
     return 'http://api.seatgeek.com/2/events?geoip='+ user_ip + '&range=10mi&performers.slug=' + preparedAristName;
 };
 
+SearchBox.prototype.parseLocalShows = function(artistInfo) {
+    var localShows = artistInfo.events //array of local shows
+    var parsedLocalShows = []
+    for (var i=0; i<localShows.length; i++) {
+        parsedLocalShows.push({
+            "event_name": localShows[i].title,
+            "venue": localShows[i].venue.name,
+            "event_time": localShows[i].datatime_local,
+            "lowestPrice": localShows[i].stats.lowest_price,
+            "but_tix_url": localShows[i].url
+        })
+    }
+    return parsedLocalShows;
+};
+
+
