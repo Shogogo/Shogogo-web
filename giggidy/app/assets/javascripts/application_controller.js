@@ -78,6 +78,13 @@ $(document).ready(function() {
             alert( data );
         }
     });
+
+    $( document ).mouseup(function (e){
+        var container = $("#favorites-menu");
+        if (!container.is(e.target) && container.has(e.target).length === 0){
+        container.hide('slow');
+    }
+});
 });
 
 });

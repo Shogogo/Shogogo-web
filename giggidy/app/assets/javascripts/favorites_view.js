@@ -7,5 +7,6 @@ FavoritesView.prototype = {
     draw:function(favoriteList) {
         var newFavoritesMenu = this.favoritesPresenter.present(favoriteList);
         this.favoritesMenuNode.innerHTML = newFavoritesMenu.innerHTML;
+        this.favoritesMenuNode.setAttribute("style","overflow-y: scroll;")
     }
 };
