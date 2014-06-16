@@ -11,13 +11,13 @@ class UsersController < ApplicationController
 
   def create
     bands = params[:user][:bands]
-    band_array = bands.chomp.split(',').map! { |x| x.to_i }
+    band_array = bands.chomp.split(',').map { |x| x.to_i }
 
     @user = User.new(phone_number: params[:user][:phone_number])
     
     if @user.save
       band_array.each do |band|
-        @user.interests.build(geekseat_artist_id: band)
+        @user.favorites.build(seatgeek_artist_id: band)
         @user.save
       end
 
