@@ -23,7 +23,7 @@ FavoritesPresenter.prototype = {
             bandNameNode.innerText = favoriteList[i].name;
 
             bandImageNode.className = "favorites_band_image";
-            bandImageNode.src = favoriteList[i].image_url_small;
+            bandImageNode.src = favoriteList[i].image_url_small || "assets/guitarboat-square.jpeg";
 
             removeBandNode.className = "favorites_band_remove";
             removeBandNode.innerText = "X";
