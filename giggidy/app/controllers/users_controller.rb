@@ -11,7 +11,8 @@ class UsersController < ApplicationController
 
   def create
 
-    p JSON.parse(params[:phone_number][:phone_number])
+    
+    p user_params
 
   
     # p @user.phone_number
@@ -40,22 +41,15 @@ class UsersController < ApplicationController
 
   private
 
-  def phone_params
-    params.require(:phone_number).permit(:number)
-  end
-
-
-  # def user_params
-  #   params.require(:user).permit(:username, 
-  #                                :password, 
-  #                                :first_name, 
-  #                                :last_name, 
-  #                                :email, 
-  #                                :latitude, 
-  #                                :longitude, 
-  #                                :phone_number, 
-  #                                :wants_email, 
-  #                                :wants_text)
+  # def phone_params
+  #   params.require(:phone_number).permit!
   # end
+
+
+  def user_params
+    params.require(:user).permit(
+                                 :phone_number)
+                            
+  end
 
 end

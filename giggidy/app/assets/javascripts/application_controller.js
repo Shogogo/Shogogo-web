@@ -63,7 +63,7 @@ $(document).ready(function() {
     });
 
     $( document ).on( "submit", "#phone", function(e) {
-        e.preventDefault(); 
+        e.preventDefault();
         var data = $("#phone").serialize();
         var saveFavoriteList = new SaveFavoriteList();
         var bandIds = JSON.stringify(saveFavoriteList.save());
@@ -72,8 +72,10 @@ $(document).ready(function() {
 
     $.ajax({
         url: '/signup',
-        data: {phone_number: data, bands: bandIds},
         type: 'POST',
+        contentType: 'application/json',
+        dataType: 'json',
+        data:  JSON.stringify( { user: { phone_number: $("#phone input[name='phone_number']").val() } }),
         success: function ( data ) {
             alert( data );
         }
