@@ -16,12 +16,12 @@ ActiveRecord::Schema.define(version: 20140612230818) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "interests", force: true do |t|
+  create_table "favorites", force: true do |t|
     t.integer "user_id"
-    t.integer "geekseat_artist_id"
+    t.integer "seatgeek_artist_id"
   end
 
-  add_index "interests", ["user_id"], name: "index_interests_on_user_id", using: :btree
+  add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username"
