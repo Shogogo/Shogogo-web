@@ -12,7 +12,8 @@ BandPresenter.prototype = {
 
         bandPanelNode.id = "band_container";
 
-        imageNode.src = this.band.image_url_large;
+
+        imageNode.src = this.band.image_url_large || 'assets/guitarboat-large.jpg';
         imageNode.className = "band_image";
 
         nameNode.innerText = this.band.name;
