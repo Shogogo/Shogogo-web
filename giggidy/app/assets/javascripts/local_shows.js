@@ -9,9 +9,7 @@ LocalShows.prototype.getArtistName = function() {
 LocalShows.prototype.preparedLocalShowsQuery = function(artistName) {
     var words = artistName.replace(/\./g,'').split(' ');
     var preparedAristName = words.join('-').toLowerCase();
-    $.getJSON("http://smart-ip.net/geoip-json?callback=?", function(data){
-        console.log( 'http://api.seatgeek.com/2/events?geoip='+ data.host + '&range=10mi&performers.slug=' + preparedAristName)
-    });
+    return preparedArtistName;
 };
 
 LocalShows.prototype.parseLocalShows = function(artistInfo) {
@@ -21,10 +19,12 @@ LocalShows.prototype.parseLocalShows = function(artistInfo) {
         parsedLocalShows.push({
             "event_name": localShows[i].title,
             "venue": localShows[i].venue.name,
+            "city": localShows[i].venue.city,
+            "state": localShows[i].venue.state,
             "event_time": localShows[i].datetime_local,
             "tickets_left": localShows[i].stats.listing_count,
-            "lowestPrice": localShows[i].stats.lowest_price,
-            "but_tix_url": localShows[i].url
+            "lowest_price": localShows[i].stats.lowest_price,
+            "buy_tix_url": localShows[i].url
         })
     }
     return parsedLocalShows;
