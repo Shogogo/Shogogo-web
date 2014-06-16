@@ -3,7 +3,7 @@ var LocalShowsView = function() {
     this.localShowsPresenter = new LocalShowsPresenter();
 };
 
-LocalShowsList.prototype = {
+LocalShowsView.prototype = {
     draw: function(shows) {
         var allLocalShows = this.LocalShowsPresenter.present(shows);
         this.localShowsContainerNode.innerHTML = allLocalShows.innerHTML;
