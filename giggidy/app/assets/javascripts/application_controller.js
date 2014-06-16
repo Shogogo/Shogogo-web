@@ -68,7 +68,7 @@ $(document).ready(function() {
         var saveFavoriteList = new SaveFavoriteList();
         var bandIds = JSON.stringify(saveFavoriteList.save());
 
-       debugger
+       
 
     $.ajax({
         url: '/signup',

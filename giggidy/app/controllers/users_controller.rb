@@ -1,14 +1,21 @@
 class UsersController < ApplicationController
+  protect_from_forgery except: :create
+
   def index
   end
 
   def new
     @user = User.new
-    render :partial => 'phone_form', :locals => { :user => @user }
+    render :partial => 'phone_form'
   end
 
   def create
-    p phone_params
+
+    p JSON.parse(params[:phone_number][:phone_number])
+
+  
+    # p @user.phone_number
+
     # @user = User.new(user_params)
     # @user.password = user_params[:password]
     # if @user.save
@@ -34,7 +41,7 @@ class UsersController < ApplicationController
   private
 
   def phone_params
-    params.require(:user).permit(:phone_number)
+    params.require(:phone_number).permit(:number)
   end
 
 
