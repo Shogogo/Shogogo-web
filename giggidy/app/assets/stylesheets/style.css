@@ -15,7 +15,13 @@ html, body {
 }
 
 
-
+#logo {
+	position: absolute;
+  top: 12pt; 
+  left: 24pt;
+  -webkit-filter: drop-shadow( 5px 5px 5px #000 );
+   filter: drop-shadow( 5px 5px 5px #000 );
+}
 
 
 /*SEARCH BOX STYLING*/
@@ -58,11 +64,6 @@ input[type=text] {
 
 
 #search_box::-webkit-input-placeholder { color:#C2C2C2; font-style: italic; font-size: 1em; }
-<<<<<<< HEAD
-#search_box::-moz-placeholder { color:#C2C2C2; font-style: italic; font-size: 1em; } 
-=======
-#search_box::-moz-placeholder { color:#C2C2C2; font-style: italic; font-size: 1em; }
->>>>>>> a845d06a70680484c86960f162e25d9d00ee54ee
 #search_box:-ms-input-placeholder { color:#C2C2C2; font-style: italic; font-size: 1em; }
 #search_box input:-moz-placeholder { color:#C2C2C2; font-style: italic; font-size: 1em; }
 
@@ -144,7 +145,6 @@ input[type=text] {
 }
 
 .band_image {
-<<<<<<< HEAD
 	float: left;
 	border: 1px solid #;
 	-webkit-border-radius: 10px;
