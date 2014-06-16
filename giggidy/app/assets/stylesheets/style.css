@@ -48,6 +48,14 @@ input[type=text] {
   font-size: 3vw;
 }
 
+#phone input[type=text] {
+	font-family: 'Roboto', Arial, sans-serif;
+  font-weight: 500;
+  text-indent: 5px;
+  font-size: 1.3em;
+  font-size: 1.3vw;
+}
+
 
 #search_box {
   position: fixed;
