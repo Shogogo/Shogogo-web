@@ -24,7 +24,17 @@ LocalShowsPresenter.prototype = {
             tixLeftNode.innerText = localShows[i].lowest_price;
             buyTixNode.innerText; = "BUY NOW" 
             buyTixNode.attr('href', localShows[i].buy_tix_url); 
+
+            showContainerNode.appendChild(timeNode); 
+            showContainerNode.appendChild(eventNameNode); 
+            showContainerNode.appendChild(venueNode); 
+            showContainerNode.appendChild(cityNode); 
+            showContainerNode.appendChild(stateNode); 
+            showContainerNode.appendChild(tixLeftNode); 
+            showContainerNode.appendChild(buyTixNode); 
+
+            localShowsContainerPanelNode.appendChild(showContainerNode);
         }
-        return bandPanelNode;
+        return localShowsContainerNode;
     }
 };
