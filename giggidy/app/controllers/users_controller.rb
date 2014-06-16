@@ -8,12 +8,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    @user.password = user_params[:password]
-    if @user.save
-      session[:user_id] = @user.id
-      redirect_to root_path
-    end
+    p phone_params
+    # @user = User.new(user_params)
+    # @user.password = user_params[:password]
+    # if @user.save
+    #   session[:user_id] = @user.id
+    #   redirect_to root_path
+    # end
   end
 
   def login
@@ -32,17 +33,22 @@ class UsersController < ApplicationController
 
   private
 
-  def user_params
-    params.require(:user).permit(:username, 
-                                 :password, 
-                                 :first_name, 
-                                 :last_name, 
-                                 :email, 
-                                 :latitude, 
-                                 :longitude, 
-                                 :phone_number, 
-                                 :wants_email, 
-                                 :wants_text)
+  def phone_params
+    params.require(:user).permit(:phone_number)
   end
+
+
+  # def user_params
+  #   params.require(:user).permit(:username, 
+  #                                :password, 
+  #                                :first_name, 
+  #                                :last_name, 
+  #                                :email, 
+  #                                :latitude, 
+  #                                :longitude, 
+  #                                :phone_number, 
+  #                                :wants_email, 
+  #                                :wants_text)
+  # end
 
 end
