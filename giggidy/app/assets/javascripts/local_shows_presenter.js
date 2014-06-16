@@ -22,7 +22,6 @@ LocalShowsPresenter.prototype = {
             cityNode.innerText = localShows[i].city;
             stateNode.innerText = localShows[i].state;
             tixLeftNode.innerText = localShows[i].lowest_price;
-            buyTixNode.innerText; = "BUY NOW" 
             buyTixNode.attr('href', localShows[i].buy_tix_url); 
 
             showContainerNode.appendChild(timeNode); 
