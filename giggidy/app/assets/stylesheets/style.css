@@ -1,19 +1,33 @@
-
 html, body { 
-  background: url(liveshowbackground.jpg) no-repeat center center fixed; 
+  background: url(liveshowbackground.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
 
-.search-band-container {
-	position: fixed;
-	width: 50%;
-	top: 50%;
-	left: 25%;
-	height: 500px;
+
+.fullWidth {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: initial;
 }
+
+
+
+
+
+/*SEARCH BOX STYLING*/
+
+
+/*.search-band-container {
+  position: fixed;
+  width: 50%;
+  top: 50%;
+  left: 25%;
+  height: 500px;
+}*/
 
 input:focus {
   outline: none;
@@ -21,53 +35,65 @@ input:focus {
 
 
 input[type=text] {
-	font-family: 'Roboto', Arial, sans-serif;
-	font-weight: 500;
-	font-size: 2.8em;
-	font-size: 3vw; 
-	text-indent: 15px;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-weight: 500;
+  text-indent: 15px;
+  font-size: 2.8em;
+  font-size: 3vw;
 }
 
+
 #search_box {
-	position: fixed;
-	width: 50%;
-	height: 65px;
-	top: 45%;
-	left: 25%;
-	border-radius: 10px;
-	border-style: none;
-	opacity: 0.85;
-	margin-bottom: 15px;
+  position: fixed;
+  width: 50%;
+  height: 65px;
+  height: 10vh;
+  top: 45%;
+  margin-left: 12.5%;
+  margin-right: 12.5%;
+  border-style: none;
+  opacity: 0.85;
+  margin-bottom: 0.1em;
 }
 
 
 #search_box::-webkit-input-placeholder { color:#C2C2C2; font-style: italic; font-size: 1em; }
+<<<<<<< HEAD
 #search_box::-moz-placeholder { color:#C2C2C2; font-style: italic; font-size: 1em; } 
+=======
+#search_box::-moz-placeholder { color:#C2C2C2; font-style: italic; font-size: 1em; }
+>>>>>>> a845d06a70680484c86960f162e25d9d00ee54ee
 #search_box:-ms-input-placeholder { color:#C2C2C2; font-style: italic; font-size: 1em; }
 #search_box input:-moz-placeholder { color:#C2C2C2; font-style: italic; font-size: 1em; }
 
-
-#search_box:focus {
-	opacity: 1.0;
-	-webkit-box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .75);
-	-moz-box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .75);
-	box-shadow: 0px 0px 15px 8px rgba(255,255,255, 0.8);
+[placeholder]:focus::-webkit-input-placeholder {
+  transition: opacity 0.5s 0.5s ease;
+  opacity: 0;
 }
 
+
+#search_box:focus {
+  opacity: 1.0;
+  -webkit-box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .75);
+  -moz-box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .75);
+  box-shadow: 0px 0px 15px 8px rgba(255,255,255, 0.8);
+}
+
+
 #search_message {
-	position: fixed;
-	width: 50%;
-	top: 55%;
-	left: 25%;
-	text-align: center;
-	color: white;
-	font-family: 'Roboto', Arial, sans-serif;
-	font-weight: 300;
-	letter-spacing: 0.0625em;
-	text-shadow: 0px 0px 4px black , 0px 0px 4px black, -1px 0px 3px black, 
+  position: fixed;
+  width: 50%;
+  top: 57%;
+  left: 12.5%;
+  text-align: center;
+  color: white;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.0625em;
+  text-shadow: 0px 0px 4px black , 0px 0px 4px black, -1px 0px 3px black,
   0px -1px 3px black, 1px 2px 6px black;
   font-size: 1.5em;
-  font-size: 1.9vw;
+  font-size: 1.75vw;
 }
 
 .suggest_pane{
@@ -87,10 +113,12 @@ input[type=text] {
 }
 
 #band_container {
-	position: fixed;
-	width: 50%;
-	top: 55%;
-	left: 25%;
+  position: fixed;
+  width: 50%;
+  height: 26.5vh;
+  top: 57%;
+  margin-left: 12.5%;
+  margin-right: 12.5%;
   display: none;
   background: rgba(255, 255, 255, 1.0);
   border-bottom-left-radius: 10px;
@@ -99,21 +127,24 @@ input[type=text] {
 }
 
 .band_name {
-	float: right;
-	margin-right: 15px;
-	margin-top: 10px;
-	width: 55%;
-	max-height: 100px;
-	font-family: 'Roboto', Arial, sans-serif;
-	font-weight: 500;
-	font-size: 3em;
-	font-style: italic;
-	color: #858585;
-	text-align: center;
-	line-height: 105%;
+  float: right;
+  margin-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  width: 55%;
+  max-height: 100px;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 3em;
+  font-size: 3.5vw;
+  font-style: italic;
+  color: #858585;
+  text-align: center;
+  line-height: 105%;
 }
 
 .band_image {
+<<<<<<< HEAD
 	float: left;
 	border: 1px solid #;
 	-webkit-border-radius: 10px;
@@ -122,24 +153,97 @@ input[type=text] {
 	width: 40%;
 }
 
-/*#add_band {
-/*	position: absolute;
-	bottom: 0;
-	right: 0;
-	margin-right: 20px;*/
-	color: white;
-	font-family: 'Roboto', Arial, sans-serif;
-	font-weight: 500;
-	font-size: 2em;
-	/*padding: 4px 8px;*/
-	background-color: #858585;
-/*	opacity: 1.0;*/
-	border-radius: 3px;
-}
-*/
-.favorites_menu {
+
+
+#add_band {
   position: absolute;
-  width: 100px;
-  right: 20px;
-  top: 20px;
+  right: 0;
+  bottom: 0;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  color: white;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-weight: 500;
+  padding: 4px 8px;
+  background-color: #858585;
+  opacity: 1.0;
+  border-radius: 3px;
+  width: 8%;
+  height: 15%;
 }
+
+.tour_status {
+  float: right;
+  text-align: center;
+  margin-right: 30px;
+  font-size: 2em;
+  width: 50%;
+  text-align: center;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-weight: 500;
+}
+
+
+.favorites_menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 25%;
+  background-color: black;
+  opacity: 0.8;
+  border-left: 5px solid #FFFF00;
+  transition: width 0.4s;
+  -webkit-transition: width 0.4s;
+  -moz-transition: width 0.4s;
+}
+
+.favorites_menu div{
+  display: list-item;
+}
+
+.nofaves {
+  width: 0px !important;
+  right: -150px;
+}
+
+.faves {
+  width: 25% !important;
+}
+
+.favorites_band_item {
+  background-color: black;
+  padding: 5px 0px;
+  border-bottom: 1px solid gray;
+}
+
+.favorites_band_remove {
+  position: absolute;
+  right: 0;
+  color: gray;
+  background-color: transparent;
+}
+
+
+.favorites_band_remove:hover{
+  background-color: transparent;
+  color: #FFFF00;
+}
+
+.favorites_band_name {
+  color: white;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-weight: 200;
+}
+
+.favorites_band_image {
+  margin-right: 12px;
+}
+
+.favorites_save {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+

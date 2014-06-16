@@ -1,6 +1,4 @@
 class User < ActiveRecord::Base
-  attr_accessible :phone_number
-  
 	has_secure_password
 	validates :username, presence: true
 	# validates :first_name, presence: true
@@ -8,5 +6,11 @@ class User < ActiveRecord::Base
 	# validates :email, presence: true
 		
 	has_many :interests
+
+	def self.location(ip)
+		$geoloc.lookup(ip)
+	end
+
+
 end
 

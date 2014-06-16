@@ -6,8 +6,7 @@ class Interest < ActiveRecord::Base
 	belongs_to :user
 
 	def self.fetch_by_artists
-		$redis = Redis.new(:host => "127.0.0.1", :port => 6379)
-		artist_ids = Interest.pluck(:geekseat_artist_id).uniq 
+		artist_ids = Interest.pluck(:geekseat_artist_id).uniq
 		artist_ids.map do |artist_id|
 			results = JSON.parse(open("http://api.seatgeek.com/2/events?performers.id=#{artist_id}").read)
 			$redis.sadd("artist_ids", artist_id) #keep it unique, suckah
