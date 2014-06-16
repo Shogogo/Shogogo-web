@@ -1,5 +1,6 @@
 $(document).ready(function() {
     var bandView = new BandView();
+    var localShowsView = new LocalShowsView();
     var favoritesView = new FavoritesView();
     var favoriteList = new FavoriteList();
     var artist = null;
