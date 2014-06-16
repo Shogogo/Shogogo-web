@@ -26,7 +26,7 @@ FavoritesPresenter.prototype = {
             bandImageNode.src = favoriteList[i].image_url_small;
 
             removeBandNode.className = "favorites_band_remove";
-            removeBandNode.innerText = "RM";
+            removeBandNode.innerText = "X";
 
             bandContainerNode.appendChild(bandImageNode);
             bandContainerNode.appendChild(bandNameNode);
