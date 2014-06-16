@@ -2,6 +2,11 @@ class UsersController < ApplicationController
   def index
   end
 
+  def new
+    @user = User.new
+    render :partial => 'phone_form', :locals => { :user => @user }
+  end
+
   def create
     @user = User.new(user_params)
     @user.password = user_params[:password]
