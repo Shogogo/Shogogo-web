@@ -6,16 +6,15 @@ LocalShows.prototype.getArtistName = function() {
     return artistName;
 };
 
-SearchBox.prototype.preparedLocalShowsQuery = function(artistName) {
+LocalShows.prototype.preparedLocalShowsQuery = function(artistName) {
     var words = artistName.replace(/\./g,'').split(' ');
     var preparedAristName = words.join('-').toLowerCase();
-    var user_ip = $.getJSON("http://smart-ip.net/geoip-json?callback=?", function(data){
-        return data.host;
+    $.getJSON("http://smart-ip.net/geoip-json?callback=?", function(data){
+        console.log( 'http://api.seatgeek.com/2/events?geoip='+ data.host + '&range=10mi&performers.slug=' + preparedAristName)
     });
-    return 'http://api.seatgeek.com/2/events?geoip='+ user_ip + '&range=10mi&performers.slug=' + preparedAristName;
 };
 
-SearchBox.prototype.parseLocalShows = function(artistInfo) {
+LocalShows.prototype.parseLocalShows = function(artistInfo) {
     var localShows = artistInfo.events //array of local shows
     var parsedLocalShows = []
     for (var i=0; i<localShows.length; i++) {
