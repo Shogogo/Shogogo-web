@@ -1,5 +1,5 @@
 SaveFavoriteList = function() {
-    this.list = JSON.parse(localStorage.favoriteList);
+    this.list = JSON.parse(sessionStorage.favoriteList);
     this.bandIdArray =[];
 };
 

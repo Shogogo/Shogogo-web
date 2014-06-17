@@ -16,8 +16,8 @@ $(document).ready(function() {
 
     searchBox = new SearchBox();
     
-    if (localStorage.favoriteList) {
-        favoriteList.list = JSON.parse(localStorage.favoriteList);
+    if (sessionStorage.favoriteList) {
+        favoriteList.list = JSON.parse(sessionStorage.favoriteList);
         favoritesView.draw(favoriteList.list);
     }
 
@@ -61,7 +61,7 @@ $(document).ready(function() {
         e.preventDefault();
         var band = $(this).closest('.favorites_band_item').find('.favorites_band_name').text();
         favoriteList.removeBand(band);
-        favoritesView.draw(JSON.parse(localStorage.favoriteList));
+        favoritesView.draw(JSON.parse(sessionStorage.favoriteList));
     });
 
     $( document ).on( "click", ".favorites_save", function(e) {
