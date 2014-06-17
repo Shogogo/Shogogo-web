@@ -18,7 +18,22 @@ class MessagesController < ApplicationController
   end
 
   def receive_sms
-    process_sms
+    p 'YOU HIT THE RECEIVE SMS PATH'
+    p '****************************************'
+    p params[:Body]
+    p params[:From]
+    p '****************************************'
+
+    reply = params[:Body].downcase
+    user_phone_number = params[:From]
+
+    if reply == "stop"
+      p "REPLY: STOP"
+    else
+      p "Error: Did not understand message"
+    end
+
+    redirect_to :root
   end
 
   def read_sms
