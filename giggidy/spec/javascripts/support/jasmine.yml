@@ -21,6 +21,7 @@ src_files:
   - assets/local_shows.js
   - assets/save_favorites.js
   - assets/search_box.js
+  - assets/diacritics_removal.js
 
 # stylesheets
 #

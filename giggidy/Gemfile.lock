@@ -180,9 +180,9 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   factory_girl_rails (~> 4.2.1)
   faker (~> 1.1.2)
-  jasmine
   geocoder
   geoip
+  jasmine
   jbuilder (~> 2.0)
   jquery-rails
   launchy (~> 2.3.0)
