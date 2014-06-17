@@ -30,7 +30,7 @@ $(document).ready(function() {
         })
         .bind('fb-select', function(e) {
             var artistName = searchBox.getArtistName();
-            var preparedArtistName = searchBox.preparedAristQuery(artistName);
+            var preparedArtistName = searchBox.preparedArtistQuery(artistName);
 
             $.getJSON(preparedArtistName).done(function(artistInfo) {
                 var artistData = artistInfo.performers[0];

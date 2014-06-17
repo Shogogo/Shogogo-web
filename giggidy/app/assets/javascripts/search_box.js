@@ -10,7 +10,7 @@ SearchBox.prototype.getArtistName = function() {
     return artistName;
 };
 
-SearchBox.prototype.preparedAristQuery = function(artistName) {
+SearchBox.prototype.preparedArtistQuery = function(artistName) {
     var words = artistName.replace(/\./g,'').split(' ');
     var lowercased_words = words.join('-').toLowerCase();
     var preparedAristName = removeDiacritics(lowercased_words);
