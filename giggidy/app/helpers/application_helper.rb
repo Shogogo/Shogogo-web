@@ -11,4 +11,18 @@ module ApplicationHelper
       :body => message
     )
   end
+
+  def read_sms
+    account_sid = TWILIO_ACCOUNT_SID 
+    auth_token = TWILIO_AUTH_TOKEN
+
+    @client = Twilio::REST::Client.new account_sid, auth_token
+
+    @messages = @client.account.messages.list({:to => TWILIO_PHONE_NUMBER, :date_sent => "2014-17-06"})
+
+    @messages.each do |message|
+      puts message.body
+    end
+  end
+
 end
