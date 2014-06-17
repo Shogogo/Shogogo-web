@@ -15,6 +15,13 @@ html, body {
   max-width: initial;
 }
 
+.search_container {
+ position: fixed;
+ width: 50%;
+ top: 40%;
+ left: 25%;
+}
+
 
 #logo {
 	position: absolute;
