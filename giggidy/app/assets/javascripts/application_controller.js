@@ -6,13 +6,6 @@ $(document).ready(function() {
     var localShows = new LocalShows();
     var artist = null;
 
-    // $.ajax({
-    //     url: "/get_session",
-    //     dataType: "json"
-    // }).done(function(response){
-    //     sessionDetails = response;
-    //     console.log(response);
-    // });
 
     searchBox = new SearchBox();
     
@@ -39,15 +32,7 @@ $(document).ready(function() {
             });
         });
 
-             
-            // $.getJSON("http://smart-ip.net/geoip-json?callback=?", function(data) {
-            //     ('http://api.seatgeek.com/2/events?geoip='+ data.host + '&range=10mi&performers.slug=' + preparedAristName);
-            // });
 
-            //     .done(function(seatGeekEvents) {
-            //         var parsedLocalShows = localShows.parseLocalShows(seatGeekEvents);
-            //         localShowsView.draw(parsedLocalShows);
-            // });
 
     $('#band_container').on('click', 'button', function(e) {
         e.preventDefault();
