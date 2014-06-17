@@ -18,7 +18,10 @@ class MessagesController < ApplicationController
   end
 
   def receive_sms
-    process_sms
+    reply = params[:Body].downcase
+    user_phone_number = params[:From]
+
+    redirect_to :root
   end
 
   def read_sms
