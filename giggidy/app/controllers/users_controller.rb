@@ -17,7 +17,6 @@ class UsersController < ApplicationController
 
     @user = User.new(phone_number: params[:user][:phone_number])
     
-
     if @user.save
       band_array.each do |band|
         @user.favorites.build(seatgeek_artist_id: band)

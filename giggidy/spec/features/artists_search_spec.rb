@@ -9,7 +9,6 @@ feature "Artist search box" do
 
   scenario "user can see live search results", js: true do
     visit root_path
-
     fill_in "artist-search", with: "Fleetwood"
     sleep(1)
     expect(page).to have_content("Fleetwood Mac")
@@ -22,9 +21,4 @@ feature "Artist search box" do
     page.execute_script %Q{ $('.fbs-item').first().trigger("mouseenter").click(); }
     expect(find_field('search_box').value).to eq "Fleetwood Mac"
   end
-
-  scenario "renders artist bio"
-
-
-
 end

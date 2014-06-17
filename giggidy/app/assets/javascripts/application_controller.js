@@ -6,18 +6,11 @@ $(document).ready(function() {
     var localShows = new LocalShows();
     var artist = null;
 
-    // $.ajax({
-    //     url: "/get_session",
-    //     dataType: "json"
-    // }).done(function(response){
-    //     sessionDetails = response;
-    //     console.log(response);
-    // });
 
     searchBox = new SearchBox();
     
-    if (localStorage.favoriteList) {
-        favoriteList.list = JSON.parse(localStorage.favoriteList);
+    if (sessionStorage.favoriteList) {
+        favoriteList.list = JSON.parse(sessionStorage.favoriteList);
         favoritesView.draw(favoriteList.list);
     }
 
@@ -39,15 +32,7 @@ $(document).ready(function() {
             });
         });
 
-             
-            // $.getJSON("http://smart-ip.net/geoip-json?callback=?", function(data) {
-            //     ('http://api.seatgeek.com/2/events?geoip='+ data.host + '&range=10mi&performers.slug=' + preparedAristName);
-            // });
 
-            //     .done(function(seatGeekEvents) {
-            //         var parsedLocalShows = localShows.parseLocalShows(seatGeekEvents);
-            //         localShowsView.draw(parsedLocalShows);
-            // });
 
     $('#band_container').on('click', 'button', function(e) {
         e.preventDefault();
@@ -61,7 +46,7 @@ $(document).ready(function() {
         e.preventDefault();
         var band = $(this).closest('.favorites_band_item').find('.favorites_band_name').text();
         favoriteList.removeBand(band);
-        favoritesView.draw(JSON.parse(localStorage.favoriteList));
+        favoritesView.draw(JSON.parse(sessionStorage.favoriteList));
     });
 
     $( document ).on( "click", ".favorites_save", function(e) {
@@ -73,8 +58,8 @@ $(document).ready(function() {
 
     $( document ).on( "submit", "#phone", function(e) {
         e.preventDefault();
-        var saveFavoriteList = new SaveFavoriteList();
-        var bandIds = saveFavoriteList.save();
+        var favoriteAjaxPreparer = new FavoriteAjaxPreparer();
+        var bandIds = favoriteAjaxPreparer.save();
         $.post('/signup',
             { user: { phone_number: $("#phone input[name='phone_number']").val(), bands: bandIds }
             }, function(response) {
