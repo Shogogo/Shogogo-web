@@ -22,15 +22,15 @@ LocalShowsPresenter.prototype = {
             cityNode.innerText = localShows[i].city;
             stateNode.innerText = localShows[i].state;
             tixLeftNode.innerText = localShows[i].lowest_price;
-            buyTixNode.attr('href', localShows[i].buy_tix_url); 
+            buyTixNode.attr('href', localShows[i].buy_tix_url);
 
-            showContainerNode.appendChild(timeNode); 
-            showContainerNode.appendChild(eventNameNode); 
-            showContainerNode.appendChild(venueNode); 
-            showContainerNode.appendChild(cityNode); 
-            showContainerNode.appendChild(stateNode); 
-            showContainerNode.appendChild(tixLeftNode); 
-            showContainerNode.appendChild(buyTixNode); 
+            showContainerNode.appendChild(timeNode);
+            showContainerNode.appendChild(eventNameNode);
+            showContainerNode.appendChild(venueNode);
+            showContainerNode.appendChild(cityNode);
+            showContainerNode.appendChild(stateNode);
+            showContainerNode.appendChild(tixLeftNode);
+            showContainerNode.appendChild(buyTixNode);
 
             localShowsContainerPanelNode.className(local_shows_list);
             localShowsContainerPanelNode.appendChild(showContainerNode);
