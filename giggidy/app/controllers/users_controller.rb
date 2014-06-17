@@ -17,6 +17,7 @@ class UsersController < ApplicationController
 
     @user = User.new(phone_number: params[:user][:phone_number])
     
+
     if @user.save
       band_array.each do |band|
         @user.favorites.build(seatgeek_artist_id: band)
@@ -25,9 +26,9 @@ class UsersController < ApplicationController
 
       respond_to do |format|
         format.json { render :json => {:status => 'ok', :message => 'Success!'} }
-        # format.js { render :partial => 'verify_phone' }
+        format.js { render :partial => 'verify_phone' }
       end
-
+      
       send_sms(params[:user][:phone_number], "Thank you for using Shogogo!")
       
     else
