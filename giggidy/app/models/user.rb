@@ -6,9 +6,6 @@ class User < ActiveRecord::Base
 	
 	has_many :favorites
 
-	def self.location(ip)
-		$geoloc.lookup(ip)
-	end
 
 end
 
