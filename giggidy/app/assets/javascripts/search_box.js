@@ -10,7 +10,7 @@ SearchBox.prototype.getArtistName = function() {
     return artistName;
 };
 
-SearchBox.prototype.preparedAristQuery = function(artistName) {
+SearchBox.prototype.preparedArtistQuery = function(artistName) {
     var words = artistName.replace(/\./g,'').split(' ');
     var preparedAristName = words.join('-');
     return 'http://api.seatgeek.com/2/performers?slug=' + preparedAristName.toLowerCase();
