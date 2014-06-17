@@ -6,8 +6,8 @@ class VisitorsController < ApplicationController
   def get_session
     if Visitor::session_exists?(session.id)
       @session_details =  {sessionId: session.id,
-                           lat: User.location("8.8.8.8").location.latitude,
-                           lon: User.location("8.8.8.8").location.longitude,
+                           lat: Geocoder.coordinates("8.8.8.8")[0],
+                           lon: Geocoder.coordinates("8.8.8.8")[1],
                            preferences: Visitor::check_session(session.id).to_s.gsub(/\"/,"")}
       @session_details
     end

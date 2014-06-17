@@ -9,6 +9,6 @@ class ApplicationController < ActionController::Base
   	else 
   		client_ip = request.remote_ip
   	end
-  	@geoinfo = User.location(client_ip)
+  	@geoinfo = Geocoder.coordinates(client_ip)
   end
 end
