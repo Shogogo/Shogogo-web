@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get "get_session" => "visitors#get_session", :as => :get_session, :format => false
 
   post "send_sms" => "messages#send_sms", :as => :send_sms, :format => false
+  get "receive-sms" => "messages#receive_sms", :as => :receive_sms, :format => false
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
