@@ -13,7 +13,7 @@
 1. Twillio
 2. Addthis
 3. timecop
-4. maxminddb (and commercial geo city database)
+4. maxminddb database configured in config/initializers/maxminddb.rb  ( grab here http://dbc.overheardsf.com/links/GeoLite2-City.mmdb ). 
 
 
 ### Contributing
