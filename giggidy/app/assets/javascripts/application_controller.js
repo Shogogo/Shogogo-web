@@ -73,8 +73,8 @@ $(document).ready(function() {
 
     $( document ).on( "submit", "#phone", function(e) {
         e.preventDefault();
-        var saveFavoriteList = new SaveFavoriteList();
-        var bandIds = saveFavoriteList.save();
+        var favoriteAjaxPreparer = new FavoriteAjaxPreparer();
+        var bandIds = favoriteAjaxPreparer.save();
         $.post('/signup',
             { user: { phone_number: $("#phone input[name='phone_number']").val(), bands: bandIds }
             }, function(response) {
