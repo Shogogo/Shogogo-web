@@ -27,7 +27,7 @@ class UsersController < ApplicationController
         format.js { render :partial => 'verify_phone' }
       end
 
-      send_sms(params[:user][:phone_number], "LORD BABY JESUS")
+      send_sms(params[:user][:phone_number], "Thank you for using Shogogo!")
       
     else
       render :partial => 'shared/errors', :locals => { :object => @user }, :status => :unprocessable_entity
