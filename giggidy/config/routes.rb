@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   post "login" => "users#login", :as => :login, :format => false
   post "logout" => "users#logout", :as => :logout, :format => false
 
-  get "get_session" => "visitors#get_session", :as => :get_session, :format => false
 
   post "send_sms" => "messages#send_sms", :as => :send_sms, :format => false
   get "receive-sms" => "messages#receive_sms", :as => :receive_sms, :format => false
