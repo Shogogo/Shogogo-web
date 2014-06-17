@@ -11,7 +11,16 @@
 #   - dist/**/*.js
 #
 src_files:
-  - assets/application.js
+  # - assets/application.js
+  - assets/band_presenter.js
+  - assets/band_view.js
+  - assets/event_listeners.js
+  - assets/favorites_list.js
+  - assets/favorites_presenter.js
+  - assets/favorites_view.js
+  - assets/local_shows.js
+  - assets/save_favorites.js
+  - assets/search_box.js
 
 # stylesheets
 #
@@ -25,7 +34,7 @@ src_files:
 #   - stylesheets/*.css
 #
 stylesheets:
-  - assets/application.css
+  # - assets/application.css
 
 # helpers
 #

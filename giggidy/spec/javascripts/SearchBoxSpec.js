@@ -1,7 +1,5 @@
 describe("SearchBox", function() {
     var searchBox;
-
-    
     beforeEach(function() {
         searchBox = new SearchBox();
     });
@@ -12,8 +10,10 @@ describe("SearchBox", function() {
     it("should prepare an api call url", function() {
         expect(searchBox.preparedArtistQuery("Fleetwood Mac")).toEqual("http://api.seatgeek.com/2/performers?slug=fleetwood-mac");
     });
+    
+    it("should create an artist object from json api request", function() {
+        var result = searchBox.parseArtistInfo(seatGeekJSON.performers[0]);
 
-    xit("should create an artist object from json api request", function() {
-
+        expect(result).toEqual(parsedFleetWoodMacArtistObject);
     });
 });
