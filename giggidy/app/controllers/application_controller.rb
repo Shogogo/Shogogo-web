@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   def get_ip
   	if request.remote_ip == "127.0.0.1"
-  		client_ip = "8.8.8.8"
+  		client_ip = "38.88.254.234"
   	else 
   		client_ip = request.remote_ip
   	end
