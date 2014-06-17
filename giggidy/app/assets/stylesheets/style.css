@@ -165,11 +165,10 @@ input[type=text] {
 
 .band_image {
 	float: left;
-	border: 1px solid #;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 5px; 
-	width: 40%;
+	width: 40%; 
 }
 
 
