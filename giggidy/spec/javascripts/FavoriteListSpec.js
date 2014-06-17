@@ -25,14 +25,6 @@ describe("FavoriteList", function() {
             favoriteList.removeBand("Madonna");
             expect(favoriteList.list[1]).not.toBeDefined();
             expect(favoriteList.list[0]).toEqual(parsedFleetWoodMacArtistObject);
-            
         });
-
-
-        
-
     });
-
-
-
 });
