@@ -9,3 +9,13 @@ parsedFleetWoodMacArtistObject = {
     type: "band",
     tour_status: true
 };
+
+
+parsedMadonnaArtistObject = {
+    name: "Madonna",
+    image_url_large: "http://cdn.chairnerd.com/images/performers-landscape/madonna-aeb28e/1173/huge.jpg",
+    image_url_small: "http://cdn.chairnerd.com/images/performers/1173/madonna-ab1dd2/small.jpg",
+    id: 1173,
+    type: "band",
+    touring: false
+};
