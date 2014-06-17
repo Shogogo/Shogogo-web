@@ -13,8 +13,8 @@ LocalShows.prototype.preparedLocalShowsQuery = function(artistName) {
 };
 
 LocalShows.prototype.parseLocalShows = function(artistInfo) {
-    var localShows = artistInfo.events //array of local shows
-    var parsedLocalShows = []
+    var localShows = artistInfo.events; //array of local shows
+    var parsedLocalShows = [];
     for (var i=0; i<localShows.length; i++) {
         parsedLocalShows.push({
             "event_name": localShows[i].title,
@@ -25,7 +25,7 @@ LocalShows.prototype.parseLocalShows = function(artistInfo) {
             "tickets_left": localShows[i].stats.listing_count,
             "lowest_price": localShows[i].stats.lowest_price,
             "buy_tix_url": localShows[i].url
-        })
+        });
     }
     return parsedLocalShows;
 };
