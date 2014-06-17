@@ -20,7 +20,7 @@ gem 'twilio-ruby', '~> 3.11'
 group :development, :test do
   gem 'rspec-rails', '~> 2.14.0'
   gem 'factory_girl_rails', '~> 4.2.1'
-  gem 'jasminerice'
+  gem 'jasmine'
 end
 
 group :test do
