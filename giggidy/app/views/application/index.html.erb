@@ -20,7 +20,7 @@
 
 <%= javascript_tag do %>
   var GEOIP = {};
-  GEOIP.lon = '<%= @geoinfo.location.longitude %> ' ;
-  GEOIP.lat = '<%= @geoinfo.location.latitude %> ' ;
+  GEOIP.lon = '<%= @geoinfo[1] %> ' ;
+  GEOIP.lat = '<%= @geoinfo[0] %> ' ;
 
 <% end %>
