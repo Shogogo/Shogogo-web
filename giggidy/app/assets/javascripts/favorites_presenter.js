@@ -1,6 +1,9 @@
 FavoritesPresenter = function() {
 };
 
+// I love your views, but you could avoid doing all this low-level DOM node
+// building by using a templating library like handlebars.
+//
 FavoritesPresenter.prototype = {
     present: function(favoriteList) {
         var favoritesMenuNode = document.createElement('div');

@@ -5,6 +5,9 @@ LocalShowsPresenter.prototype = {
     present: function(localShows) {
         var localShowsContainerNode = document.createElement('div');
 
+        // Yeah, thanks so much for building a presenter.  It's a nice idea.
+        // But you could really make this much easier using a templating
+        // library like Handlebars.
         localShowsNode.id = "local_shows_container";
         for (var i=0; i<localShows.length; i++) {
             var showContainerNode = document.createElement('div');

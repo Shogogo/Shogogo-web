@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
   include ApplicationHelper
 
+  # WHY ARE YOU DISABLING PROTECT FROM FORGERY!!!??!!!!???!!!!!
+  #
+  # Do you disable front-door-lock for no good reason?  Why did you do this?
+  #
+  # Do you know what this does?  Can you explain the vulnerability to me.  I
+  # covered this in lecture.
   protect_from_forgery except: :create
 
   def index
@@ -52,6 +58,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
+    # And now, 28 spaces at the end of the next line for no apparent reason, TA-DA!!!!!!!
     params.require(:user).permit(:phone_number, :bands)                          
   end
 end

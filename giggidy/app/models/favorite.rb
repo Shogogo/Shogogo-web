@@ -1,6 +1,6 @@
 require 'open-uri'
 require 'json'
-require 'redis'
+require 'redis' # <--- WHY.  Let me guess, for speed problems you don't yet have or can't demo?
 
 class Favorite < ActiveRecord::Base
 	belongs_to :user
@@ -12,6 +12,10 @@ class Favorite < ActiveRecord::Base
 		User.find(user_id).favorites.pluck(:seatgeek_artist_id)
 	end		
 
+  # What?  Why are we fetching user events on a Favorite?  You've welded a
+  # User, a Favorite, and an Event (tightly coupled).  How does that make
+  # sense?
+
 	def self.fetch_user_events(artist_ids)
 		#Will fetch all the users favorite artists events
 		artist_ids.each do artist_id 
@@ -19,10 +23,14 @@ class Favorite < ActiveRecord::Base
 		end
 	end
 
+  # HOw do you have fetch event on a favorite?  Is that different than
+  # fetch_artist_event on Event?
 	def self.fetch_event(long_lat)
 		JSON.parse(open("http://api.seatgeek.com/2/events?performers.id=#{artist_id}").read)	 
 	end
 
+  # Why does notify_users live on Favorite?  What part of Favorite means it
+  # should know how to built a notification list?
 	def self.notify_users
 		user_ids = Favorites.where(:seatgeek_id => $redis.smembers("artist_ids")).pluck(:user_id)
     users = User.find(user_ids)
