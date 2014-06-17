@@ -1,21 +1,19 @@
 <img src="assets/shogogo.svg" onerror="this.onerror=null; this.src='shogogo.png'" id="logo">
 
-
 <div class="row fullWidth">
 
-  <div class="small-9 large-9 columns hello">
+  <div class="small-9 large-12 columns">
 
     <input type="text" name="artist-search" id="search_box" placeholder="search for favorite artists..."/>
-        <h2 id="search_message">Start tracking your favorite artists.<br>Get text updates of upcoming shows near you.</h2>
-        <div id="band_container">
-          <div class="local_shows_list"></div>
-        </div>
+    
+    <h2 id="search_message">Start tracking your favorite artists.<br>Get text updates of upcoming shows near you.</h2>
+    
+    <div id="band_container">
+      <div class="local_shows_list"></div>
     </div>
+  </div>
 
-  </div>
-  <div class="small-3 large-3 columns favorites_menu nofaves" id="favorites-menu">
- <!--    <div class="favorites_band_item"></div> -->
-  </div>
+  <div class="small-3 large-0 columns favorites_menu nofaves" id="favorites-menu"></div>
 </div>
 
 <%= javascript_tag do %>
@@ -23,4 +21,4 @@
   GEOIP.lon = '<%= @geoinfo.location.longitude %> ' ;
   GEOIP.lat = '<%= @geoinfo.location.latitude %> ' ;
 
-  <% end %>
+<% end %>

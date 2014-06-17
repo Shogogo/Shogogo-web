@@ -56,6 +56,8 @@ GEM
     faker (1.1.2)
       i18n (~> 0.5)
     ffi (1.9.3)
+    geocoder (1.2.2)
+    geoip (1.4.0)
     hike (1.2.3)
     i18n (0.6.9)
     jasmine (2.0.2)
@@ -179,6 +181,8 @@ DEPENDENCIES
   factory_girl_rails (~> 4.2.1)
   faker (~> 1.1.2)
   jasmine
+  geocoder
+  geoip
   jbuilder (~> 2.0)
   jquery-rails
   launchy (~> 2.3.0)
