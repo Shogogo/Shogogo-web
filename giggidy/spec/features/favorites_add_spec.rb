@@ -1,4 +1,4 @@
-# require 'spec_helper'
+require 'spec_helper'
 
 feature "Add artists to favorites" do 
 
