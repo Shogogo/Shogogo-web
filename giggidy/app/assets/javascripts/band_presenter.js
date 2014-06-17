@@ -12,23 +12,22 @@ BandPresenter.prototype = {
 
         bandPanelNode.id = "band_container";
 
-
         imageNode.src = this.band.image_url_large || 'assets/guitarboat-large.jpg';
         imageNode.className = "band_image";
 
-        nameNode.innerText = this.band.name;
+        nameNode.textContent = this.band.name;
         nameNode.className = "band_name";
 
         tourNode.className = "tour_status";
 
         if(this.band.tour_status === true) {
-            tourNode.innerText = "Touring";
+            tourNode.textContent = "Touring";
         }
         else {
-            tourNode.innerText = "Not Touring";
+            tourNode.textContent = "Not Touring";
         }
 
-        addNode.innerText = "Add+";
+        addNode.textContent = "Add+";
         addNode.setAttribute("id", "add_band");
 
         bandPanelNode.appendChild(imageNode);
