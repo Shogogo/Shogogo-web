@@ -10,6 +10,6 @@ describe("BandPresenter", function() {
 
     it("creates a band container div", function() {
         var jasmineBandNode = bandPresenter.present();
-        expect(jasmineBandNode.innerHTML).toEqual(bandFleetwoodMacTestNode);
+        expect(jasmineBandNode.innerHTML).toEqual(FleetwoodMacTestNode);
     });
 });
