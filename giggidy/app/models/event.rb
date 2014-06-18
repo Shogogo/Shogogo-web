@@ -10,7 +10,7 @@ class Event < ActiveRecord::Base
 
 	def self.fetch_all_events
 		artist_ids = Artist.pluck(:seatgeek_id).uniq
-		artist_ids.map do |artist_id|
+		artist_ids.each do |artist_id|
 			results = fetch_artist_events(artist_id)
 			insert_events(artist_id, results)
 		end
@@ -18,12 +18,12 @@ class Event < ActiveRecord::Base
 
 	private
 	
-	def fetch_artist_events(artist_id)
-		response = Net::HTTP.get(URI.parse('http://api.seatgeek.com/2/events?performers.id=#{artist_id}'))
+	def self.fetch_artist_events(artist_id)
+		response = Net::HTTP.get(URI.parse("http://api.seatgeek.com/2/events?performers.id=#{artist_id}"))
 		JSON.parse(response) 
 	end
 
-	def insert_events(artist_id, results)
+	def self.insert_events(artist_id, results)
 		results['events'].each do |event|
 			Event.first_or_create(name: event['title'], 
 									 ticket_url: event['url'],
