@@ -4,8 +4,8 @@ class Event < ActiveRecord::Base
 	belongs_to :artist
 	has_many :notifications
 	has_many :users, through: :artist
-reverse_geocoded_by :latitude, :longitude
-after_validation :reverse_geocode 
+	reverse_geocoded_by :latitude, :longitude
+	after_validation :reverse_geocode
 	validates :name, :datetime_local, :latitude, :longitude, presence: true
 	validates :ticket_url, :seatgeek_id, presence: true, uniqueness: true
 
@@ -29,12 +29,12 @@ after_validation :reverse_geocode
 	
 	def self.fetch_artist_events(artist_id)
 		response = Net::HTTP.get(URI.parse("http://api.seatgeek.com/2/events?performers.id=#{artist_id}"))
-		JSON.parse(response) 
+		JSON.parse(response)
 	end
 
 	def self.insert_events(artist_id, results)
 		results['events'].each do |event|
-			Event.first_or_create(name: event['title'], 
+			Event.first_or_create(name: event['title'],
 									 ticket_url: event['url'],
 									 datetime_local: event['datetime_local'],
 									 latitude: event['venue']['location']['lat'],
@@ -54,8 +54,4 @@ after_validation :reverse_geocode
 		event = Event.find(event_id)
 		event.update_attributes(tickets_left: results['stats']['listing_count'])
 	end
-
-
-
-
 end
