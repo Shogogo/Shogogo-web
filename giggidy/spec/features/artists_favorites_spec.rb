@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature "Add artists to favorites" do 
+feature "Artists favorite list" do 
 
 	before :each, js: true do 
   	visit root_path
