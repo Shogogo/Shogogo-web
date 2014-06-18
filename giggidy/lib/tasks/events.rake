@@ -15,6 +15,11 @@ namespace :events do
     past_events.destroy_all
   end
 
+  desc "Purge all sold out events"
+  task :purge_sold_out_events => :environment do
+    # sold_out_events = Event.where()
+  end
+
 end
 
 namespace :notifications do
