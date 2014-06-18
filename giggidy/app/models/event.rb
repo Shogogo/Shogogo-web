@@ -31,6 +31,7 @@ class Event < ActiveRecord::Base
 									 latitude: event['venue']['location']['lat'],
 									 longitude: event['venue']['location']['lon'],
 									 seatgeek_id: event['id'],
+									 tickets_left: event['stats']['listing_count'],
 									 artist_id: artist_id)
 		end
 	end
