@@ -9,4 +9,5 @@ end
 
 every 1.day :at => "11:00pm" do
   #go through all events and delete expired events
+  rake "events:purge_past_events"
 end
