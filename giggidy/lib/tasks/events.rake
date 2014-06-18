@@ -15,8 +15,8 @@ namespace :events do
 
   desc "Purge all past events"
   task :purge_past_events => :environment do
-    Events.where("datetime_local < ?", DateTime.now).destroy_all
+    past_events = Event.where("datetime_local < ?", DateTime.now)
+    past_events.destroy_all
   end
 
 end
-
