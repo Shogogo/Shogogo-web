@@ -1,6 +1,6 @@
 class FavoritesController < ApplicationController
   def index
-    get_ip
+    get_user_ip
   end
 
   def create
