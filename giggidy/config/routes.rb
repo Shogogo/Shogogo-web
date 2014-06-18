@@ -2,21 +2,13 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  root to: 'application#index'
+  root to: 'favorites#index'
 
-  resources :interests, only: [:new, :create, :destroy]
-  resources :users
+  resources :favorites, only: [:index, :create, :destroy]
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  resources :sessions, only: [:new, :create, :destroy]
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  post "signup" => "users#create", :as => :signup, :format => false
-  post "login" => "users#login", :as => :login, :format => false
-  post "logout" => "users#logout", :as => :logout, :format => false
-
+  resources :users, only: [:new, :create, :destroy]
 
   post "send_sms" => "messages#send_sms", :as => :send_sms, :format => false
   get "receive-sms" => "messages#receive_sms", :as => :receive_sms, :format => false
