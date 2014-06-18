@@ -1,7 +1,12 @@
 require 'open-uri'
+
 class Event < ActiveRecord::Base
 	belongs_to :artist
 	has_many :notifications
+	has_many :users, through: :artist
+
+	validates :name, :datetime_local, :latitude, :longitude, presence: true
+	validates :ticket_url, :seatgeek_id, presence: true, uniqueness: true
 
 	def self.fetch_all_artists
 		artist_ids = Favorite.pluck(:seatgeek_artist_id).uniq
