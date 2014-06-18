@@ -5,7 +5,7 @@ class Event < ActiveRecord::Base
 	has_many :notifications
 	has_many :users, through: :artist
 	reverse_geocoded_by :latitude, :longitude
-	after_validation :reverse_geocode
+	after_validation :geocode
 	validates :name, :datetime_local, :latitude, :longitude, presence: true
 	validates :ticket_url, :seatgeek_id, presence: true, uniqueness: true
 

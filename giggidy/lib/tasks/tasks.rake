@@ -2,6 +2,14 @@ require "#{Rails.root}/app/helpers/application_helper"
 require 'json'
 include ApplicationHelper
 
+namespace :artists do
+
+  desc "Populate our database with all artist info from SeatGeek"
+  task :fetch_all_artists => :environment do
+    Artist.seed_from_seatgeek
+  end
+end
+
 namespace :events do
 
   desc "Fetch event IDs by favorite artist IDs and populate database"
@@ -32,7 +40,7 @@ namespace :notifications do
 
   desc "Send SMS to user"
   task :send_sms => :environment do
-    ApplicationHelper.send_sms(user_phone_number, message)
+    ApplicationHelper.send_sms('8183379919', 'CRON JOB!!!')
   end
 
 end
