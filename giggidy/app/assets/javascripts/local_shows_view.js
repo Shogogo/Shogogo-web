@@ -7,5 +7,5 @@ LocalShowsView.prototype = {
     draw: function(shows) {
         var allLocalShows = this.LocalShowsPresenter.present(shows);
         this.localShowsContainerNode.innerHTML = allLocalShows.innerHTML;
-    },
+    }
 };
