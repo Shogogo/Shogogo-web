@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 20140618015401) do
   end
 
   create_table "favorites", force: true do |t|
-    t.integer  "artists_id"
-    t.integer  "users_id"
+    t.integer  "artist_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

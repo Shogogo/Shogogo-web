@@ -1,5 +1,7 @@
 require 'open-uri'
 class Event < ActiveRecord::Base
+	belongs_to :artist
+	has_many :notifications
 
 	def self.fetch_all_artists
 		artist_ids = Favorite.pluck(:seatgeek_artist_id).uniq
@@ -8,6 +10,7 @@ class Event < ActiveRecord::Base
 #			insert_events(artist_id, results)
 		end
 	end
+	
 	def self.insert_events(artist_id, results)
 		#to be rewritten without redis
 
@@ -15,10 +18,8 @@ class Event < ActiveRecord::Base
 		#$redis.sadd("artist_ids", artist_id) #keep it unique, suckah
 		#$redis.set(artist_id, results)
 	end
+	
 	def self.fetch_artist_events(artist_id)
 			JSON.parse(open("http://api.seatgeek.com/2/events?performers.id=#{artist_id}").read)	 
 	end
-
-
-
 end
