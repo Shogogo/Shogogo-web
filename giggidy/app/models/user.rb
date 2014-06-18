@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   has_many :artists, through: :favorites
   has_many :events, through: :artists
   has_many :notifications
+	reverse_geocoded_by :latitude, :longitude
+	after_validation :geocode
   
   has_secure_password
 
