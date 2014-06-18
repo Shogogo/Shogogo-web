@@ -39,7 +39,9 @@ User.create(name: "alex", password: 'changeme', password_confirmation: 'changeme
 #User/Artist Favorites
 2.times do 
 	ARTIST_IDS.each do |seatgeek_id|
-	  Favorite.create(user: User.all.sample, artist: Artist.where(seatgeek_id: seatgeek_id).first)
+	  Favorite.create(
+	  	user: User.all.sample, 
+	  	artist: Artist.where(seatgeek_id: seatgeek_id).first)
 	  # Favorite.create(user: User.all.sample, artist: Artist.find(seatgeek_id).first)
 	end
 end
@@ -48,13 +50,23 @@ end
 #Events
 20.times do 
 	city = CITIES.sample
-	Event.create(name: Faker::Company.bs, datetime_local: DateTime.now + rand(1..60), longitude: city[:lon], latitude:  city[:lat], seatgeek_id: EVENT_IDS.sample, artist: Artist.all.sample) 
+	Event.create(name: Faker::Company.bs,
+							 datetime_local: DateTime.now + rand(1..60),
+							 longitude: city[:lon],
+							 latitude:  city[:lat],
+							 seatgeek_id: EVENT_IDS.sample,
+							 artist: Artist.all.sample,
+							 ticket_url: Faker::Internet.url) 
 end
 
 #notification
 
 #will fix after next branch where associations will be fixed.
 20.times do 
-		Notification.create(notification_type: "sdfsd", datetime_sent: DateTime.now - rand(1..60), user: User.all.sample, event: Event.all.sample)
+		Notification.create(
+			notification_type: "sdfsd",
+			datetime_sent: DateTime.now - rand(1..60),
+			user: User.all.sample,
+			event: Event.all.sample)
 end
 

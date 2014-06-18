@@ -8,6 +8,7 @@ class Events < ActiveRecord::Migration
       t.float :longitude, null: false
       t.integer :seatgeek_id, null: false, unique: true
       t.integer :tickets_left
+      t.string :address
       t.belongs_to :artist
 
       t.timestamps
