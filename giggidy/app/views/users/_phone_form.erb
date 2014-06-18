@@ -1,10 +1,13 @@
 <div class="signup">
+	<h4 id="sign_up_message">Sign up to get notifications.</h4>
   <form name="user_phone" id="phone" action="/users/create" method="post">
-    <input type='text' name="phone_number"> 
+    <input type='text' name="name" placeholder="your name" id="signin_name" required> 
+    <input type='tel' name="phone_number"  placeholder="no spaces, i.e. 5551239999" maxlength="10" id="signin_phone" required >
+    <input type='password' name="password" placeholder="password" id="signin_password" required >
     <input type="submit" value="Submit">
-   
   </form>
 </div>
+
 
 
 

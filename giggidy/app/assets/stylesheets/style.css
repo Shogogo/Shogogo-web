@@ -310,3 +310,34 @@ input[type=text] {
   color: black !important;
 }
 
+/*///////////////SIGN UP///////////////*/
+
+.signup {
+  margin-top: 30px;
+}
+
+
+#sign_up_message {
+  color: white;
+  text-align: center;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 1.3em;
+  font-size: 1.5vw;
+  margin-bottom: 20px;
+}
+
+
+input[type=tel] {
+  font-size: 1.2em;
+  font-size: 1.3vw;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-weight: 500;
+}
+
+input[type=password] {
+  font-size: 1.2em;
+  font-size: 1.3vw;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-weight: 500;
+}
+
