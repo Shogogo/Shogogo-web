@@ -8,6 +8,11 @@ every 1.day, :at => "12:00pm" do
   rake "notifications:send_sms"
 end
 
+every 1.day, :at => "10:00pm" do
+  #go through all events and delete sold out events
+  rake "events:purge_sold_out_events"
+end
+
 every 1.day, :at => "11:00pm" do
   #go through all events and delete expired events
   rake "events:purge_past_events"
