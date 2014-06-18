@@ -15,11 +15,14 @@ class UsersController < ApplicationController
     bands = params[:user][:bands]
     band_array = bands.chomp.split(',').map { |x| x.to_i }
 
+    long_lat = @geoinfo
     
-    long_lat = User.geocoded
-    p long_lat
+    long_lat.each do |cord|
+      long = cord[0]
+      lat = cord[1]
+    end
     
-    @user = User.new(phone_number: params[:user][:phone_number)
+    @user = User.new(phone_number: params[:user][:phone_number], longitude: long, latitude: lat)
     
     if @user.save
       band_array.each do |band|
