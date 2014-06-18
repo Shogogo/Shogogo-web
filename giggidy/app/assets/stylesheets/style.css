@@ -27,8 +27,9 @@ html, body {
 	position: absolute;
   top: 12pt; 
   left: 24pt;
-  -webkit-filter: drop-shadow( 5px 5px 5px #000 );
-   filter: drop-shadow( 5px 5px 5px #000 );
+  width: 13vw;
+  -webkit-filter: drop-shadow( 5px 5px 1px #000 );
+   filter: drop-shadow( 5px 5px 1px #000 );
 }
 
 
@@ -200,8 +201,16 @@ input[type=text] {
   background-color: #858585;
   opacity: 1.0;
   border-radius: 3px;
-  width: 8%;
-  height: 15%;
+  width: 14%;
+  height: 18%;
+  font-size: 1.3em;
+  font-size: 1.3vw;
+  outline: none;
+}
+
+#add_band:hover {
+  background-color: yellow !important;
+  color: black !important;
 }
 
 .tour_status {
@@ -246,11 +255,18 @@ input[type=text] {
   width: 25% !important;
 }
 
+
 .favorites_band_item {
-  background-color: black;
-  padding: 5px 0px;
+  padding: 5px 5px;
+  border-bottom: 1px solid rgb(65, 61, 21);
+  list-style: none;
+}
+
+.favorites_band_item:hover {
+  background-color: #313131 !important;
   border-bottom: 1px solid gray;
 }
+
 
 .favorites_band_remove {
   position: absolute;
@@ -266,18 +282,34 @@ input[type=text] {
 }
 
 .favorites_band_name {
-  color: white;
+  color: white !important;
+  z-index: 100000;
   font-family: 'Roboto', Arial, sans-serif;
   font-weight: 200;
+  font-size: 1em;
+  font-size: 1.3vw;
 }
 
 .favorites_band_image {
   margin-right: 12px;
+  width: 3em;
 }
 
 .favorites_save {
-  position: relative;
-  bottom: 0;
+  top: 100%;
   width: 100%;
+  background-color: yellow;
+  color: black;
+  overflow: auto;
+  outline: none;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 1.3em;
+  font-size: 1.5vw;
+}
+
+.favorites_save:hover {
+  background-color: #858585 !important;
+  color: white !important;
 }
 
