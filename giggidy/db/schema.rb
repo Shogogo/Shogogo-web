@@ -11,27 +11,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140612230818) do
+ActiveRecord::Schema.define(version: 20140618015401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "favorites", force: true do |t|
-    t.integer "user_id"
-    t.integer "seatgeek_artist_id"
+  create_table "artists", force: true do |t|
+    t.string   "name"
+    t.integer  "seatgeek_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
-
-  create_table "users", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
+  create_table "events", force: true do |t|
+    t.string   "name"
+    t.integer  "ticket_url"
+    t.datetime "datetime_local"
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "phone_number"
-    t.boolean  "wants_email"
-    t.boolean  "wants_text"
+    t.integer  "seatgeek_id"
+    t.integer  "artist_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "favorites", force: true do |t|
+    t.integer  "artists_id"
+    t.integer  "users_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "notifications", force: true do |t|
+    t.string   "type"
+    t.datetime "datetime_sent"
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.integer  "phone_number"
+    t.string   "password_digest"
+    t.float    "latitude"
+    t.float    "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
