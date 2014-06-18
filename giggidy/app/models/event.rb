@@ -19,7 +19,7 @@ class Event < ActiveRecord::Base
 	def self.update_tickets_left
 		events = Event.all
 		events.each do |event|
-			results = fetch_events(event.id)
+			results = fetch_event(event.seatgeek_id)
 			update_ticket_count(event.id, results)
 		end
 	end
@@ -42,17 +42,18 @@ class Event < ActiveRecord::Base
 									 tickets_left: event['stats']['listing_count'],
 									 artist_id: artist_id)
 		end
-
-		def self.fetch_events(event_id)
-			response = Net::HTTP.get(URI.parse("http://api.seatgeek.com/2/events/#{event_id}"))
-			JSON.parse(response) 
-		end
-
-		def self.update_ticket_count(event_id, results)
-			event = Event.find(event_id)
-			event.update_attributes(tickets_left: results['events']['stats']['listing_count'])
-		end
 	end
+
+	def self.fetch_event(event_id)
+		response = Net::HTTP.get(URI.parse("http://api.seatgeek.com/2/events/#{event_id}"))
+		JSON.parse(response) 
+	end
+
+	def self.update_ticket_count(event_id, results)
+		event = Event.find(event_id)
+		event.update_attributes(tickets_left: results['stats']['listing_count'])
+	end
+
 
 
 
