@@ -1,3 +1,5 @@
+
+
 $(document).ready(function() {
     var bandView = new BandView();
     var localShowsView = new LocalShowsView();
@@ -57,6 +59,7 @@ $(document).ready(function() {
             $('#favorites-menu').html(data);
         }, "html");
     });
+
 
     $( document ).on( "submit", "#phone", function(e) {
         e.preventDefault();

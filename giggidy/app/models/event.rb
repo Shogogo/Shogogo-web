@@ -34,14 +34,15 @@ class Event < ActiveRecord::Base
 
 	def self.insert_events(artist_id, results)
 		results['events'].each do |event|
-			Event.first_or_create(name: event['title'],
-									 ticket_url: event['url'],
-									 datetime_local: event['datetime_local'],
-									 latitude: event['venue']['location']['lat'],
-									 longitude: event['venue']['location']['lon'],
-									 seatgeek_id: event['id'],
-									 tickets_left: event['stats']['listing_count'],
-									 artist_id: artist_id)
+			Event.where(seatgeek_id: event['id'])
+					 .first_or_create(name: event['title'],
+													  ticket_url: "#{event['url']}?aid=10879",
+													  datetime_local: event['datetime_local'],
+													  latitude: event['venue']['location']['lat'],
+													  longitude: event['venue']['location']['lon'],
+													  seatgeek_id: event['id'],
+													  tickets_left: event['stats']['listing_count'],
+													  artist_id: artist_id)
 		end
 	end
 
