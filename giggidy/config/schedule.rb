@@ -7,6 +7,7 @@ every 1.day, :at => "12:00pm" do
   rake "events:send_sms"
 end
 
-every 1.day :at => "11:00pm" do
+every 1.day, :at => "11:00pm" do
   #go through all events and delete expired events
+  rake "events:purge_past_events"
 end
