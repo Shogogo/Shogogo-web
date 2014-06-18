@@ -13,5 +13,10 @@ namespace :events do
     ApplicationHelper.send_sms(user_phone_number, message)
   end
 
+  desc "Purge all past events"
+  task :purge_past_events => :environment do
+    Events.where("datetime_local < ?", DateTime.now).destroy_all
+  end
+
 end
 
