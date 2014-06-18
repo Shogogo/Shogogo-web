@@ -1,12 +1,12 @@
 require "#{Rails.root}/app/helpers/application_helper"
+require 'json'
 include ApplicationHelper
 
 namespace :events do
 
-  desc "Fetch events by artist IDs"
+  desc "Fetch event IDs by favorite artist IDs and populate database"
   task :fetch_by_artist => :environment do
-  	artist_ids = Event.fetch_by_artists
-    events = Event.fetch_user_events(artist_ids)
+  	Event.fetch_all_events
   end
 
   desc "Purge all past events"
