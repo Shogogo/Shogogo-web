@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   has_many :artists, through: :favorites
   has_many :events, through: :artists
   
+  has_secure_password
+
   validates :phone_number, :latitude, :longitude, :name, presence: true, 
 	uniqueness: true
 	
