@@ -8,23 +8,29 @@ class Event < ActiveRecord::Base
 	validates :name, :datetime_local, :latitude, :longitude, presence: true
 	validates :ticket_url, :seatgeek_id, presence: true, uniqueness: true
 
-	def self.fetch_all_artists
+	def self.fetch_all_events
 		artist_ids = Favorite.pluck(:seatgeek_artist_id).uniq
 		artist_ids.map do |artist_id|
-			results = fetch_artist(artist_id)
-#			insert_events(artist_id, results)
+			results = fetch_artist_events(artist_id)
+			insert_events(artist_id, results)
 		end
 	end
 	
-	def self.insert_events(artist_id, results)
-		#to be rewritten without redis
+	def fetch_artist_events(artist_id)
+		response = Net::HTTP.get(URI.parse('http://api.seatgeek.com/2/events?performers.id=#{artist_id}'))
+		JSON.parse(response) 
+	end
 
-		#inserts the json events object into an artist_id value
-		#$redis.sadd("artist_ids", artist_id) #keep it unique, suckah
-		#$redis.set(artist_id, results)
+	def insert_events(artist_id, results)
+		results['events'].each do |event|
+			Event.first_or_create(name: event['title'], 
+									 ticket_url: event['url'],
+									 datetime_local: event['datetime_local'],
+									 latitude: event['venue']['location']['lat'],
+									 longitude: event['venue']['location']['lon'],
+									 seatgeek_id: event['id'],
+									 artist_id: artist_id)
+		end
 	end
-	
-	def self.fetch_artist_events(artist_id)
-			JSON.parse(open("http://api.seatgeek.com/2/events?performers.id=#{artist_id}").read)	 
-	end
+
 end
