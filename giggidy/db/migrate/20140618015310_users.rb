@@ -6,6 +6,7 @@ class Users < ActiveRecord::Migration
       t.string :password_digest
       t.float :latitude, null: false
       t.float :longitude, null: false
+      t.string :address
 
       t.timestamps
     end
