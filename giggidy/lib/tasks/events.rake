@@ -17,7 +17,8 @@ namespace :events do
 
   desc "Purge all sold out events"
   task :purge_sold_out_events => :environment do
-    # sold_out_events = Event.where()
+    sold_out_events = Event.where(tickets_left: 0)
+    sold_out_events.destroy_all
   end
 
 end
