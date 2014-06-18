@@ -4,7 +4,14 @@ class FavoritesController < ApplicationController
   end
 
   def create
-    @favorite = Favorite.new
+    if user_is_defined?
+      @favorite = Favorite.create(favorite_params)
+    else
+      @user = User.new_guest
+      @user.save
+      session[:guest_id] = @user.id 
+      @user.build_favorite(favorite_params)
+    end
   end
 
   def destroy
@@ -20,4 +27,8 @@ class FavoritesController < ApplicationController
     end
     @geoinfo = Geocoder.coordinates(client_ip)
   end
+
+  def favorite_params
+  end
+
 end
