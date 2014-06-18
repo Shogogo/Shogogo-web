@@ -34,7 +34,7 @@ class Event < ActiveRecord::Base
 
 	def self.insert_events(artist_id, results)
 		results['events'].each do |event|
-			Event.where(name: event['title'])
+			Event.where(seatgeek_id: event['id'])
 					 .first_or_create(name: event['title'],
 													  ticket_url: "#{event['url']}?aid=10879",
 													  datetime_local: event['datetime_local'],
