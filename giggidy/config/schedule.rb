@@ -8,6 +8,11 @@ every 1.day, :at => "12:00pm" do
   rake "notifications:send_sms"
 end
 
+every 1.day, :at => "09:00pm" do
+  #query SeatGeek and update tickets_left in Database
+  rake "events:update_tickets_left"
+end
+
 every 1.day, :at => "10:00pm" do
   #go through all events and delete sold out events
   rake "events:purge_sold_out_events"

@@ -9,6 +9,11 @@ namespace :events do
   	Event.fetch_all_events
   end
 
+  desc "Update remaining ticket count for all events in database"
+  task :update_tickets_left => :environment do
+    Event.update_tickets_left
+  end
+
   desc "Purge all past events"
   task :purge_past_events => :environment do
     past_events = Event.where("datetime_local < ?", DateTime.now)
