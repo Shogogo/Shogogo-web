@@ -5,7 +5,7 @@ include ApplicationHelper
 namespace :events do
 
   desc "Fetch event IDs by favorite artist IDs and populate database"
-  task :fetch_by_artist => :environment do
+  task :fetch_all_events => :environment do
   	Event.fetch_all_events
   end
 
