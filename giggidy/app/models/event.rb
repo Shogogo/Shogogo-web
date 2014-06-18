@@ -15,6 +15,8 @@ class Event < ActiveRecord::Base
 			insert_events(artist_id, results)
 		end
 	end
+
+	private
 	
 	def fetch_artist_events(artist_id)
 		response = Net::HTTP.get(URI.parse('http://api.seatgeek.com/2/events?performers.id=#{artist_id}'))
