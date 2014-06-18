@@ -3,8 +3,9 @@ require 'json'
 
 class Favorite < ActiveRecord::Base
 	belongs_to :user
-	validates :user_id, presence: true
-	validates :seatgeek_artist_id, presence: true
+	belongs_to :artist
+
+	validates :artist, presence: true
 
 	def self.fetch_user_artist_ids(user_id)
 		#Will fetch all the users favorite artists event
@@ -25,6 +26,4 @@ class Favorite < ActiveRecord::Base
 	def self.notify_users
     users = User.find(user_ids)
 	end
-
 end
-
