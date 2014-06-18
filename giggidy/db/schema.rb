@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20140618015401) do
     t.float    "latitude",       null: false
     t.float    "longitude",      null: false
     t.integer  "seatgeek_id",    null: false
+    t.integer  "tickets_left"
     t.integer  "artist_id"
     t.datetime "created_at"
     t.datetime "updated_at"
