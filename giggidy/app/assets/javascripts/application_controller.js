@@ -34,6 +34,8 @@ $(document).ready(function() {
         favoritesView.draw(favoriteList.list);
         $('#band_container').empty().hide();
         $('#favorites-menu').removeClass('nofaves').addClass('faves');
+        $('.search_container').css("left", "12.5%");
+
     });
 
     $( document ).on( "click", ".favorites_band_remove", function(e) {
