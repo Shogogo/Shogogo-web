@@ -17,46 +17,46 @@ ActiveRecord::Schema.define(version: 20140618015401) do
   enable_extension "plpgsql"
 
   create_table "artists", force: true do |t|
-    t.string   "name"
-    t.integer  "seatgeek_id"
+    t.string   "name",        null: false
+    t.integer  "seatgeek_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "events", force: true do |t|
-    t.string   "name"
-    t.integer  "ticket_url"
-    t.datetime "datetime_local"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.integer  "seatgeek_id"
+    t.string   "name",           null: false
+    t.integer  "ticket_url",     null: false
+    t.datetime "datetime_local", null: false
+    t.float    "latitude",       null: false
+    t.float    "longitude",      null: false
+    t.integer  "seatgeek_id",    null: false
     t.integer  "artist_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "favorites", force: true do |t|
-    t.integer  "artist_id"
+    t.integer  "artist_id",  null: false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "notifications", force: true do |t|
-    t.string   "type"
-    t.datetime "datetime_sent"
-    t.integer  "user_id"
-    t.integer  "event_id"
+    t.string   "type",          null: false
+    t.datetime "datetime_sent", null: false
+    t.integer  "user_id",       null: false
+    t.integer  "event_id",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
-    t.string   "name"
-    t.integer  "phone_number"
+    t.string   "name",            null: false
+    t.string   "phone_number",    null: false
     t.string   "password_digest"
-    t.float    "latitude"
-    t.float    "longitude"
+    t.float    "latitude",        null: false
+    t.float    "longitude",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
