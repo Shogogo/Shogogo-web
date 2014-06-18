@@ -54,7 +54,7 @@ end
 #notification
 
 #will fix after next branch where associations will be fixed.
-# 20.times do 
-# 		Notification.create(type: "sdfsd", datetime_sent: DateTime.now - rand(1..60), user: User.all.sample, event: Event.all.sample)
-# end
+20.times do 
+		Notification.create(notification_type: "sdfsd", datetime_sent: DateTime.now - rand(1..60), user: User.all.sample, event: Event.all.sample)
+end
 

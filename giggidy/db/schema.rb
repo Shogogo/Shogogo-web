@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20140618015401) do
 
   create_table "events", force: true do |t|
     t.string   "name",           null: false
-    t.integer  "ticket_url",     null: false
+    t.string   "ticket_url",     null: false
     t.datetime "datetime_local", null: false
     t.float    "latitude",       null: false
     t.float    "longitude",      null: false
@@ -43,10 +43,10 @@ ActiveRecord::Schema.define(version: 20140618015401) do
   end
 
   create_table "notifications", force: true do |t|
-    t.string   "type",          null: false
-    t.datetime "datetime_sent", null: false
-    t.integer  "user_id",       null: false
-    t.integer  "event_id",      null: false
+    t.string   "notification_type", null: false
+    t.datetime "datetime_sent",     null: false
+    t.integer  "user_id",           null: false
+    t.integer  "event_id",          null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
