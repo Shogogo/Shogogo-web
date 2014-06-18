@@ -96,19 +96,19 @@ input[type=text] {
 
 
 #search_box:focus {
-  opacity: 1.0;
-  -webkit-box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .5);
-  -moz-box-shadow: 0px 0px 15px 5px rgba(255, 255, 190, .5);
-  box-shadow: 0px 0px 15px 8px rgba(255,255,255, 0.5);
+  opacity: 0.9;
+  -webkit-box-shadow: 0px 0px 15px 5px rgba(255, 255, 255, .5);
+  -moz-box-shadow: 0px 0px 15px 5px rgba(255, 255, 255, .5);
+  box-shadow: 0px 0px 15px 8px rgba(255, 255, 255, 0.5);
 }
 
 @-webkit-keyframes fadein {
   from {
-   opacity:0;
+  opacity:0;
   }
-   to {
+  to {
   opacity:1;
-   }
+  }
 }
 
 #search_message {
@@ -148,8 +148,6 @@ input[type=text] {
   width: 50%;
   height: auto;
   top: 53%;
- /* margin-left: 12.5%;
-  margin-right: 12.5%;*/
   display: none;
   background: rgba(0, 0, 0, 0.8);
   border-bottom-left-radius: 10px;
