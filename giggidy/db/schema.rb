@@ -17,8 +17,9 @@ ActiveRecord::Schema.define(version: 20140618220523) do
   enable_extension "plpgsql"
 
   create_table "artists", force: true do |t|
-    t.string   "name",        null: false
-    t.integer  "seatgeek_id", null: false
+    t.string   "name",            null: false
+    t.integer  "seatgeek_id",     null: false
+    t.string   "image_url_small"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -45,10 +46,11 @@ ActiveRecord::Schema.define(version: 20140618220523) do
   end
 
   create_table "notifications", force: true do |t|
-    t.string   "notification_type", null: false
-    t.datetime "datetime_sent",     null: false
-    t.integer  "user_id",           null: false
-    t.integer  "event_id",          null: false
+    t.string   "notification_type",                 null: false
+    t.datetime "datetime_sent",                     null: false
+    t.boolean  "notified",          default: false
+    t.integer  "user_id",                           null: false
+    t.integer  "event_id",                          null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
