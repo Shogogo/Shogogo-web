@@ -14,11 +14,7 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    @user = User.find(session[:user_id])
-    @artist = Artist.where(favorite_params)
-    p @artist.name
-    p @artist.seatgeek_id
-    Favorite.where(user: @user, artist: @artist).destroy
+    Favorite.find(par
     render :json => { :success => "success", :status_code => "200" }
   end
 
