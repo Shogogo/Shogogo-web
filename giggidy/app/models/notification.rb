@@ -18,11 +18,18 @@ class Notification < ActiveRecord::Base
     end
   end
 
-  def self.message(user_id, event_id)
+  def self.message_user(user_id, event_id)
     username  = User.find(user_id).name
     event = Event.find(event_id)
     artist = Artist.find_by_seatgeek_id(event.artist_id)
     "Hey #{username}! #{artist} will be playing near you! Buy tickets now! #{event.ticket_url}"
+  end
+
+  def self.send_notifications
+    unsent_notifications = Notification.all.where(notified: false)
+    unsent_notifications.each do |notification|
+      notification.message_user(notification.user_id, notification.event_id)
+    end
   end
 
 end
