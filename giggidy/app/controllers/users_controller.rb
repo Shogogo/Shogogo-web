@@ -15,11 +15,11 @@ class UsersController < ApplicationController
     # flash[:notice] = "Successfully registered."
 
     send_sms(@user.phone_number, "Thank you for using Shogogo! Reply 'confirm' to verify your number or reply 'stop' to unsubscribe.")
-    sleep(10)
+    sleep(8)
 
     # if receive a response render success message
       
-    render :json => { :success => "success", :status_code => "200", :id => @favorite.id }
+    render :json => { :success => "success", :status_code => "200" }
     # else
     #   render :partial => 'phone_form'
     # end
