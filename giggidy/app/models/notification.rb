@@ -24,7 +24,7 @@ class Notification < ActiveRecord::Base
     user  = User.find(user_id)
     event = Event.find(event_id)
     artist = Artist.find_by_seatgeek_id(event.artist_id)
-    message = "Hey #{user.name}! #{artist} will be playing near you! Buy tickets now! #{event.ticket_url}"
+    message = "Hey #{user.name}! #{artist.name} will be playing near you! Buy tickets now! #{event.ticket_url}"
     send_sms(user.phone_number, message)
   end
 
