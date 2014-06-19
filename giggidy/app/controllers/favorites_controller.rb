@@ -1,11 +1,13 @@
 class FavoritesController < ApplicationController
   def index
     get_user_ip
-    
     if session[:user_id]
       @user = User.find(session[:user_id])
     else
       @user = User.create(guest: true)
+      @user.password = "guest"
+      @user.password_confirmation = "guest"
+      @user.save
       session[:user_id] = @user.id
     end
     @favorites = @user.favorites
