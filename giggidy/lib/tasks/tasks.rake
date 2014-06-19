@@ -40,7 +40,7 @@ namespace :notifications do
 
   desc "Send daily SMS notifications to users about upcoming shows"
   task :send_sms => :environment do
-    ApplicationHelper.send_sms('8183379919', 'CRON JOB!!!')
+    Notification.send_notifications
   end
 
 end
