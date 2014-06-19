@@ -5,8 +5,17 @@ class Notification < ActiveRecord::Base
   validates :user, :event, :notification_type, :datetime_sent, presence: true
 
   def self.populate_notifications
-    #populates notifications based on User.events where (geo radius < 100 miles)
-    #AND user.notiications where(event = event.id).where(notified = false)
+    users = User.all
+    users.each do |user|
+      user.artists.each do |artist|
+        users_events = Event.near(user, 100)
+        users_events.each do |event|
+          if artist.seatgeek_id == event.artist_id
+            Notification.create(user_id: user.id, event_id: event.id)
+          end
+        end
+      end
+    end
   end
 
 end
