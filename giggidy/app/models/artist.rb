@@ -2,8 +2,6 @@ class Artist < ActiveRecord::Base
   has_many :favorites
   has_many :users, through: :favorites
   has_many :events
-  
-  
 
   validates :name, :seatgeek_id, presence: true, uniqueness: true
 
