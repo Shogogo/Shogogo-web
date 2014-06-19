@@ -38,6 +38,11 @@ end
 
 namespace :notifications do
 
+  desc "Populate notifications table with upcoming events that users are interested in"
+  task :populate_notifications => :environment do
+    Notification.populate_notifications
+  end
+
   desc "Send daily SMS notifications to users about upcoming shows"
   task :send_sms => :environment do
     Notification.send_notifications
