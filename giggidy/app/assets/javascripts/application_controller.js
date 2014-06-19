@@ -37,12 +37,12 @@ $(document).ready(function() {
 
     $('#band_container').on('click', 'button', function(e) {
         e.preventDefault();
+        favoritesView.append_draw(artistObject);
         $.post("/favorites", { favorite: { seatgeek_id: artistObject.id, name: artistObject.name }, authenticity_token: authToken() })
             .done(function(data) {
-                var favorite_id = data.name;
+                var favorite_id = data.id;
+                $('.favorites_band_item').last().attr( "fav-id", favorite_id );
             });
-
-        favoritesView.append_draw(artistObject);
 
         $('#band_container').empty().hide(200);
         $('#search_box').val('');
@@ -52,15 +52,18 @@ $(document).ready(function() {
 
     $( document ).on( "click", ".favorites_band_remove", function(e) {
         e.preventDefault();
-        var band = $(this).closest('.favorites_band_item').find('.favorites_band_name').text();
-        favoriteList.removeBand(band);
-
-         $.ajax({
-             url: '/favorites/destroy',
+        var band = $(this).closest('.favorites_band_item');
+        var bandName = band.find('.favorites_band_name').text();
+        var favoriteId = band.attr('fav-id');
+        var destroy_path = "/favorites/" + favoriteId;
+        $(band).remove();
+        $.ajax({
+             url: destroy_path,
              type: 'DELETE',
              dataType: 'json',
-             data: { favorite: { name: band }, authenticity_token: authToken() }
+             data: { favorite: { name: bandName }, authenticity_token: authToken() }
          });
+        
     });
 
     $( document ).on( "click", ".favorites_save", function(e) {
