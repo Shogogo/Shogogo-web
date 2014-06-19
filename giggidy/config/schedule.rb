@@ -3,6 +3,11 @@ every 1.day, :at => "12:00am" do
   rake "events:fetch_all_events"
 end
 
+every 1.day, :at => "02:00am" do
+  #query events table for all user's favorite artists' events near user
+  rake "notifications:populate_notifications"
+end
+
 every 1.day, :at => "12:00pm" do
   #send out notifications to users about bands' upcoming shows
   rake "notifications:send_sms"
