@@ -1,7 +1,10 @@
 **ShoGoGo**
 =====================
 
-**ShoGoGo** is an exciting new platform where you can track all of your favorite bands' upcoming performances. Never miss another show.
+**ShoGoGo** “Shogogo.com notifies users when their favorite bands are playing nearby. Users simply search
+for their favorite bands and provide a valid phone number. Every night, Shogogo queries the
+SeatGeek API for new events. If a match is found, the user is sent a scheduled text message
+with a link to buy tickets.”
 
 ### Contributors
 @alexanderdavidpan
@@ -11,10 +14,9 @@
 
 ### Dependencies 
 1. Twillio
-2. Addthis
-3. timecop
+2. SeatGeek API
 
-### Contributing
-1. Don't
+### Website:
+http://shogogo.com/
 
 
