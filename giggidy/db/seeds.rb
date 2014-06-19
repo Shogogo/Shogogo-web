@@ -31,10 +31,10 @@ Artist.create(name: "Beastie Boys", seatgeek_id: 266)
 
 
 #Users
-User.create(name: "justin", password: 'changeme', password_confirmation: 'changeme', latitude: 40.7064 , longitude: -74.0094, phone_number: "12068011207")
-User.create(name: "zach", password: 'changeme', password_confirmation: 'changeme', latitude: 40.7064 , longitude: -74.0094, phone_number: "12127293997")
-User.create(name: "ryan", password: 'changeme', password_confirmation: 'changeme', latitude: 40.7064 , longitude: -74.0094, phone_number: "14064614785")
-User.create(name: "alex", password: 'changeme', password_confirmation: 'changeme', latitude: 40.7064 , longitude: -74.0094, phone_number: "18183379919")
+User.create(name: "justin", latitude: 40.7064 , longitude: -74.0094, phone_number: "2068011207")
+User.create(name: "zach", latitude: 40.7064 , longitude: -74.0094, phone_number: "2127293997")
+User.create(name: "ryan", latitude: 40.7064 , longitude: -74.0094, phone_number: "4064614785")
+User.create(name: "alex", latitude: 40.7064 , longitude: -74.0094, phone_number: "8183379919")
 
 #User/Artist Favorites
 2.times do 
@@ -59,13 +59,11 @@ end
 							 ticket_url: Faker::Internet.url) 
 end
 
-#notification
+notification
 
 #will fix after next branch where associations will be fixed.
 20.times do 
 		Notification.create(
-			notification_type: "sdfsd",
-			datetime_sent: DateTime.now - rand(1..60),
 			user: User.all.sample,
 			event: Event.all.sample)
 end
