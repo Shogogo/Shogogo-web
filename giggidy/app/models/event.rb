@@ -10,7 +10,10 @@ class Event < ActiveRecord::Base
 	validates :ticket_url, :seatgeek_id, presence: true, uniqueness: true
 
 	def self.fetch_all_events
-		artist_ids = Artist.pluck(:seatgeek_id).uniq
+		artist_ids = Favorite.pluck(:artist_id).uniq
+		artist_ids.map! do |artist_id|
+      Artist.find(artist_id).seatgeek_id
+    end
 		artist_ids.each do |artist_id|
 			results = fetch_artist_events(artist_id)
 			insert_events(artist_id, results)
