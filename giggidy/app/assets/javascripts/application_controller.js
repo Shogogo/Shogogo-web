@@ -7,7 +7,7 @@ $(document).ready(function() {
     var favoriteList = new FavoriteList();
     var localShows = new LocalShows();
     var searchBox = new SearchBox();
-    var artist;
+    var artistObject;
 
     $("#search_box")
         .suggest({filter:'(all type:/music/artist)'
@@ -27,7 +27,6 @@ $(document).ready(function() {
                 var artistData = artistInfo.performers[0];
                 artistObject = searchBox.parseArtistInfo(artistData);
                 bandView.draw(artistObject);
-                $.post("/favorites", { artist: artistObject });
             });
     });
 
@@ -38,8 +37,12 @@ $(document).ready(function() {
 
     $('#band_container').on('click', 'button', function(e) {
         e.preventDefault();
-        favoriteList.addBand(artist);
-        favoritesView.draw(favoriteList.list);
+        $.post("/favorites", { favorite: { seatgeek_id: artistObject.id, name: artistObject.name }, authenticity_token: authToken() });
+        
+        // favoriteList.addBand(artistObject);
+        // favoritesView.draw(favoriteList.list);
+        favoritesView.append_draw(artistObject);
+
         $('#band_container').empty().hide(200);
         $('#search_box').val('');
         $('#favorites-menu').removeClass('nofaves').addClass('faves');
@@ -50,7 +53,7 @@ $(document).ready(function() {
         e.preventDefault();
         var band = $(this).closest('.favorites_band_item').find('.favorites_band_name').text();
         favoriteList.removeBand(band);
-        favoritesView.draw(JSON.parse(sessionStorage.favoriteList));
+        // favoritesView.draw(JSON.parse(sessionStorage.favoriteList));
     });
 
     $( document ).on( "click", ".favorites_save", function(e) {

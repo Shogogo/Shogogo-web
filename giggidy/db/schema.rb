@@ -54,11 +54,11 @@ ActiveRecord::Schema.define(version: 20140618220523) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "name",            null: false
-    t.string   "phone_number",    null: false
+    t.string   "name"
+    t.string   "phone_number"
     t.string   "password_digest"
-    t.float    "latitude",        null: false
-    t.float    "longitude",       null: false
+    t.float    "latitude"
+    t.float    "longitude"
     t.string   "address"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -4,8 +4,8 @@ class Users < ActiveRecord::Migration
       t.string :name
       t.string :phone_number
       t.string :password_digest
-      t.float :latitude, null: false
-      t.float :longitude, null: false
+      t.float :latitude
+      t.float :longitude
       t.string :address
 
       t.timestamps
