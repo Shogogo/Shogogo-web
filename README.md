@@ -7,10 +7,17 @@ SeatGeek API for new events. If a match is found, the user is sent a scheduled t
 with a link to buy tickets.”
 
 ### Contributors
+Alex Pan
 @alexanderdavidpan
-@zkarst
-@reboryan
+
+Justin Phelps
 @justinphelps
+
+Ryan Rebo
+@reboryan
+
+Zach Karst
+@zkarst
 
 ### Dependencies 
 1. Twillio
