@@ -23,6 +23,7 @@ class Notification < ActiveRecord::Base
   end
 
   def self.message_user(user_id, event_id)
+    client = Bitly.client
     user  = User.find(user_id)
     event = Event.find(event_id)
     artist = Artist.find_by_seatgeek_id(event.artist_id)
