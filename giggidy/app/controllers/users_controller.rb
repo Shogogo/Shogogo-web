@@ -11,12 +11,14 @@ class UsersController < ApplicationController
     @user.password_confirmation = params[:user][:password]
     @user.password = params[:user][:password]
     @user.password_confirmation = params[:user][:password]
+    @user.longitude = 40.77 
+    @user.latitude = -73.98
     @user.guest = false
     @user.save
     
     # flash[:notice] = "Successfully registered."
 
-    # send_sms(@user.phone_number, "Thank you for using Shogogo! Reply 'confirm' to verify your number or reply 'stop' to unsubscribe.")
+    send_sms(@user.phone_number, "Thank you for using Shogogo! Reply 'confirm' to verify your number or reply 'stop' to unsubscribe.")
     sleep(10)
     render :json => { :status => 'ok', :message => 'Success!'}
 
