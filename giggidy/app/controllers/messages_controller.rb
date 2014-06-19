@@ -9,10 +9,10 @@ class MessagesController < ApplicationController
     user_phone_number = params[:From]
 
     user = User.find_by_phone_number(user_phone_number)
-    if reply == "stop"
-      user.destroy
-    elsif reply == "confirm"
-      user.update_atrributes(wants_text: true)
+    if reply.downcase == "stop"
+      user.update_atrributes(guest: true)
+    elsif reply.downcase == "confirm"
+      user.update_atrributes(guest: false)
     end
 
     redirect_to :root
