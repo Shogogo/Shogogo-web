@@ -19,10 +19,6 @@ class User < ActiveRecord::Base
     new { |u| u.guest = true }
   end
   
-  def name
-    guest ? "Guest" : phone_number
-  end
-  
   def move_to(user)
     tasks.update_all(user_id: user.id)
   end
