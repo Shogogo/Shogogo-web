@@ -9,11 +9,11 @@ class User < ActiveRecord::Base
 	# reverse_geocoded_by :latitude, :longitude
 	# # after_validation :geocode
   
- #  has_secure_password
+  has_secure_password
 
- #  validates_presence_of :phone_number, :password_digest, :name, unless: :guest?
- #  validates_uniqueness_of :phone_number, allow_blank: true
- #  validates_format_of :phone_number, :with => /\A\d{11}\z/, message: "Only numbers allowed, i.e. 5551234567"
+  # validates_presence_of :phone_number, :name unless: guest?
+  # validates_uniqueness_of :phone_number, allow_blank: true
+  # validates_format_of :phone_number, :with => /\A\d{11}\z/, message: "Only numbers allowed, i.e. 5551234567"
 
   def self.new_guest
     new { |u| u.guest = true }
