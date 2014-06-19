@@ -20,7 +20,7 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    Favorite.find(params[id])
+    Favorite.find(params[:id])
     render :json => { :success => "success", :status_code => "200" }
   end
 
