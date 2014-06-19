@@ -1,3 +1,5 @@
+require 'bitly'
+
 class Notification < ActiveRecord::Base
   include ApplicationHelper
 
