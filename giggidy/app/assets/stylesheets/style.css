@@ -15,21 +15,44 @@ html, body {
   max-width: initial;
 }
 
+.logo_and_tag {
+  position: absolute;
+  width: 28em;
+  width: 31vw;
+  height: auto;
+  top: 20pt; 
+  left: 24pt;
+  display: inline;
+}
+
+#logo {
+  width: 12em;
+  width: 13vw;
+  float: left;
+  -webkit-filter: drop-shadow(8px 8px 6px rgba(0,0,0,0.5));
+  filter: url(shadow.svg#drop-shadow);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=12, OffY=12,
+  Color='#444')";
+  filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=12, OffY=12, Color='#444')";
+}
+
+#slogan {
+  color: white;
+  font-family: 'Helvetica', Arial, sans-serif;
+  font-size: 1.3em;
+  font-size: 1.5vw;
+  font-weight: 400;
+  letter-spacing: 1.2px;
+  float: right;
+  margin-top: .95em;
+  text-shadow: 2px 2px 4px #1C1C1C;
+}
+
 .search_container {
  position: fixed;
  width: 50%;
- top: 40%;
+ top: 44%;
  left: 25%;
-}
-
-
-#logo {
-	position: absolute;
-  top: 12pt; 
-  left: 24pt;
-  width: 13vw;
-  -webkit-filter: drop-shadow( 5px 5px 1px #000 );
-   filter: drop-shadow( 5px 5px 1px #000 );
 }
 
 
@@ -63,14 +86,6 @@ input[type=text] {
   text-indent: 5px;
   font-size: 1.3em;
   font-size: 1.3vw;
-}
-
-	
-.search_container {
-  position: fixed;
-  width: 50%;
-  top: 40%;
-  left: 25%;
 }
 
 
@@ -114,7 +129,7 @@ input[type=text] {
 #search_message {
   position: fixed;
   width: 50%;
-  top: 53%;
+  top: 57%;
   text-align: center;
   color: white;
   font-family: 'Roboto', Arial, sans-serif;
@@ -147,7 +162,7 @@ input[type=text] {
   position: fixed;
   width: 50%;
   height: auto;
-  top: 53%;
+  top: 57%;
   display: none;
   background: rgba(0, 0, 0, 0.8);
   border-bottom-left-radius: 10px;
