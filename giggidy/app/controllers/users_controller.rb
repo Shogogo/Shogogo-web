@@ -12,9 +12,9 @@ class UsersController < ApplicationController
     @user.guest = false
     @user.save
     render :json => { :status => 'ok', :message => 'Success!'}
-    flash[:notice] = "Successfully registered."
-    # send_sms(params[:user][:phone_number], "Thank you for using Shogogo!")
-    #if receive a response render success message
+    # flash[:notice] = "Successfully registered."
+    send_sms(@user.phone_number, "Thank you for using Shogogo!")
+    # if receive a response render success message
       
     # else
     #   render :partial => 'phone_form'
