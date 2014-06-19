@@ -1,9 +1,13 @@
 class FavoritesController < ApplicationController
   def index
     get_user_ip
-    @user = User.create(guest: true)
-    @user.id
-    session[:user_id] = @user.id
+    
+    if session[:user_id]
+      @user = User.find(session[:user_id])
+    else
+      @user = User.create(guest: true)
+      session[:user_id] = @user.id
+    end
     @favorites = @user.favorites
   end
 
@@ -14,7 +18,7 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    Favorite.find(par
+    Favorite.find(params[id])
     render :json => { :success => "success", :status_code => "200" }
   end
 
