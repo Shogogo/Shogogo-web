@@ -73,15 +73,20 @@ $(document).ready(function() {
         }, "html");
     });
 
-
-    $( document ).on( "submit", "#phone", function(e) {
+    $( document ).on( "submit", "#user_create", function(e) {
         e.preventDefault();
-        var favoriteAjaxPreparer = new FavoriteAjaxPreparer();
-        var bandIds = favoriteAjaxPreparer.save();
-        $.post('/signup',
-            { user: { phone_number: $("#phone input[name='phone_number']").val(), bands: bandIds }
-            }, function(response) {
-            alert(response);
-        },'json');
+        $.ajax({
+            url: '/users',
+            type: 'POST',
+            dataType: 'json',
+            data: { user: { name: $("#user_create input[name='name']").val(), phone_number: $("#user_create input[name='phone_number']").val(),password: $("#user_create input[name='password']").val()} ,authenticity_token: authToken() },
+            beforeSend: function() {
+                window.location.replace("/");
+                alert('Shogogo is sending you a text message to confirm your phone number... Please reply "Yes" to receive notifications');
+            }
+        });
+        // .done(function(data) {
+        //     var message = "Thank you for registering" + data.name;
+        // });
     });
 });
