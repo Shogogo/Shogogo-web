@@ -82,9 +82,8 @@ $(document).ready(function() {
             dataType: 'json',
             data: { user: { name: $("#user_create input[name='name']").val(), phone_number: $("#user_create input[name='phone_number']").val(),password: $("#user_create input[name='password']").val()} ,authenticity_token: authToken() },
             beforeSend: function() {
-                window.location.replace("/");
                 $('.overlay').show();
-                
+
             }
         })
         .done(function(data) {
