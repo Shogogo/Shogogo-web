@@ -6,7 +6,7 @@ class Notification < ActiveRecord::Base
   belongs_to :event
   belongs_to :user
 
-  validates :user, :event, :notification_type, :datetime_sent, presence: true
+  validates :user, :event, presence: true
 
   def self.populate_notifications
     users = User.all
@@ -15,7 +15,7 @@ class Notification < ActiveRecord::Base
         users_events = Event.near(user, 100)
         users_events.each do |event|
           if artist.seatgeek_id == event.artist_id
-            Notification.create(user_id: user.id, event_id: event.id)
+            Notification.where(user_id: user.id, event_id: event.id).first_or_create
           end
         end
       end
@@ -26,9 +26,9 @@ class Notification < ActiveRecord::Base
     client = Bitly.client
     user  = User.find(user_id)
     event = Event.find(event_id)
-    short_url = client.shorten(event.ticket_url)
+    short_url = client.shorten(event.ticket_url).short_url
     artist = Artist.find_by_seatgeek_id(event.artist_id)
-    message = "Hey #{user.name}! #{artist.name} will be playing near you! Buy tickets now! #{short_url}"
+    message = "#{artist.name} will be playing near you! Buy tickets now! #{short_url} - Shogogo"
     send_sms(user.phone_number, message)
   end
 

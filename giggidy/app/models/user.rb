@@ -6,8 +6,8 @@ class User < ActiveRecord::Base
 
 
   
-	# reverse_geocoded_by :latitude, :longitude
-	# # after_validation :geocode
+	reverse_geocoded_by :latitude, :longitude
+	after_validation :geocode
   
   has_secure_password
 
