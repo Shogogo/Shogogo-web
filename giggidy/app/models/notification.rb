@@ -18,4 +18,11 @@ class Notification < ActiveRecord::Base
     end
   end
 
+  def self.message(user_id, event_id)
+    username  = User.find(user_id).name
+    event = Event.find(event_id)
+    artist = Artist.find_by_seatgeek_id(event.artist_id)
+    "Hey #{username}! #{artist} will be playing near you! Buy tickets now! #{event.ticket_url}"
+  end
+
 end
