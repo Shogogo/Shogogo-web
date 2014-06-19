@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user.save
     render :json => { :status => 'ok', :message => 'Success!'}
     # flash[:notice] = "Successfully registered."
-    send_sms(@user.phone_number, "Thank you for using Shogogo!")
+    send_sms(@user.phone_number, "Thank you for using Shogogo! Reply 'confirm' to verify your number or reply 'stop' to unsubscribe.")
     # if receive a response render success message
       
     # else
