@@ -1,4 +1,6 @@
 class Notification < ActiveRecord::Base
+  include ApplicationHelper
+
   belongs_to :event
   belongs_to :user
 
@@ -19,10 +21,11 @@ class Notification < ActiveRecord::Base
   end
 
   def self.message_user(user_id, event_id)
-    username  = User.find(user_id).name
+    user  = User.find(user_id)
     event = Event.find(event_id)
     artist = Artist.find_by_seatgeek_id(event.artist_id)
-    "Hey #{username}! #{artist} will be playing near you! Buy tickets now! #{event.ticket_url}"
+    message = "Hey #{user.name}! #{artist} will be playing near you! Buy tickets now! #{event.ticket_url}"
+    send_sms(user.phone_number, message)
   end
 
   def self.send_notifications
