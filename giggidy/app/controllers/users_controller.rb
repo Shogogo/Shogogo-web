@@ -9,6 +9,8 @@ class UsersController < ApplicationController
     @user.update(phone_number: params[:user][:phone_number], name: params[:user][:name])
     @user.password = params[:user][:password]
     @user.password_confirmation = params[:user][:password]
+    @user.password = params[:user][:password]
+    @user.password_confirmation = params[:user][:password]
     @user.guest = false
     @user.save
     
