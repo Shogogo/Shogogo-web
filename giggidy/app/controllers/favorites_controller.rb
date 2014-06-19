@@ -1,17 +1,16 @@
 class FavoritesController < ApplicationController
   def index
     get_user_ip
+    @user = User.create(guest: true)
+    @user.id
+    session[:guest_id] = @user.id
+    @favorites = @user.favorites
   end
 
   def create
-    if user_is_defined?
-      @favorite = Favorite.create(favorite_params)
-    else
-      @user = User.new_guest
-      @user.save
-      session[:guest_id] = @user.id 
-      @user.build_favorite(favorite_params)
-    end
+    @user = User.find(session[:guest_id])
+    @favorite = Favorite.create(user: @user, artist: Artist.where(favorite_params).first_or_create)
+    render :json => { :success => "success", :status_code => "200" }
   end
 
   def destroy
@@ -29,6 +28,6 @@ class FavoritesController < ApplicationController
   end
 
   def favorite_params
+    params.require(:favorite).permit(:name, :seatgeek_id)
   end
-
 end
