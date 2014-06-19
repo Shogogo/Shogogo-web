@@ -32,6 +32,7 @@ class Notification < ActiveRecord::Base
     unsent_notifications = Notification.all.where(notified: false)
     unsent_notifications.each do |notification|
       notification.message_user(notification.user_id, notification.event_id)
+      notification.update_attributes(notified: true)
     end
   end
 
