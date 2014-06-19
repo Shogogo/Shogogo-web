@@ -1,6 +1,7 @@
 
 
 $(document).ready(function() {
+    $('.overlay').hide();
     var bandView = new BandView();
     var localShowsView = new LocalShowsView();
     var favoritesView = new FavoritesView();
@@ -82,11 +83,13 @@ $(document).ready(function() {
             data: { user: { name: $("#user_create input[name='name']").val(), phone_number: $("#user_create input[name='phone_number']").val(),password: $("#user_create input[name='password']").val()} ,authenticity_token: authToken() },
             beforeSend: function() {
                 window.location.replace("/");
-                alert('Shogogo is sending you a text message to confirm your phone number... Please reply "Yes" to receive notifications');
+                $('.overlay').show();
+                
             }
+        })
+        .done(function(data) {
+            var message = "Welcome to Shogogo Zach!";
+            $('.message').text(message);
         });
-        // .done(function(data) {
-        //     var message = "Thank you for registering" + data.name;
-        // });
     });
 });
