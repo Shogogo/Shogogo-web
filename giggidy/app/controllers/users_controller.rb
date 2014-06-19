@@ -1,17 +1,21 @@
 class UsersController < ApplicationController
   include ApplicationHelper
   def new
-    @user = User.new
-    render :partial => 'phone_form'
+    render :partial => 'register_form'
   end
 
   def create
-    @user = User.find(session[:guest_id])
-    @user.update(user_params)
-    send_sms(params[:user][:phone_number], "Thank you for using Shogogo!")
+    @user = User.find(session[:user_id])
+    @user.update(phone_number: params[:user][:phone_number], name: params[:user][:name])
+    @user.password = params[:user][:password]
+    @user.password_confirmation = params[:user][:password]
+    @user.guest = false
+    @user.save
+    render :json => { :status => 'ok', :message => 'Success!'}
+    flash[:notice] = "Successfully registered."
+    # send_sms(params[:user][:phone_number], "Thank you for using Shogogo!")
     #if receive a response render success message
-      render :json => { :status => 'ok', :message => 'Success!'}
-      flash[:notice] = "Successfully registered."
+      
     # else
     #   render :partial => 'phone_form'
     # end

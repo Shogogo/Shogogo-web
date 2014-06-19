@@ -37,12 +37,12 @@ $(document).ready(function() {
 
     $('#band_container').on('click', 'button', function(e) {
         e.preventDefault();
+        favoritesView.append_draw(artistObject);
         $.post("/favorites", { favorite: { seatgeek_id: artistObject.id, name: artistObject.name }, authenticity_token: authToken() })
             .done(function(data) {
-                var favorite_id = data.name;
+                var favorite_id = data.id;
+                $('.favorites_band_item').last().attr( "fav-id", favorite_id );
             });
-
-        favoritesView.append_draw(artistObject);
 
         $('#band_container').empty().hide(200);
         $('#search_box').val('');
@@ -52,15 +52,18 @@ $(document).ready(function() {
 
     $( document ).on( "click", ".favorites_band_remove", function(e) {
         e.preventDefault();
-        var band = $(this).closest('.favorites_band_item').find('.favorites_band_name').text();
-        favoriteList.removeBand(band);
-
-         $.ajax({
-             url: '/favorites/destroy',
+        var band = $(this).closest('.favorites_band_item');
+        var bandName = band.find('.favorites_band_name').text();
+        var favoriteId = band.attr('fav-id');
+        var destroy_path = "/favorites/" + favoriteId;
+        $(band).remove();
+        $.ajax({
+             url: destroy_path,
              type: 'DELETE',
              dataType: 'json',
-             data: { favorite: { name: band }, authenticity_token: authToken() }
+             data: { favorite: { name: bandName }, authenticity_token: authToken() }
          });
+        
     });
 
     $( document ).on( "click", ".favorites_save", function(e) {
@@ -70,15 +73,20 @@ $(document).ready(function() {
         }, "html");
     });
 
-
-    $( document ).on( "submit", "#phone", function(e) {
+    $( document ).on( "submit", "#user_create", function(e) {
         e.preventDefault();
-        var favoriteAjaxPreparer = new FavoriteAjaxPreparer();
-        var bandIds = favoriteAjaxPreparer.save();
-        $.post('/signup',
-            { user: { phone_number: $("#phone input[name='phone_number']").val(), bands: bandIds }
-            }, function(response) {
-            alert(response);
-        },'json');
+        $.ajax({
+            url: '/users',
+            type: 'POST',
+            dataType: 'json',
+            data: { user: { name: $("#user_create input[name='name']").val(), phone_number: $("#user_create input[name='phone_number']").val(),password: $("#user_create input[name='password']").val()} ,authenticity_token: authToken() },
+            beforeSend: function() {
+                window.location.replace("/");
+                alert('Shogogo is sending you a text message to confirm your phone number... Please reply "Yes" to receive notifications');
+            }
+        });
+        // .done(function(data) {
+        //     var message = "Thank you for registering" + data.name;
+        // });
     });
 });

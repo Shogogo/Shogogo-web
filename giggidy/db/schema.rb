@@ -17,8 +17,9 @@ ActiveRecord::Schema.define(version: 20140619152853) do
   enable_extension "plpgsql"
 
   create_table "artists", force: true do |t|
-    t.string   "name",        null: false
-    t.integer  "seatgeek_id", null: false
+    t.string   "name",            null: false
+    t.integer  "seatgeek_id",     null: false
+    t.string   "image_url_small"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
