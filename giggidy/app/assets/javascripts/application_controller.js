@@ -83,12 +83,14 @@ $(document).ready(function() {
             data: { user: { name: $("#user_create input[name='name']").val(), phone_number: $("#user_create input[name='phone_number']").val(),password: $("#user_create input[name='password']").val()} ,authenticity_token: authToken() },
             beforeSend: function() {
                 $('.overlay').show();
+                $('#favorites-menu').hide();
+                $('#search_box').hide();
+                $('#search_message').hide();
 
             }
         })
         .done(function(data) {
-            var message = "Welcome to Shogogo Zach!";
-            $('.message').text(message);
+             window.location.replace("/");
         });
     });
 });
