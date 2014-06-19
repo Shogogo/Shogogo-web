@@ -37,10 +37,11 @@ $(document).ready(function() {
 
     $('#band_container').on('click', 'button', function(e) {
         e.preventDefault();
-        $.post("/favorites", { favorite: { seatgeek_id: artistObject.id, name: artistObject.name }, authenticity_token: authToken() });
-        
-        // favoriteList.addBand(artistObject);
-        // favoritesView.draw(favoriteList.list);
+        $.post("/favorites", { favorite: { seatgeek_id: artistObject.id, name: artistObject.name }, authenticity_token: authToken() })
+            .done(function(data) {
+                var favorite_id = data.name;
+            });
+
         favoritesView.append_draw(artistObject);
 
         $('#band_container').empty().hide(200);
@@ -53,7 +54,13 @@ $(document).ready(function() {
         e.preventDefault();
         var band = $(this).closest('.favorites_band_item').find('.favorites_band_name').text();
         favoriteList.removeBand(band);
-        // favoritesView.draw(JSON.parse(sessionStorage.favoriteList));
+
+         $.ajax({
+             url: '/favorites/destroy',
+             type: 'DELETE',
+             dataType: 'json',
+             data: { favorite: { name: band }, authenticity_token: authToken() }
+         });
     });
 
     $( document ).on( "click", ".favorites_save", function(e) {
