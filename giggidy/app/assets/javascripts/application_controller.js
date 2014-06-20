@@ -1,7 +1,6 @@
 
 
 $(document).ready(function() {
-    $('.overlay').hide();
     var bandView = new BandView();
     var localShowsView = new LocalShowsView();
     var favoritesView = new FavoritesView();
@@ -10,12 +9,17 @@ $(document).ready(function() {
     var searchBox = new SearchBox();
     var artistObject;
 
+    function authToken() {
+        return $('meta[name="csrf-token"]').attr('content');
+    }
+
     $("#search_box")
-        .suggest({filter:'(all type:/music/artist)'
-                , flyout: false
-                , css: {pane: "suggest_pane"
-                , list: "suggest_list"
-                , status: "suggest_status"}
+        .suggest({ filter:'(all type:/music/artist)',
+            flyout: false,
+            css: { pane: "suggest_pane",
+                   list: "suggest_list",
+                 status: "suggest_status" },
+                  "key": "AIzaSyBCuOTLMAC-WOcLzyv2YeKvCvwaDPI8NhI"
         })
         .bind('fb-select', function(e) {
             var artistName = searchBox.getArtistName();
@@ -64,7 +68,6 @@ $(document).ready(function() {
              dataType: 'json',
              data: { favorite: { name: bandName }, authenticity_token: authToken() }
          });
-        
     });
 
     $( document ).on( "click", ".favorites_save", function(e) {
@@ -86,7 +89,6 @@ $(document).ready(function() {
                 $('#favorites-menu').hide();
                 $('#search_box').hide();
                 $('#search_message').hide();
-
             }
         })
         .done(function(data) {
