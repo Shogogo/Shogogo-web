@@ -21,7 +21,6 @@ div.overlay {
     height:         100%;
     background-color: black;
     opacity: 0.75;
-    display: none;
 }
 
 div.overlay p {

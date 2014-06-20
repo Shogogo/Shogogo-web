@@ -13,7 +13,7 @@ feature "Artists favorite list" do
   end
 
   scenario "user adds a favorite artist", js: true do
-    expect(page).to have_content('Notify Me')
+    expect(page).to have_content('Notify Me!')
     expect(page).to have_content('Fleetwood Mac')
     page.execute_script("sessionStorage.clear()")
   end
