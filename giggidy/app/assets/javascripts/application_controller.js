@@ -78,6 +78,9 @@ $(document).ready(function() {
 
     $( document ).on( "submit", "#user_create", function(e) {
         e.preventDefault();
+        if (!phoneValidator()) {
+            return false;
+        }
         $.ajax({
             url: '/users',
             type: 'POST',
@@ -88,6 +91,10 @@ $(document).ready(function() {
                 $('#favorites-menu').hide();
                 $('#search_box').hide();
                 $('#search_message').hide();
+            },
+            error: function(xhr){
+                var errors = $.parseJSON(xhr.responseText).errors;
+                alert(errors);
             }
         })
         .done(function(data) {

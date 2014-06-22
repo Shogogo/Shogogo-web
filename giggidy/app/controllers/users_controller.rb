@@ -12,12 +12,16 @@ class UsersController < ApplicationController
     @user.longitude = 40.77 
     @user.latitude = -73.98
     @user.guest = false
-    @user.save
     
-    # flash[:notice] = "Successfully registered."
-    send_sms(@user.phone_number, "Thank you for using Shogogo! Reply 'confirm' to verify your number or reply 'stop' to unsubscribe.")
-    sleep(10)
-    render :json => { :status => 'ok', :message => 'Success!'}
+    parsed_phone = "+1" + @user.phone_number
+
+    if @user.save
+      send_sms(parsed_phone, "Thank you for using Shogogo! Reply 'confirm' to verify your number or reply 'stop' to unsubscribe.")
+      sleep(10) #temporary solution - need to implement client side waiting for phone validation
+      render :json => { :status => 'ok', :message => 'Success!'}
+    else
+      render :json => { :errors => @model.errors.full_messages }
+    end
   end
 
   private
