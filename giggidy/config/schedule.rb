@@ -8,6 +8,11 @@ every 1.day, :at => "02:00am" do
   rake "notifications:populate_notifications"
 end
 
+every 1.day, :at => "06:00am" do
+  #nightly purge of all guest information
+  rake "users:purge_all_guests"
+end
+
 every 1.day, :at => "12:00pm" do
   #send out notifications to users about bands' upcoming shows
   rake "notifications:send_sms"
