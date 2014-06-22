@@ -78,6 +78,9 @@ $(document).ready(function() {
 
     $( document ).on( "submit", "#user_create", function(e) {
         e.preventDefault();
+        if (!phoneValidator()) {
+            return false;
+        }
         $.ajax({
             url: '/users',
             type: 'POST',
