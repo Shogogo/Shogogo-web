@@ -51,5 +51,11 @@ namespace :notifications do
 end
 
 namespace :users do
-  
+
+  desc "Purge all guest information (users where guest attribute is true)"
+  task :purge_all_guests => :environment do
+    guests = User.where(guest: true)
+    guests.destroy_all
+  end
+
 end
