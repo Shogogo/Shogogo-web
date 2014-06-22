@@ -12,8 +12,8 @@ class Notification < ActiveRecord::Base
     users = User.all
     users.each do |user|
       user.artists.each do |artist|
-        users_events = Event.near(user, 100)
-        users_events.each do |event|
+        events_near_user = Event.near(user, 100)
+        events_near_user.each do |event|
           if artist.seatgeek_id == event.artist_id
             Notification.where(user_id: user.id, event_id: event.id).first_or_create
           end
