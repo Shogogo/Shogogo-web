@@ -12,7 +12,7 @@ FavoritesView.prototype = {
 
     append_draw: function(band) {
         var newBandFavorite = this.favoritesPresenter.append(band);
-        this.favoritesMenuNode.appendChild(newBandFavorite);
-
+        var faveBand = this.favoritesMenuNode.appendChild(newBandFavorite);
+        $(faveBand).slideDown(2000);
     }
 };
