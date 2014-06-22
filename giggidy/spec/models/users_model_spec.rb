@@ -7,19 +7,25 @@ describe User do
   
   it { should have_many(:events).through(:artists) }
 
-  it { should validate_presence_of(:name) }
-  
-  it { should validate_presence_of(:phone_number) }
-  
-  it { should validate_uniqueness_of(:phone_number) }
+  context "if guest" do
+    before { subject.stub(:eligible?) { false } }
+  end
 
-  it { should allow_value('+12223334444').for(:phone_number) }
+  context "if confirmed user" do
+    before { subject.stub(:guest?) { true } }
+    
+    # it { should_not validate_presence_of(:name) }
   
-  it { should_not allow_value('ab223334444').for(:phone_number) }
-  
-  it { should validate_presence_of(:latitude) }
+    # it { should validate_uniqueness_of(:phone_number) }
 
-  it { should validate_presence_of(:longitude) }
+    it { should allow_value('+12223334444').for(:phone_number) }
+
+    it { should_not allow_value('2223334567').for(:phone_number) }
+  end
+  
+  # it { should validate_presence_of(:latitude) }
+
+  # it { should validate_presence_of(:longitude) }
 
   it { should have_secure_password }
 end

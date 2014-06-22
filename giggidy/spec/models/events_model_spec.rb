@@ -14,10 +14,6 @@ describe Event do
   it { should validate_uniqueness_of(:ticket_url) }
   
   it { should validate_presence_of(:datetime_local) }
-  
-  it { should validate_presence_of(:latitude) }
-
-  it { should validate_presence_of(:longitude) }
 
   it { should validate_presence_of(:seatgeek_id) }
   
