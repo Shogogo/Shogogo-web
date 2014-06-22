@@ -11,7 +11,7 @@ SearchBox.prototype.getArtistName = function() {
 };
 
 SearchBox.prototype.preparedArtistQuery = function(artistName) {
-    var words = artistName.replace(/\./g,'').split(' ');
+    var words = artistName.replace(/(\.)?(\,)?/g,'').split(' ');
     var lowercased_words = words.join('-').toLowerCase();
     var preparedAristName = removeDiacritics(lowercased_words);
     return 'http://api.seatgeek.com/2/performers?slug=' + preparedAristName;
