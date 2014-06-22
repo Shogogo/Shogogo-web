@@ -24,7 +24,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'timecop'
+  gem 'timecop', '~> 0.7.1'
   gem 'faker', '~> 1.1.2'
   gem 'capybara', '~> 2.1.0'
   gem 'launchy', '~> 2.3.0'
