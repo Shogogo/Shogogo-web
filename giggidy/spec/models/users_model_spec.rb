@@ -13,7 +13,7 @@ describe User do
   
   it { should validate_uniqueness_of(:phone_number) }
 
-  it { should allow_value('12223334444').for(:phone_number) }
+  it { should allow_value('+12223334444').for(:phone_number) }
   
   it { should_not allow_value('ab223334444').for(:phone_number) }
   
