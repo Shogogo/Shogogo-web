@@ -282,6 +282,7 @@ input[type=text] {
   -webkit-transition: width 0.4s;
   -moz-transition: width 0.4s;
   box-shadow: -5px -5px 20px black;
+  padding: 0px 0px;
 }
 
 .favorites_menu div{
@@ -315,6 +316,7 @@ input[type=text] {
   right: 0;
   color: gray;
   background-color: transparent;
+  width: 10%;
 }
 
 
@@ -350,7 +352,6 @@ input[type=text] {
   font-weight: 500;
   font-size: 1.3em;
   font-size: 1.5vw;
-
 }
 
 .favorites_save:hover {
@@ -361,7 +362,9 @@ input[type=text] {
 /*///////////////SIGN UP///////////////*/
 
 .signup {
-  margin-top: 30px;
+  margin-top: 20px;
+  padding: 0px 20px;
+  list-style: none;
 }
 
 
