@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
   
   has_secure_password
 
-  validates_presence_of :phone_number, :name, unless: :guest == true
-  validates_uniqueness_of :phone_number, allow_blank: true
-  validates_format_of :phone_number, :with => /\A\d{10}\z/, message: "Only numbers allowed, i.e. 5551234567"
+  validates_uniqueness_of :phone_number, :allow_nil => true
+  validates_format_of :phone_number, :with => /\A\d{10}\z/, :allow_nil => true, message: "Only numbers allowed, i.e. 5551234567"
 end
