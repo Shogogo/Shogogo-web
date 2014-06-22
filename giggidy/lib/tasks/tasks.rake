@@ -49,3 +49,7 @@ namespace :notifications do
   end
 
 end
+
+namespace :users do
+  
+end
