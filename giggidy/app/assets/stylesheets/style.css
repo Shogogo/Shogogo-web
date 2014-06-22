@@ -323,12 +323,14 @@ input[type=text] {
   transition: color 0.2s ease;
   -webkit-transition: color 0.2s ease;
   -moz-transition: color 0.2s ease;
+  outline: none;
 }
 
 
 .favorites_band_remove:hover{
   background-color: transparent;
   color: #FFFF00;
+  outline: none;
   
 }
 
