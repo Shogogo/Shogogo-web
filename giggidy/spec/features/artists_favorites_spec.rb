@@ -15,7 +15,6 @@ feature "Artists favorite list" do
   scenario "user adds a favorite artist", js: true do
     expect(page).to have_content('Notify Me!')
     expect(page).to have_content('Fleetwood Mac')
-    page.execute_script("sessionStorage.clear()")
   end
 
   scenario "artist snippet can be deleted", js: true do
