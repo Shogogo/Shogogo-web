@@ -91,6 +91,10 @@ $(document).ready(function() {
                 $('#favorites-menu').hide();
                 $('#search_box').hide();
                 $('#search_message').hide();
+            },
+            error: function(xhr){
+                var errors = $.parseJSON(xhr.responseText).errors;
+                alert(errors);
             }
         })
         .done(function(data) {
