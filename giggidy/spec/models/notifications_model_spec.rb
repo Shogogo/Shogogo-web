@@ -8,8 +8,4 @@ describe Notification do
   it { should validate_presence_of(:user) }
   
   it { should validate_presence_of(:event) }
-  
-  it { should validate_presence_of(:notification_type) }
-  
-  it { should validate_presence_of(:datetime_sent) }
 end
