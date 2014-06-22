@@ -60,7 +60,11 @@ $(document).ready(function() {
         var bandName = band.find('.favorites_band_name').text();
         var favoriteId = band.attr('fav-id');
         var destroy_path = "/favorites/" + favoriteId;
-        $(band).remove();
+
+        $(band).slideUp(100, function() {
+            $(this).remove();
+        });
+
         $.ajax({
              url: destroy_path,
              type: 'DELETE',
