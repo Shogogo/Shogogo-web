@@ -380,6 +380,10 @@ input[type=text] {
 
 #signup_button{
   background-color: rgb(255, 237, 0);
+  font-family: 'Roboto', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 1.3em;
+  font-size: 1.5vw;
   width: 100%;
 }
 
