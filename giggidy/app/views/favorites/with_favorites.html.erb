@@ -2,7 +2,7 @@
 
   <div class="small-9 large-12 columns">
   
-    <div class="search_container search_with_faves">
+    <div class="search_with_faves">
       <input type="text" name="artist-search" id="search_box" placeholder="search your favorite artists..."/>
         
       <h2 id="search_message">Start tracking your favorite artists.<br>Get text updates of upcoming shows near you.</h2>
@@ -16,16 +16,7 @@
   </div>
 
   <div class="small-3 large-0 columns favorites_menu" id="favorites-menu">
-    <%= render "favorites", artists: @artists %>
-
-    <button class="logout">Logout</button>
-
-    <% if @user.guest == false %>
-      <%= link_to '<button class="logout">Logout</button>'.html_safe, session_path(session), :method => :delete %>
-    <% else %>
-      <button class="favorites_save">Notify Me!</div>
-    <% end %>
-  
+    <%= render "favorites_menu" %>
   </div>
 
 </div>
