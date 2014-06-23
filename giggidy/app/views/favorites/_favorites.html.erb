@@ -1,6 +1,6 @@
 <% artists.each do |artist| %>
   <div class="favorites_band_item" fav-id="<%= artist.favorite_id %>">
-  <img class="favorites_band_image" src="">
+  <img class="favorites_band_image" src="<%= artist.image_url_small %>">
   <span class="favorites_band_name"><%= artist.name %></span>
   <button class="favorites_band_remove">X</button>
 </div>
