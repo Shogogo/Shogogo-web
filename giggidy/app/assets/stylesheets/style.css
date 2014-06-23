@@ -379,6 +379,7 @@ input[type=text] {
 }
 
 #signup_button{
+  background-color: rgb(255, 237, 0);
   width: 100%;
 }
 
