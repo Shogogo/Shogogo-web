@@ -3,7 +3,7 @@
 <head>
   <title>ShoGoGo</title>
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900,300italic,100italic,900italic,700italic,500italic,400italic' rel='stylesheet' type='text/css'>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/freebase/suggest/4_2/suggest.min.css" />
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -12,6 +12,7 @@
 </head>
 <body>
 	<%= render 'layouts/messages' %>
+  <%= render 'layouts/logo' %>
   <%= yield %>
   <div class="overlay"><div><p class="message">Thanks for registering! Shogogo is sending you a text now....</p></div>
 </body>

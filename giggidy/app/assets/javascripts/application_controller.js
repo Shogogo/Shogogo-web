@@ -12,6 +12,32 @@ $(document).ready(function() {
         return $('meta[name="csrf-token"]').attr('content');
     }
 
+    $('#login_link').on('click', function(e) {
+        e.preventDefault();
+        $.get("/sessions/new", function(data) {
+            $('#favorites-menu').html(data);
+        }, "html");
+        $('#favorites-menu').removeClass('nofaves').addClass('faves');
+        $('#search_message').hide();
+        $('.search_container').removeClass('search_container').addClass('search_with_faves', { duration:200 });
+        $('.login').hide();
+    });
+
+    $( document ).on( "submit", "#login_form", function(e) {
+        e.preventDefault();
+        $('#login_form').hide();
+        $.ajax({
+            url: '/sessions',
+            type: 'POST',
+            dataType: 'html',
+            data: { login: { phone_number: $("#login_form input[name='phone_number']").val(),password: $("#login_form input[name='password']").val()} ,authenticity_token: authToken() },
+        })
+        .done(function(data) {
+            $('#favorites-menu').html(data);
+        });
+    });
+
+
     $("#search_box")
         .suggest({ filter:'(all type:/music/artist)',
             flyout: false,
@@ -24,6 +50,7 @@ $(document).ready(function() {
             var artistName = searchBox.getArtistName();
             var preparedArtistName = searchBox.preparedArtistQuery(artistName);
             $('#search_message').hide();
+            $('.login').hide();
             $('input:text').focus(function(){
             $(this).val('');
          });
@@ -42,7 +69,7 @@ $(document).ready(function() {
     $('#band_container').on('click', 'button', function(e) {
         e.preventDefault();
         favoritesView.append_draw(artistObject);
-        $.post("/favorites", { favorite: { seatgeek_id: artistObject.id, name: artistObject.name }, authenticity_token: authToken() })
+        $.post("/favorites", { favorite: { seatgeek_id: artistObject.id, name: artistObject.name, image_url_small: artistObject.image_url_small }, authenticity_token: authToken() })
             .done(function(data) {
                 var favorite_id = data.id;
                 $('.favorites_band_item').last().attr( "fav-id", favorite_id );

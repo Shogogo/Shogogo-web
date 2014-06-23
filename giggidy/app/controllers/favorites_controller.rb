@@ -3,6 +3,8 @@ class FavoritesController < ApplicationController
     get_user_ip
     if session[:user_id]
       @user = User.find(session[:user_id])
+      @artists = @user.artists
+      render 'with_favorites'
     else
       @user = User.create(guest: true)
       @user.password = "guest"
@@ -10,22 +12,23 @@ class FavoritesController < ApplicationController
       @user.save
       session[:user_id] = @user.id
     end
-    @favorites = @user.favorites
   end
 
   def create
     @user = User.find(session[:user_id])
     @favorite = Favorite.create(user: @user, artist: Artist.where(favorite_params).first_or_create)
+    # flash[:notice] = "Artist saved!"
     render :json => { :success => "success", :status_code => "200", :id => @favorite.id }
   end
 
   def destroy
-    Favorite.find(params[:id])
+    Favorite.find(params[:id]).destroy
     render :json => { :success => "success", :status_code => "200" }
   end
 
   private
+
   def favorite_params
-    params.require(:favorite).permit(:name, :seatgeek_id)
+    params.require(:favorite).permit(:name, :seatgeek_id, :image_url_small)
   end
 end

@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       sleep(10) #temporary solution - need to implement client side waiting for phone validation
       render :json => { :status => 'ok', :message => 'Success!'}
     else
-      render :json => { :errors => @model.errors.full_messages }
+      render :json => { :errors => @user.errors.full_messages }
     end
   end
 

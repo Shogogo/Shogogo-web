@@ -87,6 +87,13 @@ div.overlay > div {
  left: 25%;
 }
 
+.search_with_faves {
+  position: fixed;
+  width: 50%;
+  top: 44%;
+  left: 12.5%;
+}
+
 
 /*SEARCH BOX STYLING*/
 
@@ -172,6 +179,30 @@ input[type=text] {
   font-size: 1.5em;
   font-size: 1.75vw;
   -webkit-animation:fadein .5s;
+}
+
+.login {
+ position: fixed;
+ bottom: 5%;
+ width: 50%;
+ text-align: center;
+ color: white;
+ font-family: 'Roboto', Arial, sans-serif;
+ font-weight: 200;
+ letter-spacing: 0.0625em;
+ text-shadow: 0px 0px 4px black , 0px 0px 4px black, -1px 0px 3px black,
+ 0px -1px 3px black, 1px 2px 6px black;
+ font-size: 1.0em;
+ font-size: 1.25vw;
+}
+
+
+#login_link:link, #login_link:visited {
+  color: #ffff00
+}
+
+#login_link:hover {
+  color: white
 }
 
 .suggest_pane{
@@ -350,7 +381,7 @@ input[type=text] {
   width: 3em;
 }
 
-.favorites_save {
+.favorites_save, .logout {
   position: absolute;
   bottom: 0;
   /*top: 100%;*/
@@ -365,7 +396,7 @@ input[type=text] {
   font-size: 1.5vw;
 }
 
-.favorites_save:hover {
+.favorites_save:hover, .logout:hover {
   background-color: rgb(244, 255, 38) !important;
   color: black !important;
 }
