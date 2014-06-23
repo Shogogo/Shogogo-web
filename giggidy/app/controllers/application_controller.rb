@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   def get_user_ip
     if request.remote_ip == "127.0.0.1"
-      client_ip = "8.8.8.8"
+      client_ip = "172.254.25.12"
     else 
       client_ip = request.remote_ip
     end
