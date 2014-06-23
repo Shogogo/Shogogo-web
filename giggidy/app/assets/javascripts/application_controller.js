@@ -42,7 +42,7 @@ $(document).ready(function() {
     $('#band_container').on('click', 'button', function(e) {
         e.preventDefault();
         favoritesView.append_draw(artistObject);
-        $.post("/favorites", { favorite: { seatgeek_id: artistObject.id, name: artistObject.name }, authenticity_token: authToken() })
+        $.post("/favorites", { favorite: { seatgeek_id: artistObject.id, name: artistObject.name, image_url_small: artistObject.image_url_small }, authenticity_token: authToken() })
             .done(function(data) {
                 var favorite_id = data.id;
                 $('.favorites_band_item').last().attr( "fav-id", favorite_id );
