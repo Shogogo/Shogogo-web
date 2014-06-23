@@ -378,6 +378,10 @@ input[type=text] {
   list-style: none;
 }
 
+#signup_button{
+  width: 100%;
+}
+
 
 #sign_up_message {
   color: white;
