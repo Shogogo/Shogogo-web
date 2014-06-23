@@ -1,8 +1,0 @@
-  <% if session[:user_id] %>
-    <%= 'LOGGED IN' %>
-    <%= link_to 'logout', logout_path(@user), method: 'post' %>
-  <% else %>
-    <%= 'Please signup or login.' %>
-    <%= render :partial => 'application/signup' %>
-    <%= render :partial => 'application/signin' %>
-  <% end %>
