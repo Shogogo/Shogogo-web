@@ -4,6 +4,7 @@ class FavoritesController < ApplicationController
     if session[:user_id]
       @user = User.find(session[:user_id])
       @artists = @user.artists
+      render 'with_favorites'
     else
       @user = User.create(guest: true)
       @user.password = "guest"
@@ -11,6 +12,7 @@ class FavoritesController < ApplicationController
       @user.save
       session[:user_id] = @user.id
     end
+
   end
 
   def create
@@ -27,6 +29,6 @@ class FavoritesController < ApplicationController
 
   private
   def favorite_params
-    params.require(:favorite).permit(:name, :seatgeek_id)
+    params.require(:favorite).permit(:name, :seatgeek_id, :image_url_small)
   end
 end
