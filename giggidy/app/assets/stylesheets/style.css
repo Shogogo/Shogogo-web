@@ -387,6 +387,11 @@ input[type=text] {
   width: 100%;
 }
 
+#signup_button:hover{
+  background-color: rgb(244, 255, 38) !important;
+  color: black !important;
+}
+
 
 #sign_up_message {
   color: white;
