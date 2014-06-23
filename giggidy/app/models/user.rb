@@ -3,9 +3,6 @@ class User < ActiveRecord::Base
   has_many :artists, -> { select('artists.*, favorites.id as favorite_id') }, through: :favorites
   has_many :events, through: :artists
   has_many :notifications
-
-	reverse_geocoded_by :latitude, :longitude
-	after_validation :geocode
   
   has_secure_password
 
