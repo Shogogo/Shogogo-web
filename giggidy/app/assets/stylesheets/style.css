@@ -354,7 +354,7 @@ input[type=text] {
   width: 3em;
 }
 
-.favorites_save {
+.favorites_save, .logout {
   position: absolute;
   bottom: 0;
   /*top: 100%;*/
@@ -369,7 +369,7 @@ input[type=text] {
   font-size: 1.5vw;
 }
 
-.favorites_save:hover {
+.favorites_save:hover, .logout:hover {
   background-color: rgb(244, 255, 38) !important;
   color: black !important;
 }

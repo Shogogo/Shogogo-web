@@ -18,7 +18,13 @@
   <div class="small-3 large-0 columns favorites_menu" id="favorites-menu">
     <%= render "favorites", artists: @artists %>
 
-    <button class="favorites_save">Notify Me!</div>
+    <button class="logout">Logout</button>
+
+    <% if @user.guest == false %>
+      <%= link_to '<button class="logout">Logout</button>'.html_safe, session_path(session), :method => :delete %>
+    <% else %>
+      <button class="favorites_save">Notify Me!</div>
+    <% end %>
   
   </div>
 

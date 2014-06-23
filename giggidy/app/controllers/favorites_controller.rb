@@ -12,22 +12,22 @@ class FavoritesController < ApplicationController
       @user.save
       session[:user_id] = @user.id
     end
-
   end
 
   def create
     @user = User.find(session[:user_id])
     @favorite = Favorite.create(user: @user, artist: Artist.where(favorite_params).first_or_create)
+    # flash[:notice] = "Artist saved!"
     render :json => { :success => "success", :status_code => "200", :id => @favorite.id }
   end
 
   def destroy
     Favorite.find(params[:id]).destroy
-
     render :json => { :success => "success", :status_code => "200" }
   end
 
   private
+
   def favorite_params
     params.require(:favorite).permit(:name, :seatgeek_id, :image_url_small)
   end
