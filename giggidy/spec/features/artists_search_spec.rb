@@ -45,4 +45,12 @@ feature "Artist search box" do
     page.execute_script %Q{ $('.fbs-item').first().trigger("mouseenter").click(); }
     expect(find_field('search_box').value).to eq "Sigur Rós"
   end
+
+  scenario "selects an artist with an ampersand(&) in the artist name", js: true do
+    visit root_path
+    fill_in "artist-search", with: "Above and Beyond"
+    sleep(1)
+    page.execute_script %Q{ $('.fbs-item').first().trigger("mouseenter").click(); }
+    expect(find_field('search_box').value).to eq "Above & Beyond"
+  end
 end
