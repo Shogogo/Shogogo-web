@@ -378,6 +378,20 @@ input[type=text] {
   list-style: none;
 }
 
+#signup_button{
+  background-color: rgb(255, 237, 0);
+  font-family: 'Roboto', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 1.3em;
+  font-size: 1.5vw;
+  width: 100%;
+}
+
+#signup_button:hover{
+  background-color: rgb(244, 255, 38) !important;
+  color: black !important;
+}
+
 
 #sign_up_message {
   color: white;
