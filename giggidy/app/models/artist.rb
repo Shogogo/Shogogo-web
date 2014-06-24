@@ -6,7 +6,7 @@ class Artist < ActiveRecord::Base
   validates :name, :seatgeek_id, presence: true, uniqueness: true
 
   def self.seed_from_seatgeek
-    (100..250000).each do |i|
+    (24946..250000).each do |i|
       artistInfo = fetch_artist(i)
       if artistInfo['type'] == "band"
         Artist.where(name: artistInfo['name'],
