@@ -18,7 +18,9 @@ class FavoritesController < ApplicationController
 
   def create
     @user = User.find(session[:user_id])
-    @favorite = Favorite.create(user: @user, artist: Artist.where(favorite_params).first_or_create)
+    artist = Artist.find_or_initialize_by(seatgeek_id: params[:favorite][:seatgeek_id])
+    artist.update(image_url_small: params[:favorite][:image_url_small])
+    @favorite = Favorite.create(user: @user, artist: artist)
     # flash[:notice] = "Artist saved!"
     render :json => { :success => "success", :status_code => "200", :id => @favorite.id }
   end
