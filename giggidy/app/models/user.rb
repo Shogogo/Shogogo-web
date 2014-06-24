@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 	has_many :favorites
-  has_many :artists, through: :favorites
+  has_many :artists, -> { select('artists.*, favorites.id as favorite_id') }, through: :favorites
   has_many :events, through: :artists
   has_many :notifications
   
