@@ -409,7 +409,7 @@ input[type=text] {
   list-style: none;
 }
 
-#signup_button{
+#signup_button, #login_button{
   background-color: rgb(255, 237, 0);
   font-family: 'Roboto', Arial, sans-serif;
   font-weight: 500;
@@ -418,7 +418,7 @@ input[type=text] {
   width: 100%;
 }
 
-#signup_button:hover{
+#signup_button:hover, #login_button:hover{
   background-color: rgb(244, 255, 38) !important;
   color: black !important;
 }
