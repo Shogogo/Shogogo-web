@@ -6,8 +6,7 @@ class User < ActiveRecord::Base
   
   has_secure_password
 
-  reverse_geocoded_by :latitude, :longitude,
-  :address => :location
+  reverse_geocoded_by :latitude, :longitude
   after_validation :reverse_geocode
 
   validates_uniqueness_of :phone_number, :allow_nil => true
