@@ -1,5 +1,6 @@
 $(document).ready(function() {
     var bandView = new BandView();
+    var sessionsController = new SessionsController();
     var localShowsView = new LocalShowsView();
     var favoritesView = new FavoritesView();
     var favoriteList = new FavoriteList();
@@ -100,12 +101,8 @@ $(document).ready(function() {
          });
     });
 
-    $( document ).on( "click", ".favorites_save", function(e) {
-        e.preventDefault();
-        $.get("/users/new", function(data) {
-            $('#favorites-menu').html(data);
-        }, "html");
-    });
+    
+    sessionsController.signUpListener();
 
     $( document ).on( "submit", "#user_create", function(e) {
         e.preventDefault();

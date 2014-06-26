@@ -1,5 +1,7 @@
 FavoritesView = function() {
     this.favoritesMenuNode = document.getElementsByClassName('favorites_menu')[0];
+    this.favoritesMenuContainer = document.getElementById('favorites-menu');
+    this.favoritesSaveButton = document.getElementsByClassName('favorites_save')[0];
     this.favoritesPresenter = new FavoritesPresenter();
 };
 
@@ -14,5 +16,5 @@ FavoritesView.prototype = {
         var newBandFavorite = this.favoritesPresenter.append(band);
         var faveBand = this.favoritesMenuNode.appendChild(newBandFavorite);
         $(faveBand).slideDown(2000);
-    },
+    }
 };
