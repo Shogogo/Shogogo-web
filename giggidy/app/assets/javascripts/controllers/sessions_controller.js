@@ -11,10 +11,10 @@ SessionsController.prototype = {
     signUpListener: function() {
         _this = this;
         $( document ).on( "click", this.favoritesView.favoritesSaveButton, function(e) {
-        e.preventDefault();
-        $.get("/users/new", function(data) {
-            _this.drawLoginForm(data);
-        }, "html");
-    });
+            e.preventDefault();
+            $.get("/users/new", function(data) {
+                _this.drawLoginForm(data);
+            }, "html");
+        });
     }
 };
