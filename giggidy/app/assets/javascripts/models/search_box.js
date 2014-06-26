@@ -1,5 +1,4 @@
-var SearchBox = function(){
-};
+var SearchBox = function(){};
 
 SearchBox.prototype.searchSuggest = function() {
     $("#search_box").suggest({filter:'(all type:/music/artist)'});

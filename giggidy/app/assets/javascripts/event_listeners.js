@@ -1,4 +1,0 @@
-EventListener = function() {};
-
-EventListener.prototype = {
-};

@@ -1,5 +1,5 @@
 BandView = function() {
-    this.bandNode = document.getElementById('band_container');
+    this.bandNode = document.getElementById('band_container')
 };
 
 BandView.prototype = {
