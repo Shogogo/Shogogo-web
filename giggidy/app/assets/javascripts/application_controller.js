@@ -1,8 +1,8 @@
 $(document).ready(function() {
     var bandView = new BandView();
-    var sessionsController = new SessionsController();
-    var localShowsView = new LocalShowsView();
+    // var sessionsController = new SessionsController();
     var favoritesView = new FavoritesView();
+    var localShowsView = new LocalShowsView();
     var favoriteList = new FavoriteList();
     var localShows = new LocalShows();
     var searchBox = new SearchBox();
@@ -75,11 +75,7 @@ $(document).ready(function() {
                 var favorite_id = data.id;
                 $('.favorites_band_item').last().attr( "fav-id", favorite_id );
             });
-
-        $('#band_container').empty().hide(200);
-        $('#search_box').val('');
-        $('#favorites-menu').removeClass('nofaves').addClass('faves');
-        $('.search_container').animate({left: "12.5%"}, 200);
+        bandView.clearSearch();
     });
 
     $( document ).on( "click", ".favorites_band_remove", function(e) {
