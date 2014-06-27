@@ -102,7 +102,7 @@ $(document).ready(function() {
     });
 
     
-    sessionsController.signUpListener();
+    // sessionsController.signUpListener();
 
     $( document ).on( "submit", "#user_create", function(e) {
         e.preventDefault();
@@ -113,7 +113,7 @@ $(document).ready(function() {
             url: '/users',
             type: 'POST',
             dataType: 'json',
-            data: { user: { name: $("#user_create input[name='name']").val(), phone_number: $("#user_create input[name='phone_number']").val(),password: $("#user_create input[name='password']").val()} ,authenticity_token: authToken() },
+            data: { user: $("#user_create").serialize(), authenticity_token: authToken() },
             beforeSend: function() {
                 $('.overlay').show();
                 $('#favorites-menu').hide();
