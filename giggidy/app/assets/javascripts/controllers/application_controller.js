@@ -1,16 +1,19 @@
+function authToken() {
+        return $('meta[name="csrf-token"]').attr('content');
+    }
+
 $(document).ready(function() {
     var bandView = new BandView();
-    var localShowsView = new LocalShowsView();
+    var sessionsController = new SessionsController();
     var favoritesView = new FavoritesView();
+    var localShowsView = new LocalShowsView();
     var favoriteList = new FavoriteList();
     var localShows = new LocalShows();
     var searchBox = new SearchBox();
     var artistObject;
     $('.overlay').hide();
 
-    function authToken() {
-        return $('meta[name="csrf-token"]').attr('content');
-    }
+    
 
     $('#login_link').on('click', function(e) {
         e.preventDefault();
@@ -66,7 +69,7 @@ $(document).ready(function() {
         $('#band_container').fadeOut();
     });
 
-    $('#band_container').on('click', 'button', function(e) {
+    $('#band_container').on('click', '#add_band', function(e) {
         e.preventDefault();
         favoritesView.append_draw(artistObject);
         $.post("/favorites", { favorite: { seatgeek_id: artistObject.id, name: artistObject.name, image_url_small: artistObject.image_url_small }, authenticity_token: authToken() })
@@ -74,11 +77,7 @@ $(document).ready(function() {
                 var favorite_id = data.id;
                 $('.favorites_band_item').last().attr( "fav-id", favorite_id );
             });
-
-        $('#band_container').empty().hide(200);
-        $('#search_box').val('');
-        $('#favorites-menu').removeClass('nofaves').addClass('faves');
-        $('.search_container').animate({left: "12.5%"}, 200);
+        bandView.clearSearch();
     });
 
     $( document ).on( "click", ".favorites_band_remove", function(e) {
@@ -100,11 +99,9 @@ $(document).ready(function() {
          });
     });
 
-    $( document ).on( "click", ".favorites_save", function(e) {
+    $(document).on( "click", ".favorites_save", function(e) {
         e.preventDefault();
-        $.get("/users/new", function(data) {
-            $('#favorites-menu').html(data);
-        }, "html");
+        sessionsController.getUserForm();
     });
 
     $( document ).on( "submit", "#user_create", function(e) {
@@ -112,24 +109,6 @@ $(document).ready(function() {
         if (!phoneValidator()) {
             return false;
         }
-        $.ajax({
-            url: '/users',
-            type: 'POST',
-            dataType: 'json',
-            data: { user: { name: $("#user_create input[name='name']").val(), phone_number: $("#user_create input[name='phone_number']").val(),password: $("#user_create input[name='password']").val()} ,authenticity_token: authToken() },
-            beforeSend: function() {
-                $('.overlay').show();
-                $('#favorites-menu').hide();
-                $('#search_box').hide();
-                $('#search_message').hide();
-            },
-            error: function(xhr){
-                var errors = $.parseJSON(xhr.responseText).errors;
-                alert(errors);
-            }
-        })
-        .done(function(data) {
-             window.location.replace("/");
-        });
+        sessionsController.postUserForm();
     });
 });
