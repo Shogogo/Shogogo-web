@@ -5,6 +5,7 @@ function authToken() {
 $(document).ready(function() {
     var bandView = new BandView();
     var sessionsController = new SessionsController();
+    var favoritesController = new FavoritesController();
     var favoritesView = new FavoritesView();
     var localShowsView = new LocalShowsView();
     var favoriteList = new FavoriteList();
@@ -83,20 +84,7 @@ $(document).ready(function() {
     $( document ).on( "click", ".favorites_band_remove", function(e) {
         e.preventDefault();
         var band = $(this).closest('.favorites_band_item');
-        var bandName = band.find('.favorites_band_name').text();
-        var favoriteId = band.attr('fav-id');
-        var destroy_path = "/favorites/" + favoriteId;
-
-        $(band).slideUp(100, function() {
-            $(this).remove();
-        });
-
-        $.ajax({
-             url: destroy_path,
-             type: 'DELETE',
-             dataType: 'json',
-             data: { favorite: { name: bandName }, authenticity_token: authToken() }
-         });
+        favoritesController.removeFavorite(band);
     });
 
     $(document).on( "click", ".favorites_save", function(e) {

@@ -16,5 +16,11 @@ FavoritesView.prototype = {
         var newBandFavorite = this.favoritesPresenter.append(band);
         var faveBand = this.favoritesMenuNode.appendChild(newBandFavorite);
         $(faveBand).slideDown(2000);
+    },
+
+    remove: function(band) {
+        $(band).slideUp(100, function() {
+            $(this).remove();
+        });
     }
 };
