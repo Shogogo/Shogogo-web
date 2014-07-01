@@ -1,6 +1,3 @@
-require 'open-uri'
-require 'json'
-
 class Favorite < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :artist
