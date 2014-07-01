@@ -18,8 +18,4 @@ class Favorite < ActiveRecord::Base
 			Event.fetch_artist_events(artist_id)
 		end
 	end
-
-	def self.fetch_event(long_lat)
-		JSON.parse(open("http://api.seatgeek.com/2/events?performers.id=#{artist_id}").read)
-	end
 end
