@@ -13,6 +13,8 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+config = YAML.load(File.read(File.expand_path('../secrets.yml', __FILE__)))
+
 module Giggidy
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
