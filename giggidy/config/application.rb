@@ -13,7 +13,9 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-unless Rails.env.production?
+p ENV['RAILS_ENV']
+
+unless ENV['RAILS_ENV'] == "production"
   config = YAML.load(File.read(File.expand_path('../secrets.yml', __FILE__)))
   config.merge! config.fetch(Rails.env, {})
   config.each do |key, value|
