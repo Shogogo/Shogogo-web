@@ -8,6 +8,26 @@ SessionsController.prototype = {
         this.sessionsView.drawLoginForm(data);
     },
 
+    getLoginForm: function() {
+        $.get("/sessions/new", function(data) {
+            $('#favorites-menu').html(data);
+        }, "html");
+        this._drawRegisteredUser();
+    },
+
+    authenticateUser: function() {
+        this.sessionsView.hideLoginForm();
+        $.ajax({
+            url: '/sessions',
+            type: 'POST',
+            dataType: 'html',
+            data: { login: { phone_number: $("#login_form input[name='phone_number']").val(),password: $("#login_form input[name='password']").val()} ,authenticity_token: authToken() },
+        })
+        .done(function(data) {
+            $('#favorites-menu').html(data);
+        });
+    },
+
     getUserForm: function() {
         _this = this;
         $.get("/users/new", "html").done(function(data) {
@@ -33,5 +53,9 @@ SessionsController.prototype = {
         .done(function(data) {
             window.location.replace("/");
         });
+    },
+
+    _drawRegisteredUser: function() {
+        this.sessionsView.drawRegisteredUser();
     }
 };

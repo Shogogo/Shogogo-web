@@ -14,33 +14,15 @@ $(document).ready(function() {
     var artistObject;
     $('.overlay').hide();
 
-    
-
     $('#login_link').on('click', function(e) {
         e.preventDefault();
-        $.get("/sessions/new", function(data) {
-            $('#favorites-menu').html(data);
-        }, "html");
-        $('#favorites-menu').removeClass('nofaves').addClass('faves');
-        $('#search_message').hide();
-        $('.search_container').removeClass('search_container').addClass('search_with_faves', { duration:200 });
-        $('.login').hide();
+        sessionsController.getLoginForm();
     });
 
     $( document ).on( "submit", "#login_form", function(e) {
         e.preventDefault();
-        $('#login_form').hide();
-        $.ajax({
-            url: '/sessions',
-            type: 'POST',
-            dataType: 'html',
-            data: { login: { phone_number: $("#login_form input[name='phone_number']").val(),password: $("#login_form input[name='password']").val()} ,authenticity_token: authToken() },
-        })
-        .done(function(data) {
-            $('#favorites-menu').html(data);
-        });
+        sessionsController.authenticateUser();
     });
-
 
     $("#search_box")
         .suggest({ filter:'(all type:/music/artist)',
