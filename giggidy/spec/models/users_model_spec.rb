@@ -18,6 +18,8 @@ describe User do
 
     before { subject.stub(:guest?) { true } }
 
+    it { should_not validate_presence_of(:name) }
+
     it { should allow_value(nil).for(:phone_number) }
   end
 
