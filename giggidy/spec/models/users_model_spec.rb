@@ -7,6 +7,12 @@ describe User do
   
   it { should have_many(:events).through(:artists) }
 
+  it { should validate_presence_of(:latitude) }
+
+  it { should validate_presence_of(:longitude) }
+
+  it { should have_secure_password }
+  
   context "if guest" do
     before { subject.stub(:eligible?) { false } }
   end
@@ -23,9 +29,4 @@ describe User do
     it { should_not allow_value('2223334567').for(:phone_number) }
   end
   
-  # it { should validate_presence_of(:latitude) }
-
-  # it { should validate_presence_of(:longitude) }
-
-  it { should have_secure_password }
 end
