@@ -54,6 +54,7 @@ $(document).ready(function() {
                 var artistData = artistInfo.performers[0];
                 artistObject = searchBox.parseArtistInfo(artistData);
                 bandView.draw(artistObject);
+                ArtistService.addArtist(artistObject);
             });
     });
 
@@ -64,8 +65,9 @@ $(document).ready(function() {
 
     $('#band_container').on('click', '#add_band', function(e) {
         e.preventDefault();
-        favoritesController.favoritesView.append_draw(artistObject);
-        $.post("/favorites", { favorite: { seatgeek_id: artistObject.id, name: artistObject.name, image_url_small: artistObject.image_url_small }, authenticity_token: authToken() })
+        var band = ArtistService.getArtist();
+        favoritesController.favoritesView.append_draw(band);
+        $.post("/favorites", { favorite: { seatgeek_id: band.id, name: band.name, image_url_small: band.image_url_small }, authenticity_token: authToken() })
             .done(function(data) {
                 var favorite_id = data.id;
                 $('.favorites_band_item').last().attr( "fav-id", favorite_id );
