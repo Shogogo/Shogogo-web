@@ -1,24 +1,41 @@
 function authToken() {
-        return $('meta[name="csrf-token"]').attr('content');
+    return $('meta[name="csrf-token"]').attr('content');
 }
 
 $(document).ready(function() {
+
+    var controller = new Shogogo.Controller();
+
+    var searchController = new Shogogo.SearchController();
+
+    searchController.defineView(new Shogogo.SearchView({
+        searchBox: document.querySelector('#search_box'),
+        searchMessage: document.querySelector('#search_message'),
+        searchContainer: document.querySelector('.search_container'),
+        classSearchContainerFavorites: document.querySelector('.search_with_faves'),
+        classSidebarFavorites: document.querySelector('.faves'),
+        classSidebarNoFavorites: document.querySelector('.nofaves'),
+        classLogin: document.querySelector('.login')
+    }));
+
+    var sessionsController = new Shogogo.SessionsController();
+    
+    sessionsController.defineView(new Shogogo.SessionsView({
+        loginForm: document.querySelector(".local_shows_list"),
+        sidebar: document.querySelector("#favorites-menu"),
+        overlay: document.querySelector(".overlay"),
+        loginLink: document.querySelector("#login_link")
+    }));
+
+    sessionsController.listeners();
+
     var bandView = new BandView();
-    var sessionsController = new SessionsController();
-    var favoritesController = new FavoritesController();
-    var favoritesView = new FavoritesView();
-    var localShowsView = new LocalShowsView();
+    var favoritesController = new FavoritesController(new FavoritesView());
     var favoriteList = new FavoriteList();
-    var localShows = new LocalShows();
     var searchBox = new SearchBox();
     var artistObject;
 
     $('.overlay').hide();
-
-    $('#login_link').on('click', function(e) {
-        e.preventDefault();
-        sessionsController.getLoginForm();
-    });
 
     $( document ).on( "submit", "#login_form", function(e) {
         e.preventDefault();
@@ -49,13 +66,13 @@ $(document).ready(function() {
     });
 
     $('#search_box').on('click', function() {
-        newSearchController.clearSearch();
+        searchController.clearSearch();
         $('#band_container').fadeOut();
     });
 
     $('#band_container').on('click', '#add_band', function(e) {
         e.preventDefault();
-        favoritesView.append_draw(artistObject);
+        favoritesController.favoritesView.append_draw(artistObject);
         $.post("/favorites", { favorite: { seatgeek_id: artistObject.id, name: artistObject.name, image_url_small: artistObject.image_url_small }, authenticity_token: authToken() })
             .done(function(data) {
                 var favorite_id = data.id;

@@ -1,18 +1,18 @@
-var SessionsController = function() {
-    this.sessionsView = new SessionsView();
-    this.favoritesView = new FavoritesView();
+Shogogo.SessionsController = function() {
 };
 
-SessionsController.prototype = {
-    drawLoginForm: function(data) {
-        this.sessionsView.drawLoginForm(data);
+Shogogo.SessionsController.prototype = {
+
+    defineView: function(sessionView) {
+        this.sessionsView = sessionView;
     },
 
-    getLoginForm: function() {
-        $.get("/sessions/new", function(data) {
-            $('#favorites-menu').html(data);
-        }, "html");
-        this._drawRegisteredUser();
+    listeners: function() {
+        this._loginListener();
+    },
+
+    drawLoginForm: function(data) {
+        this.sessionsView.renderLoginForm(data);
     },
 
     authenticateUser: function() {
@@ -56,6 +56,25 @@ SessionsController.prototype = {
     },
 
     _drawRegisteredUser: function() {
-        this.sessionsView.drawRegisteredUser();
+        
+    },
+
+    _loginListener: function() {
+        _this = this;
+        if (this.sessionsView.loginLink) {
+            this.sessionsView.loginLink.addEventListener("click", function(e) {
+                e.preventDefault();
+                _this._getLoginForm();
+            }, false);
+        }
+    },
+
+    _getLoginForm: function() {
+        _this = this;
+        $.get("/sessions/new").done(function(data) {
+            _this.drawLoginForm(data);
+        });
+        this.sessionsView.renderLoginLayout();
     }
+
 };

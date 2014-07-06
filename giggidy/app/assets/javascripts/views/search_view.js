@@ -11,7 +11,7 @@ Shogogo.SearchView = function(options) {
 
 Shogogo.SearchView.prototype = {
     resetSearchBox: function() {
-        this.searchBox.reset();
+        this.searchBox.value = '';
     },
 
     renderSidebarView: function() {

@@ -1,5 +1,5 @@
-FavoritesController = function() {
-    this.favoritesView = new FavoritesView();
+FavoritesController = function(favoritesView) {
+    this.favoritesView = favoritesView;
 };
 
 FavoritesController.prototype = {
@@ -15,5 +15,9 @@ FavoritesController.prototype = {
              dataType: 'json',
              data: { favorite: { name: bandName }, authenticity_token: authToken() }
          });
+    },
+
+    renderFavoritesView: function() {
+        this.favoritesView.renderSidebar();
     }
 };

@@ -22,5 +22,10 @@ FavoritesView.prototype = {
         $(band).slideUp(100, function() {
             $(this).remove();
         });
+    },
+
+    renderSidebar: function() {
+        $('#favorites-menu').removeClass('nofaves').addClass('faves');
     }
+
 };

@@ -13,4 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require_self
+//= require shogogo-app.js
+//= require_tree ./models
+//= require_tree ./views
+//= require_tree ./controllers
+//= require initialize.js
