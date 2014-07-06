@@ -7,7 +7,7 @@ Shogogo.SessionsController.prototype = {
     },
 
     listeners: function() {
-        this._loginListener();
+        this._loginLinkListener();
     },
 
     drawLoginForm: function(data) {
@@ -15,15 +15,13 @@ Shogogo.SessionsController.prototype = {
     },
 
     authenticateUser: function() {
-        this.sessionsView.hideLoginForm();
         $.ajax({
             url: '/sessions?authenticity_token=' + authToken(),
             type: 'POST',
-            dataType: 'json',
+            dataType: 'html',
             data: { login: { phone_number: $("#login_form input[name='phone_number']").val(),password: $("#login_form input[name='password']").val() } },
         })
         .done(function(data) {
-            this.sessionsView.hideLoginForm();
             $('#favorites-menu').html(data);
         });
     },
@@ -32,7 +30,9 @@ Shogogo.SessionsController.prototype = {
         _this = this;
         $.get("/users/new", "html").done(function(data) {
             _this.drawLoginForm(data);
-        });
+            _this.sessionsView.getUserFormElement();
+            _this._userRegistrationListener();
+        }, false);
     },
 
     postUserForm: function() {
@@ -47,7 +47,6 @@ Shogogo.SessionsController.prototype = {
             },
             error: function(xhr){
                 var errors = $.parseJSON(xhr.responseText).errors;
-                alert(errors);
             }
         })
         .done(function(data) {
@@ -59,7 +58,7 @@ Shogogo.SessionsController.prototype = {
         
     },
 
-    _loginListener: function() {
+    _loginLinkListener: function() {
         _this = this;
         if (this.sessionsView.loginLink) {
             this.sessionsView.loginLink.addEventListener("click", function(e) {
@@ -69,12 +68,23 @@ Shogogo.SessionsController.prototype = {
         }
     },
 
-    _userRegistrationListener: function() {
+    _userLoginListener: function() {
         _this = this;
         this.sessionsView.loginForm.addEventListener("submit", function(e) {
             e.preventDefault();
             _this.authenticateUser();
-        });
+        }, false);
+    },
+
+    _userRegistrationListener: function() {
+        _this = this;
+        this.sessionsView.userForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+            if (!phoneValidator()) {
+                return false;
+            }
+            _this.postUserForm();
+        }, false);
     },
 
     _getLoginForm: function() {
@@ -82,7 +92,7 @@ Shogogo.SessionsController.prototype = {
         $.get("/sessions/new").done(function(data) {
             _this.drawLoginForm(data);
             _this.sessionsView.renderLoginLayout();
-            _this._userRegistrationListener();
-        });
+            _this.sessionsView.getLoginFormElement();
+        }, false);
     }
 };

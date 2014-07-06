@@ -23,6 +23,9 @@ $(document).ready(function() {
     
     sessionsController.defineView(new Shogogo.SessionsView({
         loginForm: "#login_form",
+        userForm: '#user_create',
+        registrationLink: '.favorites_save',
+        indexElement: document.querySelector('.fullWidth'),
         sidebar: document.querySelector("#favorites-menu"),
         overlay: document.querySelector(".overlay"),
         loginLink: document.querySelector("#login_link")
@@ -86,13 +89,5 @@ $(document).ready(function() {
     $(document).on( "click", ".favorites_save", function(e) {
         e.preventDefault();
         sessionsController.getUserForm();
-    });
-
-    $( document ).on( "submit", "#user_create", function(e) {
-        e.preventDefault();
-        if (!phoneValidator()) {
-            return false;
-        }
-        sessionsController.postUserForm();
     });
 });
