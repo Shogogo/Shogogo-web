@@ -12,9 +12,12 @@ describe User do
   it { should validate_presence_of(:longitude) }
 
   it { should have_secure_password }
-  
+
   context "if guest" do
     before { subject.stub(:eligible?) { false } }
+
+    it { should allow_value(nil).for(:phone_number) }
+
   end
 
   context "if confirmed user" do
@@ -27,6 +30,7 @@ describe User do
     it { should allow_value('+12223334444').for(:phone_number) }
 
     it { should_not allow_value('2223334567').for(:phone_number) }
+
   end
   
 end
