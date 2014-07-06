@@ -2,8 +2,8 @@ Shogogo.SessionsController = function() {
 };
 
 Shogogo.SessionsController.prototype = {
-    defineView: function(sessionView) {
-        this.sessionsView = sessionView;
+    defineView: function(sessionsView) {
+        this.sessionsView = sessionsView;
     },
 
     listeners: function() {
@@ -11,40 +11,46 @@ Shogogo.SessionsController.prototype = {
         this._signupLinkListener();
     },
 
-    drawLoginForm: function(data) {
-        this.sessionsView.renderLoginForm(data);
-    },
-
-    authenticateUser: function() {
+    authenticateUser: function(form) {
+        _this = this;
         $.ajax({
-            url: '/sessions?authenticity_token=' + authToken(),
+            url: form.action + '?authenticity_token=' + authToken(),
             type: 'POST',
             dataType: 'html',
-            data: { login: { phone_number: $("#login_form input[name='phone_number']").val(),password: $("#login_form input[name='password']").val() } },
+            data: { login: {
+                    phone_number: form.elements["phone_number"].value,
+                    password: form.elements["password"].value
+                  }
+            }
         })
         .done(function(data) {
-            $('#favorites-menu').html(data);
+            _this._renderSidebar(data);
         });
     },
 
-    getUserForm: function() {
+    getUserForm: function(url) {
         _this = this;
-        $.get("/users/new", "html").done(function(data) {
-            _this.drawLoginForm(data);
+        $.get(url, "html").done(function(data) {
+            _this._renderSidebar(data);
             _this.sessionsView.getUserFormElement();
             _this._userRegistrationListener();
         }, false);
     },
 
-    postUserForm: function() {
+    postUserForm: function(form) {
         _this = this;
         $.ajax({
-            url: '/users?authenticity_token=' + authToken(),
+            url: form.action + '?authenticity_token=' + authToken(),
             type: 'POST',
             dataType: 'json',
-            data: { user: { name: $("#user_create input[name='name']").val(), phone_number: $("#user_create input[name='phone_number']").val(),password: $("#user_create input[name='password']").val()} },
+            data: { user: {
+                    name: form.elements["name"].value,
+                    phone_number: form.elements["phone_number"].value,
+                    password: form.elements["password"].value
+                  }
+            },
             beforeSend: function() {
-                _this.sessionsView.drawUserConfirm();
+                _this.sessionsView.renderRegistrationConfirm();
             },
             error: function(xhr){
                 var errors = $.parseJSON(xhr.responseText).errors;
@@ -55,15 +61,11 @@ Shogogo.SessionsController.prototype = {
         });
     },
 
-    _drawRegisteredUser: function() {
-        
-    },
-
     _signupLinkListener: function() {
         _this = this;
         this.sessionsView.signupLink.addEventListener("click", function(e) {
             e.preventDefault();
-            _this.getUserForm();
+            _this.getUserForm("/users/new");
         }, false);
     },
 
@@ -81,7 +83,7 @@ Shogogo.SessionsController.prototype = {
         _this = this;
         this.sessionsView.loginForm.addEventListener("submit", function(e) {
             e.preventDefault();
-            _this.authenticateUser();
+            _this.authenticateUser(this);
         }, false);
     },
 
@@ -92,16 +94,21 @@ Shogogo.SessionsController.prototype = {
             if (!phoneValidator()) {
                 return false;
             }
-            _this.postUserForm();
+            _this.postUserForm(this);
         }, false);
     },
 
     _getLoginForm: function() {
         _this = this;
         $.get("/sessions/new").done(function(data) {
-            _this.drawLoginForm(data);
+            _this._renderSidebar(data);
             _this.sessionsView.renderLoginLayout();
             _this.sessionsView.getLoginFormElement();
+            _this._userLoginListener();
         }, false);
+    },
+
+    _renderSidebar: function(data) {
+        this.sessionsView.renderSidebar(data);
     }
 };

@@ -1,4 +1,3 @@
-
 Shogogo.SessionsView = function(options) {
     this.options = options;
     this.loginForm = options.loginForm;
@@ -11,8 +10,7 @@ Shogogo.SessionsView = function(options) {
 };
 
 Shogogo.SessionsView.prototype = {
-
-    renderLoginForm: function(data) {
+    renderSidebar: function(data) {
         this.sidebar.innerHTML = data;
     },
 
@@ -29,14 +27,9 @@ Shogogo.SessionsView.prototype = {
         $('#search_message').hide();
         $('.search_container').removeClass('search_container').addClass('search_with_faves', { duration:200 });
         $('.login').hide();
-
     },
 
-    hideLoginForm: function() {
-        this.sidebar.innerHTML = '';
-    },
-    
-    drawUserConfirm: function() {
+    renderRegistrationConfirm: function() {
         $(this.overlay).show();
         this.indexElement.innerHTML = '';
     }
