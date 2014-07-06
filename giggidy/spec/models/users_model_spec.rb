@@ -16,6 +16,8 @@ describe User do
   context "if guest" do
     before { subject.stub(:eligible?) { false } }
 
+    before { subject.stub(:guest?) { true } }
+
     it { should allow_value(nil).for(:phone_number) }
   end
 
