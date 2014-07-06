@@ -14,11 +14,11 @@ describe User do
   it { should have_secure_password }
 
   context "if guest" do
-    before { subject.stub(:eligible?) { false } }
-
     before { subject.stub(:guest?) { true } }
 
     it { should_not validate_presence_of(:name) }
+
+    it { should validate_uniqueness_of(:phone_number) }
 
     it { should allow_value(nil).for(:phone_number) }
   end
@@ -28,7 +28,7 @@ describe User do
     
     it { should validate_presence_of(:name) }
   
-    # it { should validate_uniqueness_of(:phone_number) }
+    it { should validate_uniqueness_of(:phone_number) }
 
     it { should allow_value('+12223334444').for(:phone_number) }
 
