@@ -8,6 +8,7 @@ Shogogo.SessionsController.prototype = {
 
     listeners: function() {
         this._loginLinkListener();
+        this._signupLinkListener();
     },
 
     drawLoginForm: function(data) {
@@ -56,6 +57,14 @@ Shogogo.SessionsController.prototype = {
 
     _drawRegisteredUser: function() {
         
+    },
+
+    _signupLinkListener: function() {
+        _this = this;
+        this.sessionsView.signupLink.addEventListener("click", function(e) {
+            e.preventDefault();
+            _this.getUserForm();
+        }, false);
     },
 
     _loginLinkListener: function() {

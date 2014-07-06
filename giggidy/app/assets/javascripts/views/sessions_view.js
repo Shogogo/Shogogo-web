@@ -3,14 +3,11 @@ Shogogo.SessionsView = function(options) {
     this.options = options;
     this.loginForm = options.loginForm;
     this.userForm = options.userForm;
-    this.registrationLink = options.registrationLink;
+    this.signupLink = options.signupLink;
     this.sidebar = options.sidebar;
     this.overlay = options.overlay;
     this.indexElement = options.indexElement;
     this.loginLink = options.loginLink;
-
-    this.favoritesView = new FavoritesView();
-    this.bandView = new BandView();
 };
 
 Shogogo.SessionsView.prototype = {
@@ -43,6 +40,4 @@ Shogogo.SessionsView.prototype = {
         $(this.overlay).show();
         this.indexElement.innerHTML = '';
     }
-
-    
 };

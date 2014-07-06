@@ -3,8 +3,7 @@
 }
 
 $(document).ready(function() {
-
-
+    
     var controller = new Shogogo.Controller();
 
     var searchController = new Shogogo.SearchController();
@@ -24,7 +23,7 @@ $(document).ready(function() {
     sessionsController.defineView(new Shogogo.SessionsView({
         loginForm: "#login_form",
         userForm: '#user_create',
-        registrationLink: '.favorites_save',
+        signupLink: document.querySelector('.favorites_save'),
         indexElement: document.querySelector('.fullWidth'),
         sidebar: document.querySelector("#favorites-menu"),
         overlay: document.querySelector(".overlay"),
@@ -84,10 +83,5 @@ $(document).ready(function() {
         e.preventDefault();
         var band = $(this).closest('.favorites_band_item');
         favoritesController.removeFavorite(band);
-    });
-
-    $(document).on( "click", ".favorites_save", function(e) {
-        e.preventDefault();
-        sessionsController.getUserForm();
     });
 });
