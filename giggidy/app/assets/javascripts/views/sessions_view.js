@@ -1,14 +1,25 @@
-SessionsView = function() {
-    this.loginForm = document.getElementsByClassName('local_shows_list')[0];
-    this.overlay = $('.overlay');
+Shogogo.SessionsView = function(options) {
+    this.options = options;
+    this.loginForm = options.loginForm;
+    this.sidebar = options.sidebar;
+    this.overlay = options.overlay;
+    this.loginLink = options.loginLink;
+
     this.favoritesView = new FavoritesView();
     this.bandView = new BandView();
-    this.searchView = new SearchView();
 };
 
-SessionsView.prototype = {
-    drawLoginForm: function(data) {
-        $(this.favoritesView.favoritesMenuContainer).html(data);
+Shogogo.SessionsView.prototype = {
+
+    renderLoginForm: function(data) {
+        this.sidebar.innerHTML = data;
+    },
+
+    renderLoginLayout: function() {
+        $('#favorites-menu').removeClass('nofaves').addClass('faves');
+        $('#search_message').hide();
+        $('.search_container').removeClass('search_container').addClass('search_with_faves', { duration:200 });
+        $('.login').hide();
     },
 
     hideLoginForm: function() {
@@ -17,15 +28,10 @@ SessionsView.prototype = {
     
     drawUserConfirm: function() {
         $(this.overlay).show();
-        $(this.favoritesView.favoritesMenuContainer).hide();
+        $(this.sidebar).hide();
         $(this.bandView.searchNode).hide();
         $(this.searchView.searchMessage).hide();
-    },
-
-    drawRegisteredUser: function() {
-        $('#favorites-menu').removeClass('nofaves').addClass('faves');
-        $('#search_message').hide();
-        $('.search_container').removeClass('search_container').addClass('search_with_faves', { duration:200 });
-        $('.login').hide();
     }
+
+    
 };
