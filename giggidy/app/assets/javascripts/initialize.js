@@ -1,11 +1,5 @@
-   function authToken() {
-    return $('meta[name="csrf-token"]').attr('content');
-}
-
 $(document).ready(function() {
-    
     var controller = new Shogogo.Controller();
-
     var searchController = new Shogogo.SearchController();
 
     searchController.defineView(new Shogogo.SearchView({
