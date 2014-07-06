@@ -2,7 +2,6 @@ Shogogo.SessionsController = function() {
 };
 
 Shogogo.SessionsController.prototype = {
-
     defineView: function(sessionView) {
         this.sessionsView = sessionView;
     },
@@ -18,12 +17,13 @@ Shogogo.SessionsController.prototype = {
     authenticateUser: function() {
         this.sessionsView.hideLoginForm();
         $.ajax({
-            url: '/sessions',
+            url: '/sessions?authenticity_token=' + authToken(),
             type: 'POST',
-            dataType: 'html',
-            data: { login: { phone_number: $("#login_form input[name='phone_number']").val(),password: $("#login_form input[name='password']").val()} ,authenticity_token: authToken() },
+            dataType: 'json',
+            data: { login: { phone_number: $("#login_form input[name='phone_number']").val(),password: $("#login_form input[name='password']").val() } },
         })
         .done(function(data) {
+            this.sessionsView.hideLoginForm();
             $('#favorites-menu').html(data);
         });
     },
@@ -69,12 +69,20 @@ Shogogo.SessionsController.prototype = {
         }
     },
 
+    _userRegistrationListener: function() {
+        _this = this;
+        this.sessionsView.loginForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+            _this.authenticateUser();
+        });
+    },
+
     _getLoginForm: function() {
         _this = this;
         $.get("/sessions/new").done(function(data) {
             _this.drawLoginForm(data);
+            _this.sessionsView.renderLoginLayout();
+            _this._userRegistrationListener();
         });
-        this.sessionsView.renderLoginLayout();
     }
-
 };

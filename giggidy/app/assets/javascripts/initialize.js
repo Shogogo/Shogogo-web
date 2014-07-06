@@ -1,8 +1,9 @@
-function authToken() {
+   function authToken() {
     return $('meta[name="csrf-token"]').attr('content');
 }
 
 $(document).ready(function() {
+
 
     var controller = new Shogogo.Controller();
 
@@ -21,7 +22,7 @@ $(document).ready(function() {
     var sessionsController = new Shogogo.SessionsController();
     
     sessionsController.defineView(new Shogogo.SessionsView({
-        loginForm: document.querySelector(".local_shows_list"),
+        loginForm: "#login_form",
         sidebar: document.querySelector("#favorites-menu"),
         overlay: document.querySelector(".overlay"),
         loginLink: document.querySelector("#login_link")
@@ -36,11 +37,6 @@ $(document).ready(function() {
     var artistObject;
 
     $('.overlay').hide();
-
-    $( document ).on( "submit", "#login_form", function(e) {
-        e.preventDefault();
-        sessionsController.authenticateUser();
-    });
 
     $("#search_box")
         .suggest({ filter:'(all type:/music/artist)',

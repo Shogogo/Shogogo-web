@@ -1,3 +1,4 @@
+
 Shogogo.SessionsView = function(options) {
     this.options = options;
     this.loginForm = options.loginForm;
@@ -13,6 +14,7 @@ Shogogo.SessionsView.prototype = {
 
     renderLoginForm: function(data) {
         this.sidebar.innerHTML = data;
+        this.loginForm = document.querySelector(this.loginForm);
     },
 
     renderLoginLayout: function() {
@@ -20,10 +22,11 @@ Shogogo.SessionsView.prototype = {
         $('#search_message').hide();
         $('.search_container').removeClass('search_container').addClass('search_with_faves', { duration:200 });
         $('.login').hide();
+
     },
 
     hideLoginForm: function() {
-        $(this.loginForm).hide();
+        this.sidebar.innerHTML = '';
     },
     
     drawUserConfirm: function() {
