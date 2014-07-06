@@ -12,7 +12,7 @@ describe User do
   end
 
   context "if confirmed user" do
-    before { subject.stub(:guest?) { true } }
+    before { subject.stub(:guest?) { false } }
     
     # it { should_not validate_presence_of(:name) }
   
