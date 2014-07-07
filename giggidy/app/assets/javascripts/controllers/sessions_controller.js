@@ -12,7 +12,7 @@ Shogogo.SessionsController.prototype = {
     },
 
     authenticateUser: function(form) {
-        _this = this;
+        var _this = this;
         $.ajax({
             url: form.action + '?authenticity_token=' + authToken(),
             type: 'POST',
@@ -29,7 +29,7 @@ Shogogo.SessionsController.prototype = {
     },
 
     getUserForm: function(url) {
-        _this = this;
+        var _this = this;
         $.get(url, "html").done(function(data) {
             _this._renderSidebar(data);
             _this.sessionsView.getUserFormElement();
@@ -38,7 +38,7 @@ Shogogo.SessionsController.prototype = {
     },
 
     postUserForm: function(form) {
-        _this = this;
+        var _this = this;
         $.ajax({
             url: form.action + '?authenticity_token=' + authToken(),
             type: 'POST',
@@ -62,7 +62,7 @@ Shogogo.SessionsController.prototype = {
     },
 
     _signupLinkListener: function() {
-        _this = this;
+        var _this = this;
         this.sessionsView.signupLink.addEventListener("click", function(e) {
             e.preventDefault();
             _this.getUserForm("/users/new");
@@ -70,7 +70,7 @@ Shogogo.SessionsController.prototype = {
     },
 
     _loginLinkListener: function() {
-        _this = this;
+        var _this = this;
         if (this.sessionsView.loginLink) {
             this.sessionsView.loginLink.addEventListener("click", function(e) {
                 e.preventDefault();
@@ -80,7 +80,7 @@ Shogogo.SessionsController.prototype = {
     },
 
     _userLoginListener: function() {
-        _this = this;
+        var _this = this;
         this.sessionsView.loginForm.addEventListener("submit", function(e) {
             e.preventDefault();
             _this.authenticateUser(this);
@@ -88,7 +88,7 @@ Shogogo.SessionsController.prototype = {
     },
 
     _userRegistrationListener: function() {
-        _this = this;
+        var _this = this;
         this.sessionsView.userForm.addEventListener("submit", function(e) {
             e.preventDefault();
             if (!phoneValidator()) {
@@ -99,7 +99,7 @@ Shogogo.SessionsController.prototype = {
     },
 
     _getLoginForm: function() {
-        _this = this;
+        var _this = this;
         $.get("/sessions/new").done(function(data) {
             _this._renderSidebar(data);
             _this.sessionsView.renderLoginLayout();
