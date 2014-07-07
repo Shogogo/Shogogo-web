@@ -26,8 +26,12 @@ $(document).ready(function() {
 
     sessionsController.listeners();
 
+    var favoritesController = new Shogogo.FavoritesController(new Shogogo.FavoritesView());
+
+    favoritesController.listeners();
+
     var bandView = new BandView();
-    var favoritesController = new FavoritesController(new FavoritesView());
+
     var favoriteList = new FavoriteList();
     var searchBox = new SearchBox();
     var artistObject;
@@ -54,7 +58,7 @@ $(document).ready(function() {
                 var artistData = artistInfo.performers[0];
                 artistObject = searchBox.parseArtistInfo(artistData);
                 bandView.draw(artistObject);
-                ArtistService.addArtist(artistObject);
+                artistService.addArtist(artistObject);
             });
     });
 
@@ -63,17 +67,7 @@ $(document).ready(function() {
         $('#band_container').fadeOut();
     });
 
-    $('#band_container').on('click', '#add_band', function(e) {
-        e.preventDefault();
-        var band = ArtistService.getArtist();
-        favoritesController.favoritesView.append_draw(band);
-        $.post("/favorites", { favorite: { seatgeek_id: band.id, name: band.name, image_url_small: band.image_url_small }, authenticity_token: authToken() })
-            .done(function(data) {
-                var favorite_id = data.id;
-                $('.favorites_band_item').last().attr( "fav-id", favorite_id );
-            });
-        bandView.clearSearch();
-    });
+    
 
     $( document ).on( "click", ".favorites_band_remove", function(e) {
         e.preventDefault();
