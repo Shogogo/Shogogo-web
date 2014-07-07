@@ -4,6 +4,7 @@ Shogogo.FavoritesView = function() {
     this.favoritesSaveButton = document.getElementsByClassName('favorites_save')[0];
     this.favoritesPresenter = new FavoritesPresenter();
     this.addButton = $("#add_band");
+    this.removeFavoriteButton = '.favorites_band_remove';
 };
 
 Shogogo.FavoritesView.prototype = {
@@ -27,5 +28,9 @@ Shogogo.FavoritesView.prototype = {
 
     renderSidebar: function() {
         $('#favorites-menu').removeClass('nofaves').addClass('faves');
-    }
+    },
+
+    getRemoveFavoriteButton: function() {
+        this.removeFavoriteButton = document.querySelector(this.removeFavoriteButton);
+    },
 };

@@ -67,11 +67,4 @@ $(document).ready(function() {
         $('#band_container').fadeOut();
     });
 
-    
-
-    $( document ).on( "click", ".favorites_band_remove", function(e) {
-        e.preventDefault();
-        var band = $(this).closest('.favorites_band_item');
-        favoritesController.removeFavorite(band);
-    });
 });
