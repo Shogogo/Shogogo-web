@@ -6,7 +6,7 @@ Shogogo.SessionsView = function(options) {
     this.sidebar = options.sidebar;
     this.overlay = options.overlay;
     this.indexElement = options.indexElement;
-    this.loginLink = options.loginLink;
+    this.loginLink = options.loginLink; 
 };
 
 Shogogo.SessionsView.prototype = {
