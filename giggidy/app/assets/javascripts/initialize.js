@@ -9,7 +9,8 @@ $(document).ready(function() {
         classSearchContainerFavorites: document.querySelector('.search_with_faves'),
         classSidebarFavorites: document.querySelector('.faves'),
         classSidebarNoFavorites: document.querySelector('.nofaves'),
-        classLogin: document.querySelector('.login')
+        classLogin: document.querySelector('.login'),
+        resultsContainer: document.querySelector('#band_container')
     }));
 
     var sessionsController = new Shogogo.SessionsController();
@@ -25,6 +26,7 @@ $(document).ready(function() {
     }));
 
     sessionsController.listeners();
+    searchController.listeners();
 
     var favoritesController = new Shogogo.FavoritesController(new Shogogo.FavoritesView());
 
@@ -61,10 +63,4 @@ $(document).ready(function() {
                 artistService.addArtist(artistObject);
             });
     });
-
-    $('#search_box').on('click', function() {
-        searchController.clearSearch();
-        $('#band_container').fadeOut();
-    });
-
 });

@@ -7,11 +7,13 @@ Shogogo.SearchView = function(options) {
     this.classSidebarFavorites = options.classFavorites;
     this.classSidebarNoFavorites = options.classNoFavorites;
     this.classLogin = options.classLogin;
+    this.resultsContainer = options.resultsContainer;
 };
 
 Shogogo.SearchView.prototype = {
     resetSearchBox: function() {
         this.searchBox.value = '';
+        $(this.resultsContainer).fadeOut();
     },
 
     renderSidebarView: function() {
