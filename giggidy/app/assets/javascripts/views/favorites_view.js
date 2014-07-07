@@ -31,6 +31,6 @@ Shogogo.FavoritesView.prototype = {
     },
 
     getRemoveFavoriteButton: function() {
-        this.removeFavoriteButton = document.querySelector(this.removeFavoriteButton);
+        this.removeFavoriteButton = document.querySelector('.favorites_band_remove');
     },
 };

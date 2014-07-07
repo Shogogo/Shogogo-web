@@ -39,7 +39,7 @@ Shogogo.FavoritesController.prototype = {
 
     removeFavoriteListener: function() {
         var _this = this;
-        this.favoritesView.removeFavoriteButton.addEventListener("click", function(e) {
+        $(this.favoritesView.removeFavoriteButton).on('click', function(e) {
             e.preventDefault();
             var band = $(this).closest('.favorites_band_item');
             _this.removeFavorite(band);
@@ -56,7 +56,7 @@ Shogogo.FavoritesController.prototype = {
         var _this = this;
         $.post("/favorites", { favorite: { seatgeek_id: artist.id, name: artist.name, image_url_small: artist.image_url_small }, authenticity_token: authToken()
         }).done(function(data) {
-            var favorite_id = artist.id;
+            var favorite_id = data.id;
             $('.favorites_band_item').last().attr( "fav-id", favorite_id );
         });
     }
