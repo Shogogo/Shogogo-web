@@ -1,6 +1,6 @@
 $(document).ready(function() {
     var controller = new Shogogo.Controller();
-    var searchController = new Shogogo.SearchController();
+    var searchController = new Shogogo.SearchController(new SearchBox());
 
     searchController.defineView(new Shogogo.SearchView({
         searchBox: document.querySelector('#search_box'),
@@ -40,27 +40,5 @@ $(document).ready(function() {
 
     $('.overlay').hide();
 
-    $("#search_box")
-        .suggest({ filter:'(all type:/music/artist)',
-            flyout: false,
-            css: { pane: "suggest_pane",
-                   list: "suggest_list",
-                 status: "suggest_status" },
-                  "key": "AIzaSyBCuOTLMAC-WOcLzyv2YeKvCvwaDPI8NhI"
-        })
-        .bind('fb-select', function(e) {
-            var artistName = searchBox.getArtistName();
-            var preparedArtistName = searchBox.preparedArtistQuery(artistName);
-            $('#search_message').hide();
-            $('.login').hide();
-            $('input:text').focus(function(){
-            $(this).val('');
-         });
-            $.getJSON(preparedArtistName).done(function(artistInfo) {
-                var artistData = artistInfo.performers[0];
-                artistObject = searchBox.parseArtistInfo(artistData);
-                bandView.draw(artistObject);
-                artistService.addArtist(artistObject);
-            });
-    });
+    
 });
