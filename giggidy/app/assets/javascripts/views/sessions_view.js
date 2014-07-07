@@ -1,18 +1,25 @@
 Shogogo.SessionsView = function(options) {
     this.options = options;
     this.loginForm = options.loginForm;
+    this.userForm = options.userForm;
+    this.signupLink = options.signupLink;
     this.sidebar = options.sidebar;
     this.overlay = options.overlay;
-    this.loginLink = options.loginLink;
-
-    this.favoritesView = new FavoritesView();
-    this.bandView = new BandView();
+    this.indexElement = options.indexElement;
+    this.loginLink = options.loginLink; 
 };
 
 Shogogo.SessionsView.prototype = {
-
-    renderLoginForm: function(data) {
+    renderSidebar: function(data) {
         this.sidebar.innerHTML = data;
+    },
+
+    getLoginFormElement: function() {
+        this.loginForm = document.querySelector(this.loginForm);
+    },
+
+    getUserFormElement: function() {
+        this.userForm = document.querySelector(this.userForm);
     },
 
     renderLoginLayout: function() {
@@ -22,16 +29,8 @@ Shogogo.SessionsView.prototype = {
         $('.login').hide();
     },
 
-    hideLoginForm: function() {
-        $(this.loginForm).hide();
-    },
-    
-    drawUserConfirm: function() {
+    renderRegistrationConfirm: function() {
         $(this.overlay).show();
-        $(this.sidebar).hide();
-        $(this.bandView.searchNode).hide();
-        $(this.searchView.searchMessage).hide();
+        this.indexElement.innerHTML = '';
     }
-
-    
 };

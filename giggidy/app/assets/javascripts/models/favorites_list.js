@@ -13,5 +13,5 @@ FavoriteList.prototype = {
                 this.list.splice(i,1);
         }
         // sessionStorage.favoriteList = JSON.stringify(this.list);
-    }
+    },
 };

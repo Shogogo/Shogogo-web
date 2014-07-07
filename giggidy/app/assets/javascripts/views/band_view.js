@@ -2,7 +2,7 @@ BandView = function() {
     this.bandNode = document.getElementById('band_container');
     this.searchNode = document.getElementById('search_box');
     this.searchContainer = document.getElementsByClassName('search_container')[0];
-    this.favoritesView = new FavoritesView();
+    this.favoritesView = new Shogogo.FavoritesView();
 };
 
 BandView.prototype = {

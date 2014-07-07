@@ -1,11 +1,13 @@
-FavoritesView = function() {
+Shogogo.FavoritesView = function() {
     this.favoritesMenuNode = document.getElementsByClassName('favorites_menu')[0];
     this.favoritesMenuContainer = document.getElementById('favorites-menu');
     this.favoritesSaveButton = document.getElementsByClassName('favorites_save')[0];
     this.favoritesPresenter = new FavoritesPresenter();
+    this.addButton = $("#add_band");
+    this.removeFavoriteButton = '.favorites_band_remove';
 };
 
-FavoritesView.prototype = {
+Shogogo.FavoritesView.prototype = {
     draw:function(favoriteList) {
         var newFavoritesMenu = this.favoritesPresenter.present(favoriteList);
         this.favoritesMenuNode.innerHTML = newFavoritesMenu.innerHTML;
@@ -26,6 +28,9 @@ FavoritesView.prototype = {
 
     renderSidebar: function() {
         $('#favorites-menu').removeClass('nofaves').addClass('faves');
-    }
+    },
 
+    getRemoveFavoriteButton: function() {
+        this.removeFavoriteButton = document.querySelector('.favorites_band_remove');
+    },
 };

@@ -2,52 +2,58 @@ Shogogo.SessionsController = function() {
 };
 
 Shogogo.SessionsController.prototype = {
-
-    defineView: function(sessionView) {
-        this.sessionsView = sessionView;
+    defineView: function(sessionsView) {
+        this.sessionsView = sessionsView;
     },
 
     listeners: function() {
-        this._loginListener();
+        this._loginLinkListener();
+        this._signupLinkListener();
     },
 
-    drawLoginForm: function(data) {
-        this.sessionsView.renderLoginForm(data);
-    },
-
-    authenticateUser: function() {
-        this.sessionsView.hideLoginForm();
+    authenticateUser: function(form) {
+        var _this = this;
         $.ajax({
-            url: '/sessions',
+            url: form.action + '?authenticity_token=' + authToken(),
             type: 'POST',
             dataType: 'html',
-            data: { login: { phone_number: $("#login_form input[name='phone_number']").val(),password: $("#login_form input[name='password']").val()} ,authenticity_token: authToken() },
+            data: { login: {
+                    phone_number: form.elements["phone_number"].value,
+                    password: form.elements["password"].value
+                  }
+            }
         })
         .done(function(data) {
-            $('#favorites-menu').html(data);
+            _this._renderSidebar(data);
         });
     },
 
-    getUserForm: function() {
-        _this = this;
-        $.get("/users/new", "html").done(function(data) {
-            _this.drawLoginForm(data);
-        });
+    getUserForm: function(url) {
+        var _this = this;
+        $.get(url, "html").done(function(data) {
+            _this._renderSidebar(data);
+            _this.sessionsView.getUserFormElement();
+            _this._userRegistrationListener();
+        }, false);
     },
 
-    postUserForm: function() {
-        _this = this;
+    postUserForm: function(form) {
+        var _this = this;
         $.ajax({
-            url: '/users?authenticity_token=' + authToken(),
+            url: form.action + '?authenticity_token=' + authToken(),
             type: 'POST',
             dataType: 'json',
-            data: { user: { name: $("#user_create input[name='name']").val(), phone_number: $("#user_create input[name='phone_number']").val(),password: $("#user_create input[name='password']").val()} },
+            data: { user: {
+                    name: form.elements["name"].value,
+                    phone_number: form.elements["phone_number"].value,
+                    password: form.elements["password"].value
+                  }
+            },
             beforeSend: function() {
-                _this.sessionsView.drawUserConfirm();
+                _this.sessionsView.renderRegistrationConfirm();
             },
             error: function(xhr){
                 var errors = $.parseJSON(xhr.responseText).errors;
-                alert(errors);
             }
         })
         .done(function(data) {
@@ -55,12 +61,16 @@ Shogogo.SessionsController.prototype = {
         });
     },
 
-    _drawRegisteredUser: function() {
-        
+    _signupLinkListener: function() {
+        var _this = this;
+        this.sessionsView.signupLink.addEventListener("click", function(e) {
+            e.preventDefault();
+            _this.getUserForm("/users/new");
+        }, false);
     },
 
-    _loginListener: function() {
-        _this = this;
+    _loginLinkListener: function() {
+        var _this = this;
         if (this.sessionsView.loginLink) {
             this.sessionsView.loginLink.addEventListener("click", function(e) {
                 e.preventDefault();
@@ -69,12 +79,36 @@ Shogogo.SessionsController.prototype = {
         }
     },
 
-    _getLoginForm: function() {
-        _this = this;
-        $.get("/sessions/new").done(function(data) {
-            _this.drawLoginForm(data);
-        });
-        this.sessionsView.renderLoginLayout();
-    }
+    _userLoginListener: function() {
+        var _this = this;
+        this.sessionsView.loginForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+            _this.authenticateUser(this);
+        }, false);
+    },
 
+    _userRegistrationListener: function() {
+        var _this = this;
+        this.sessionsView.userForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+            if (!phoneValidator()) {
+                return false;
+            }
+            _this.postUserForm(this);
+        }, false);
+    },
+
+    _getLoginForm: function() {
+        var _this = this;
+        $.get("/sessions/new").done(function(data) {
+            _this._renderSidebar(data);
+            _this.sessionsView.renderLoginLayout();
+            _this.sessionsView.getLoginFormElement();
+            _this._userLoginListener();
+        }, false);
+    },
+
+    _renderSidebar: function(data) {
+        this.sessionsView.renderSidebar(data);
+    }
 };
