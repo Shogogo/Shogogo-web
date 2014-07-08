@@ -28,9 +28,5 @@ Shogogo.FavoritesView.prototype = {
 
     renderSidebar: function() {
         $('#favorites-menu').removeClass('nofaves').addClass('faves');
-    },
-
-    getRemoveFavoriteButton: function() {
-        this.removeFavoriteButton = document.querySelector('.favorites_band_remove');
-    },
+    }
 };
