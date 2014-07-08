@@ -1,13 +1,13 @@
 Shogogo.SearchView = function(options) {
     this.options = options;
-    this.searchBox = options.searchBox;
-    this.searchMessage = options.searchMessage;
-    this.searchContainer = options.searchContainer;
-    this.classSearchContainerFavorites = options.classSearchContainerFavorites;
-    this.classSidebarFavorites = options.classFavorites;
-    this.classSidebarNoFavorites = options.classNoFavorites;
-    this.classLogin = options.classLogin;
-    this.resultsContainer = options.resultsContainer;
+    this.searchBox = document.querySelector(options.searchBox);
+    this.searchMessage = document.querySelector(options.searchMessage);
+    this.searchContainer = document.querySelector(options.searchContainer);
+    this.classSearchContainerFavorites = document.querySelector(options.classSearchContainerFavorites);
+    this.classSidebarFavorites = document.querySelector(options.classFavorites);
+    this.classSidebarNoFavorites = document.querySelector(options.classNoFavorites);
+    this.classLogin = document.querySelector(options.classLogin);
+    this.resultsContainer = document.querySelector(options.resultsContainer);
 };
 
 Shogogo.SearchView.prototype = {
