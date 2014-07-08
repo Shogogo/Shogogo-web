@@ -1,12 +1,12 @@
 Shogogo.SessionsView = function(options) {
     this.options = options;
+    this.signupLink = document.querySelector(options.signupLink);
+    this.sidebar = document.querySelector(options.sidebar);
+    this.overlay = document.querySelector(options.overlay);
+    this.indexElement = document.querySelector(options.indexElement);
+    this.loginLink = document.querySelector(options.loginLink);
     this.loginForm = options.loginForm;
     this.userForm = options.userForm;
-    this.signupLink = options.signupLink;
-    this.sidebar = options.sidebar;
-    this.overlay = options.overlay;
-    this.indexElement = options.indexElement;
-    this.loginLink = options.loginLink; 
 };
 
 Shogogo.SessionsView.prototype = {
