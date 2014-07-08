@@ -6,6 +6,7 @@ Shogogo.FavoritesController = function(favoritesView) {
 Shogogo.FavoritesController.prototype = {
     listeners: function() {
         this.addFavoriteListener();
+        this.removeFavoriteListener();
     },
 
     removeFavorite: function(band) {
@@ -39,7 +40,7 @@ Shogogo.FavoritesController.prototype = {
 
     removeFavoriteListener: function() {
         var _this = this;
-        $(this.favoritesView.removeFavoriteButton).on('click', function(e) {
+        $(document).on('click', this.favoritesView.removeFavoriteButton, function(e) {
             e.preventDefault();
             var band = $(this).closest('.favorites_band_item');
             _this.removeFavorite(band);
@@ -48,8 +49,6 @@ Shogogo.FavoritesController.prototype = {
 
     renderArtist: function(artist) {
         this.favoritesView.append_draw(artist);
-        this.favoritesView.getRemoveFavoriteButton();
-        this.removeFavoriteListener();
     },
 
     addFavorite: function(artist) {
