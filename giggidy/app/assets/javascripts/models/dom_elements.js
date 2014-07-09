@@ -13,5 +13,20 @@ var domElements = {
     classSidebarFavorites: '.faves',
     classSidebarNoFavorites: '.nofaves',
     classLogin: '.login',
-    resultsContainer: '#band_container'
+    resultsContainer: '#band_container',
+    favoritesMenuNode: '.favorites_menu',
+    favoriteNode: '.favorites_band_item',
+    removeFavoriteButton: '.favorites_band_remove',
+    addFavoriteButton: '#add_band',
+    favoriteId: 'fav-id',
+    defaultFavoriteImage: 'assets/guitarboat-square.jpeg'
+};
+
+
+  var test = {
+    
+    favoritesMenuContainer: document.getElementById('favorites-menu'),
+    favoritesSaveButton: document.getElementsByClassName('favorites_save')[0],
+    addButton: $("#add_band"),
+    removeFavoriteButton: '.favorites_band_remove'
 };
