@@ -1,6 +1,4 @@
-Shogogo.FavoritesController = function() {
-    this.bandView = new BandView();
-};
+Shogogo.FavoritesController = function() {};
 
 Shogogo.FavoritesController.prototype = {
     listeners: function() {
@@ -13,7 +11,6 @@ Shogogo.FavoritesController.prototype = {
         var favoriteId = band.attr(this.favoritesView.favoriteId);
         var destroy_path = "/favorites/" + favoriteId;
         this.favoritesView.remove(band);
-
         $.ajax({
              url: destroy_path,
              type: 'DELETE',
@@ -41,7 +38,7 @@ Shogogo.FavoritesController.prototype = {
         var _this = this;
         $(document).on('click', this.favoritesView.removeFavoriteButton, function(e) {
             e.preventDefault();
-            var band = $(this).closest(this.favoritesView.favoriteNode);
+            var band = $(this).closest(_this.favoritesView.favoriteNode);
             _this.removeFavorite(band);
         });
     },
@@ -62,7 +59,8 @@ Shogogo.FavoritesController.prototype = {
         });
     },
 
-    defineView: function(favoritesView) {
+    defineView: function(favoritesView, bandView) {
         this.favoritesView = favoritesView;
+        this.bandView = bandView;
     }
 };

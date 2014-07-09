@@ -16,8 +16,8 @@ Shogogo.Controller.prototype = {
 
     _defineViews: function() {
         this.sessions.defineView(new Shogogo.SessionsView(domElements));
-        this.search.defineView(new Shogogo.SearchView(domElements), new BandView(domElements));
-        this.favorites.defineView(new Shogogo.FavoritesView(domElements));
+        this.search.defineView(new Shogogo.SearchView(domElements), new Shogogo.BandView(domElements));
+        this.favorites.defineView(new Shogogo.FavoritesView(domElements), new Shogogo.BandView(domElements));
     },
 
     _startListeners: function() {
