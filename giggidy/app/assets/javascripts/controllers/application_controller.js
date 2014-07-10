@@ -15,7 +15,7 @@ Shogogo.Controller.prototype = {
     },
 
     _defineViews: function() {
-        this.sessions.defineView(new Shogogo.SessionsView(domElements));
+        this.sessions.defineView(new Shogogo.SessionsView(domElements), new Shogogo.SidebarView(domElements));
         this.search.defineView(new Shogogo.SearchView(domElements), new Shogogo.BandView(domElements));
         this.favorites.defineView(new Shogogo.FavoritesView(domElements), new Shogogo.BandView(domElements));
     },
