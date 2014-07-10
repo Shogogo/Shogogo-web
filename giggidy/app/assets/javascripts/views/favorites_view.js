@@ -1,22 +1,28 @@
-Shogogo.FavoritesView = function() {
-    this.favoritesMenuNode = document.getElementsByClassName('favorites_menu')[0];
-    this.favoritesMenuContainer = document.getElementById('favorites-menu');
-    this.favoritesSaveButton = document.getElementsByClassName('favorites_save')[0];
+Shogogo.FavoritesView = function(options) {
+    this.options = options;
+    this.favoritesMenuNode = options.favoritesMenuNode;
+    this.sidebar = options.sidebar;
+    this.favoriteNode = options.favoriteNode;
+    this.resultsContainer = options.resultsContainer;
+    this.favoriteId = options.favoriteId;
+    this.addFavoriteButton = options.addFavoriteButton;
+    this.removeFavoriteButton = options.removeFavoriteButton;
+    this.classSidebarFavorites = options.classSidebarFavorites;
+    this.classSidebarNoFavorites = options.classSidebarNoFavorites;
+
     this.favoritesPresenter = new FavoritesPresenter();
-    this.addButton = $("#add_band");
-    this.removeFavoriteButton = '.favorites_band_remove';
 };
 
 Shogogo.FavoritesView.prototype = {
     draw:function(favoriteList) {
         var newFavoritesMenu = this.favoritesPresenter.present(favoriteList);
         this.favoritesMenuNode.innerHTML = newFavoritesMenu.innerHTML;
-        this.favoritesMenuNode.setAttribute("style","overflow-y: scroll;");
+        document.querySelector(this.favoritesMenuNode).setAttribute("style","overflow-y: scroll;");
     },
 
     append_draw: function(band) {
         var newBandFavorite = this.favoritesPresenter.append(band);
-        var faveBand = this.favoritesMenuNode.appendChild(newBandFavorite);
+        var faveBand = document.querySelector(this.favoritesMenuNode).appendChild(newBandFavorite);
         $(faveBand).slideDown(2000);
     },
 
@@ -27,6 +33,6 @@ Shogogo.FavoritesView.prototype = {
     },
 
     renderSidebar: function() {
-        $('#favorites-menu').removeClass('nofaves').addClass('faves');
+        this.sidebar.removeClass(classSidebarNoFavorites).addClass(classSidebarFavorites);
     }
 };

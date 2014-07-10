@@ -1,6 +1,5 @@
 Shogogo.SearchController = function(searchBox) {
     this.searchBox = searchBox;
-    this.bandView = new BandView();
 };
 
 Shogogo.SearchController.prototype = {
@@ -13,8 +12,10 @@ Shogogo.SearchController.prototype = {
         this.searchView.resetSearchBox();
     },
 
-    defineView: function(searchView) {
+    defineView: function(searchView, bandView) {
         this.searchView = searchView;
+        this.bandView = bandView;
+        this.searchBox.defineView(searchView);
     },
 
     clearSearchListener: function() {
@@ -50,10 +51,10 @@ Shogogo.SearchController.prototype = {
     getArtist: function(preparedArtistName) {
         var _this = this;
         $.getJSON(preparedArtistName).done(function(artistInfo) {
-                var artistData = artistInfo.performers[0];
-                artistObject = _this.searchBox.parseArtistInfo(artistData);
-                _this.bandView.draw(artistObject);
-                artistService.addArtist(artistObject);
+            var artistData = artistInfo.performers[0];
+            artistObject = _this.searchBox.parseArtistInfo(artistData);
+            _this.bandView.draw(artistObject);
+            artistService.addArtist(artistObject);
         });
     }
 };

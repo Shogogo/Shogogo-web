@@ -1,25 +1,28 @@
-BandView = function() {
-    this.bandNode = document.getElementById('band_container');
-    this.searchNode = document.getElementById('search_box');
-    this.searchContainer = document.getElementsByClassName('search_container')[0];
-    this.favoritesView = new Shogogo.FavoritesView();
+Shogogo.BandView = function(options) {
+    this.options = options;
+    this.resultsContainer = options.resultsContainer;
+    this.searchBox = options.searchBox;
+    this.searchContainer = options.searchContainer;
+    this.sidebar = options.sidebar;
+    this.classSidebarFavorites = options.classSidebarFavorites;
+    this.classSidebarNoFavorites = options.classSidebarNoFavorites;
 };
 
-BandView.prototype = {
+Shogogo.BandView.prototype = {
     draw:function(band) {
         var new_band_container = new BandPresenter(band).present();
-        this.bandNode.innerHTML = new_band_container.innerHTML;
-        $(this.bandNode).fadeIn('fast');
+        document.querySelector(this.resultsContainer).innerHTML = new_band_container.innerHTML;
+        $(this.resultsContainer).fadeIn('fast');
     },
 
     clearSearch: function() {
-        $(this.bandNode).empty().hide(200);
-        $(this.searchNode).val('');
+        $(this.resultsContainer).empty().hide(200);
+        $(this.searchBox).val('');
         $(this.searchContainer).animate({left: "12.5%"}, 200);
-        $('#favorites-menu').removeClass('nofaves').addClass('faves');
+        $(this.sidebar).removeClass(this.classSidebarNoFavorites).addClass(this.classSidebarFavorites);
     },
 
     removeBandContainer: function() {
-        $(this.bandNode).fadeOut();
+        $(this.resultsContainer).fadeOut();
     }
 };

@@ -10,8 +10,14 @@ var domElements = {
     searchMessage: '#search_message',
     searchContainer: '.search_container',
     classSearchContainerFavorites: '.search_with_faves',
-    classSidebarFavorites: '.faves',
-    classSidebarNoFavorites: '.nofaves',
+    classSidebarFavorites: 'faves',
+    classSidebarNoFavorites: 'nofaves',
     classLogin: '.login',
-    resultsContainer: '#band_container'
+    resultsContainer: '#band_container',
+    favoritesMenuNode: '.favorites_menu',
+    favoriteNode: '.favorites_band_item',
+    removeFavoriteButton: '.favorites_band_remove',
+    addFavoriteButton: '#add_band',
+    favoriteId: 'fav-id',
+    defaultFavoriteImage: 'assets/guitarboat-square.jpeg',
 };

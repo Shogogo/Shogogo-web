@@ -63,10 +63,12 @@ Shogogo.SessionsController.prototype = {
 
     _signupLinkListener: function() {
         var _this = this;
-        this.sessionsView.signupLink.addEventListener("click", function(e) {
-            e.preventDefault();
-            _this.getUserForm("/users/new");
-        }, false);
+        if (this.sessionsView.loginLink) {
+            this.sessionsView.signupLink.addEventListener("click", function(e) {
+                e.preventDefault();
+                _this.getUserForm("/users/new");
+            }, false);
+        }
     },
 
     _loginLinkListener: function() {
@@ -74,7 +76,7 @@ Shogogo.SessionsController.prototype = {
         if (this.sessionsView.loginLink) {
             this.sessionsView.loginLink.addEventListener("click", function(e) {
                 e.preventDefault();
-                _this._getLoginForm();
+                _this._getLoginForm("/sessions/new");
             }, false);
         }
     },
@@ -98,9 +100,9 @@ Shogogo.SessionsController.prototype = {
         }, false);
     },
 
-    _getLoginForm: function() {
+    _getLoginForm: function(url) {
         var _this = this;
-        $.get("/sessions/new").done(function(data) {
+        $.get(url).done(function(data) {
             _this._renderSidebar(data);
             _this.sessionsView.renderLoginLayout();
             _this.sessionsView.getLoginFormElement();

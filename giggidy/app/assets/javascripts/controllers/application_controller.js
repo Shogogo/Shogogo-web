@@ -9,14 +9,15 @@ Shogogo.Controller.prototype = {
     },
 
     _addControllers: function() {
-        this.favorites = new Shogogo.FavoritesController(new Shogogo.FavoritesView());
-        this.search = new Shogogo.SearchController(new SearchBox());
+        this.favorites = new Shogogo.FavoritesController();
+        this.search = new Shogogo.SearchController(new Shogogo.SearchBox());
         this.sessions = new Shogogo.SessionsController();
     },
 
     _defineViews: function() {
         this.sessions.defineView(new Shogogo.SessionsView(domElements));
-        this.search.defineView(new Shogogo.SearchView(domElements));
+        this.search.defineView(new Shogogo.SearchView(domElements), new Shogogo.BandView(domElements));
+        this.favorites.defineView(new Shogogo.FavoritesView(domElements), new Shogogo.BandView(domElements));
     },
 
     _startListeners: function() {

@@ -1,7 +1,4 @@
-Shogogo.FavoritesController = function(favoritesView) {
-    this.favoritesView = favoritesView;
-    this.bandView = new BandView();
-};
+Shogogo.FavoritesController = function() {};
 
 Shogogo.FavoritesController.prototype = {
     listeners: function() {
@@ -10,11 +7,10 @@ Shogogo.FavoritesController.prototype = {
     },
 
     removeFavorite: function(band) {
-        var bandName = band.find('.favorites_band_name').text();
-        var favoriteId = band.attr('fav-id');
+        var bandName = band.find(this.favoritesView.favoriteNode).text();
+        var favoriteId = band.attr(this.favoritesView.favoriteId);
         var destroy_path = "/favorites/" + favoriteId;
         this.favoritesView.remove(band);
-
         $.ajax({
              url: destroy_path,
              type: 'DELETE',
@@ -29,7 +25,7 @@ Shogogo.FavoritesController.prototype = {
 
     addFavoriteListener: function() {
         var _this = this;
-        $('#band_container').on('click', '#add_band', function(e) {
+        $(this.favoritesView.resultsContainer).on('click', this.favoritesView.addFavoriteButton, function(e) {
             e.preventDefault();
             var artist = artistService.getArtist();
             _this.renderArtist(artist);
@@ -42,7 +38,7 @@ Shogogo.FavoritesController.prototype = {
         var _this = this;
         $(document).on('click', this.favoritesView.removeFavoriteButton, function(e) {
             e.preventDefault();
-            var band = $(this).closest('.favorites_band_item');
+            var band = $(this).closest(_this.favoritesView.favoriteNode);
             _this.removeFavorite(band);
         });
     },
@@ -53,10 +49,18 @@ Shogogo.FavoritesController.prototype = {
 
     addFavorite: function(artist) {
         var _this = this;
-        $.post("/favorites", { favorite: { seatgeek_id: artist.id, name: artist.name, image_url_small: artist.image_url_small }, authenticity_token: authToken()
+        $.post("/favorites", { favorite: {
+            seatgeek_id: artist.id,
+            name: artist.name,
+            image_url_small: artist.image_url_small }, authenticity_token: authToken()
         }).done(function(data) {
             var favorite_id = data.id;
-            $('.favorites_band_item').last().attr( "fav-id", favorite_id );
+            $(_this.favoritesView.favoriteNode).last().attr(_this.favoritesView.favoriteId, favorite_id);
         });
+    },
+
+    defineView: function(favoritesView, bandView) {
+        this.favoritesView = favoritesView;
+        this.bandView = bandView;
     }
 };
