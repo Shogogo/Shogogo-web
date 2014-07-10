@@ -2,8 +2,9 @@ Shogogo.SessionsController = function() {
 };
 
 Shogogo.SessionsController.prototype = {
-    defineView: function(sessionsView) {
+    defineView: function(sessionsView, sidebarView) {
         this.sessionsView = sessionsView;
+        this.sidebarView = sidebarView;
     },
 
     listeners: function() {
@@ -104,13 +105,13 @@ Shogogo.SessionsController.prototype = {
         var _this = this;
         $.get(url).done(function(data) {
             _this._renderSidebar(data);
-            _this.sessionsView.renderLoginLayout();
             _this.sessionsView.getLoginFormElement();
             _this._userLoginListener();
         }, false);
     },
 
     _renderSidebar: function(data) {
-        this.sessionsView.renderSidebar(data);
+        this.sidebarView.draw(data);
+        this.sidebarView.renderSidebar();
     }
 };

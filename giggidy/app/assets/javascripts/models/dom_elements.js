@@ -9,7 +9,7 @@ var domElements = {
     searchBox: '#search_box',
     searchMessage: '#search_message',
     searchContainer: '.search_container',
-    classSearchContainerFavorites: '.search_with_faves',
+    classSearchContainerFavorites: 'search_with_faves',
     classSidebarFavorites: 'faves',
     classSidebarNoFavorites: 'nofaves',
     classLogin: '.login',
