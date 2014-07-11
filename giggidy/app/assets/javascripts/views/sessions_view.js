@@ -10,23 +10,12 @@ Shogogo.SessionsView = function(options) {
 };
 
 Shogogo.SessionsView.prototype = {
-    renderSidebar: function(data) {
-        this.sidebar.innerHTML = data;
-    },
-
     getLoginFormElement: function() {
         this.loginForm = document.querySelector(this.loginForm);
     },
 
     getUserFormElement: function() {
         this.userForm = document.querySelector(this.userForm);
-    },
-
-    renderLoginLayout: function() {
-        $('#favorites-menu').removeClass('nofaves').addClass('faves');
-        $('#search_message').hide();
-        $('.search_container').removeClass('search_container').addClass('search_with_faves', { duration:200 });
-        $('.login').hide();
     },
 
     renderRegistrationConfirm: function() {
