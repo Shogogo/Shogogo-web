@@ -20,7 +20,7 @@ Shogogo.FavoritesController.prototype = {
     },
 
     renderFavoritesView: function() {
-        this.favoritesView.renderSidebar();
+        this.sidebarView.renderSidebar();
     },
 
     addFavoriteListener: function() {
@@ -59,8 +59,9 @@ Shogogo.FavoritesController.prototype = {
         });
     },
 
-    defineView: function(favoritesView, bandView) {
+    defineView: function(favoritesView, sidebarView, bandView) {
         this.favoritesView = favoritesView;
+        this.sidebarView = sidebarView;
         this.bandView = bandView;
     }
 };
