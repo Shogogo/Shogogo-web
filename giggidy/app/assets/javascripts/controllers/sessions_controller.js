@@ -113,5 +113,6 @@ Shogogo.SessionsController.prototype = {
     _renderSidebar: function(data) {
         this.sidebarView.draw(data);
         this.sidebarView.renderSidebar();
+        this.sidebarView.renderSidebarLayout();
     }
 };

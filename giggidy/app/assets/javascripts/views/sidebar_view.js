@@ -28,8 +28,12 @@ Shogogo.SidebarView.prototype = {
 
     renderSidebar: function() {
         $(this.sidebar).removeClass(this.classSidebarNoFavorites).addClass(this.classSidebarFavorites);
+    },
+
+    renderSidebarLayout: function() {
         $(this.searchContainer).addClass(this.classSearchContainerFavorites, { duration:300 });
         $(this.search_message).hide();
         $(this.classLogin).hide();
     }
+
 };
