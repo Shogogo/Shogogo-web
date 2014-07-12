@@ -31,9 +31,8 @@ Shogogo.SidebarView.prototype = {
     },
 
     renderSidebarLayout: function() {
-        $(this.searchContainer).addClass(this.classSearchContainerFavorites, { duration:300 });
+        $(this.searchContainer).addClass(this.classSearchContainerFavorites, { duration:200 });
         $(this.search_message).hide();
         $(this.classLogin).hide();
     }
-
 };
