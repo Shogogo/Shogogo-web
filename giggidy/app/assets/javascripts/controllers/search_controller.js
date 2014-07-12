@@ -28,7 +28,7 @@ Shogogo.SearchController.prototype = {
 
     searchListener: function() {
         var _this = this;
-        $("#search_box")
+        $(this.searchBox)
         .suggest({ filter:'(all type:/music/artist)',
             flyout: false,
             css: { pane: "suggest_pane",
@@ -39,8 +39,7 @@ Shogogo.SearchController.prototype = {
         .bind('fb-select', function(e) {
             var artistName = _this.searchBox.getArtistName();
             var preparedArtistName = _this.searchBox.preparedArtistQuery(artistName);
-            $('#search_message').hide();
-            $('.login').hide();
+            _this.searchView.renderResultsView();
             $('input:text').focus(function(){
             $(this).val('');
          });
