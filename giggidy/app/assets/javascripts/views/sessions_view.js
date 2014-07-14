@@ -4,6 +4,8 @@ Shogogo.SessionsView = function(options) {
     this.indexElement = document.querySelector(options.indexElement);
     this.loginForm = options.loginForm;
     this.userForm = options.userForm;
+    this.signupLink = document.querySelector(options.signupLink);
+    this.loginLink = document.querySelector(options.loginLink);
 };
 
 Shogogo.SessionsView.prototype = {
