@@ -30,9 +30,5 @@ Shogogo.FavoritesView.prototype = {
         $(band).slideUp(100, function() {
             $(this).remove();
         });
-    },
-
-    renderSidebar: function() {
-        this.sidebar.removeClass(classSidebarNoFavorites).addClass(classSidebarFavorites);
     }
 };

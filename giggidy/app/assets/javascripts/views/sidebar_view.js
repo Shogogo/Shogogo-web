@@ -2,11 +2,12 @@ Shogogo.SidebarView = function(options) {
     this.options = options;
     this.sidebar = options.sidebar;
     this.searchContainer = document.querySelector(options.searchContainer);
-    this.classSearchContainerFavorites = document.querySelector(options.classSearchContainerFavorites);
-    this.classSidebarFavorites = options.classFavorites;
-    this.classSidebarNoFavorites = options.classNoFavorites;
+    this.classSearchContainerFavorites = options.classSearchContainerFavorites;
+    this.classSidebarFavorites = options.classSidebarFavorites;
+    this.classSidebarNoFavorites = options.classSidebarNoFavorites;
     this.classLogin = options.classLogin;
     this.search_message = document.querySelector(options.searchMessage);
+    this.resultsContainer = options.resultsContainer;
 };
 
 Shogogo.SidebarView.prototype = {
@@ -27,13 +28,14 @@ Shogogo.SidebarView.prototype = {
     },
 
     renderSidebar: function() {
-        $('#favorites-menu').removeClass('nofaves').addClass('faves');
-        $('#search_message').hide();
-        $('.search_container').removeClass('search_container').addClass('search_with_faves', { duration:200 });
-        $('.login');
-        // $(this.sidebar).removeClass(this.classSidebarNoFavorites).addClass(this.classSidebarFavorites);
-        // $(this.searchContainer).addClass(this.classSearchContainerFavorites, { duration:300 });
-        // $(this.search_message).hide();
-        // $(this.classLogin).hide();
+        $(this.sidebar).removeClass(this.classSidebarNoFavorites).addClass(this.classSidebarFavorites);
+    },
+
+    renderSidebarLayout: function() {
+        $(this.resultsContainer).empty().hide(200);
+        $(this.searchBox).val('');
+        $(this.searchContainer).animate({left: "12.5%"}, 200);
+        $(this.search_message).hide();
+        $(this.classLogin).hide();
     }
 };

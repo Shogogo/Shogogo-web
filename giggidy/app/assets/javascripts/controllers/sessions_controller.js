@@ -12,7 +12,7 @@ Shogogo.SessionsController.prototype = {
         this._signupLinkListener();
     },
 
-    authenticateUser: function(form) {
+    _authenticateUser: function(form) {
         var _this = this;
         $.ajax({
             url: form.action + '?authenticity_token=' + authToken(),
@@ -29,7 +29,7 @@ Shogogo.SessionsController.prototype = {
         });
     },
 
-    getUserForm: function(url) {
+    _getUserForm: function(url) {
         var _this = this;
         $.get(url, "html").done(function(data) {
             _this._renderSidebar(data);
@@ -38,7 +38,7 @@ Shogogo.SessionsController.prototype = {
         }, false);
     },
 
-    postUserForm: function(form) {
+    _postUserForm: function(form) {
         var _this = this;
         $.ajax({
             url: form.action + '?authenticity_token=' + authToken(),
@@ -64,12 +64,10 @@ Shogogo.SessionsController.prototype = {
 
     _signupLinkListener: function() {
         var _this = this;
-        if (this.sessionsView.loginLink) {
-            this.sessionsView.signupLink.addEventListener("click", function(e) {
-                e.preventDefault();
-                _this.getUserForm("/users/new");
-            }, false);
-        }
+        this.sessionsView.signupLink.addEventListener("click", function(e) {
+            e.preventDefault();
+            _this._getUserForm("/users/new");
+        }, false);
     },
 
     _loginLinkListener: function() {
@@ -86,7 +84,7 @@ Shogogo.SessionsController.prototype = {
         var _this = this;
         this.sessionsView.loginForm.addEventListener("submit", function(e) {
             e.preventDefault();
-            _this.authenticateUser(this);
+            _this._authenticateUser(this);
         }, false);
     },
 
@@ -97,7 +95,7 @@ Shogogo.SessionsController.prototype = {
             if (!phoneValidator()) {
                 return false;
             }
-            _this.postUserForm(this);
+            _this._postUserForm(this);
         }, false);
     },
 
@@ -113,5 +111,6 @@ Shogogo.SessionsController.prototype = {
     _renderSidebar: function(data) {
         this.sidebarView.draw(data);
         this.sidebarView.renderSidebar();
+        this.sidebarView.renderSidebarLayout();
     }
 };
