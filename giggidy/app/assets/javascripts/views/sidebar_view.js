@@ -7,6 +7,7 @@ Shogogo.SidebarView = function(options) {
     this.classSidebarNoFavorites = options.classSidebarNoFavorites;
     this.classLogin = options.classLogin;
     this.search_message = document.querySelector(options.searchMessage);
+    this.resultsContainer = options.resultsContainer;
 };
 
 Shogogo.SidebarView.prototype = {
@@ -31,7 +32,9 @@ Shogogo.SidebarView.prototype = {
     },
 
     renderSidebarLayout: function() {
-        $(this.searchContainer).addClass(this.classSearchContainerFavorites, { duration:200 });
+        $(this.resultsContainer).empty().hide(200);
+        $(this.searchBox).val('');
+        $(this.searchContainer).animate({left: "12.5%"}, 200);
         $(this.search_message).hide();
         $(this.classLogin).hide();
     }

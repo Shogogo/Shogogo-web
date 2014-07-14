@@ -30,7 +30,8 @@ Shogogo.FavoritesController.prototype = {
             var artist = artistService.getArtist();
             _this.renderArtist(artist);
             _this.addFavorite(artist);
-            _this.bandView.clearSearch();
+            _this.sidebarView.renderSidebarLayout();
+            _this.sidebarView.renderSidebar();
         });
     },
 
