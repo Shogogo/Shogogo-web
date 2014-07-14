@@ -20,12 +20,6 @@ Shogogo.FavoritesView.prototype = {
         document.querySelector(this.favoritesMenuNode).setAttribute("style","overflow-y: scroll;");
     },
 
-    append_draw: function(band) {
-        var newBandFavorite = this.favoritesPresenter.append(band);
-        var faveBand = document.querySelector(this.favoritesMenuNode).appendChild(newBandFavorite);
-        $(faveBand).slideDown(2000);
-    },
-
     remove: function(band) {
         $(band).slideUp(100, function() {
             $(this).remove();

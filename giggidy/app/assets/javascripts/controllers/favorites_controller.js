@@ -1,4 +1,6 @@
-Shogogo.FavoritesController = function() {};
+Shogogo.FavoritesController = function() {
+    this.favoritesPresenter = new FavoritesPresenter();
+};
 
 Shogogo.FavoritesController.prototype = {
     listeners: function() {
@@ -45,7 +47,8 @@ Shogogo.FavoritesController.prototype = {
     },
 
     renderArtist: function(artist) {
-        this.favoritesView.append_draw(artist);
+        var newFavorite = this.favoritesPresenter.append(artist);
+        this.sidebarView.add(newFavorite);
     },
 
     addFavorite: function(artist) {

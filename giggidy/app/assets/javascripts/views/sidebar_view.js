@@ -8,6 +8,7 @@ Shogogo.SidebarView = function(options) {
     this.classLogin = options.classLogin;
     this.search_message = document.querySelector(options.searchMessage);
     this.resultsContainer = options.resultsContainer;
+    this.favoritesMenuNode = document.querySelector(options.favoritesMenuNode);
 };
 
 Shogogo.SidebarView.prototype = {
@@ -17,7 +18,7 @@ Shogogo.SidebarView.prototype = {
     },
 
     add: function(viewElement) {
-        var newElement = document.querySelect(this.favoritesMenuNode).appendChild(viewElement);
+        var newElement = this.favoritesMenuNode.appendChild(viewElement);
         $(newElement).slideDown(2000);
     },
 
