@@ -1,14 +1,14 @@
 Shogogo.SearchView = function(options) {
     this.options = options;
-    this.searchBox = options.searchBox;
+    this.searchBox = document.querySelector(options.searchBox);
     this.searchMessage = document.querySelector(options.searchMessage);
     this.classLogin = document.querySelector(options.classLogin);
-    this.resultsContainer = document.querySelector(options.resultsContainer);
+    this.resultsContainer = options.resultsContainer;
 };
 
 Shogogo.SearchView.prototype = {
     resetSearchBox: function() {
-        $(this.searchBox).val('');
+        this.searchBox.value = '';
         $(this.resultsContainer).fadeOut();
     },
 

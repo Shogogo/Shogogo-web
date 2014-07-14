@@ -20,7 +20,7 @@ Shogogo.SearchController.prototype = {
 
     clearSearchListener: function() {
         var _this = this;
-        this.searchView.searchBox.addEventListener("click", function(e) {
+         this.searchView.searchBox.addEventListener("click", function(e) {
             e.preventDefault();
             _this.clearSearch();
         }, false);
@@ -28,7 +28,7 @@ Shogogo.SearchController.prototype = {
 
     searchListener: function() {
         var _this = this;
-        $(this.searchBox)
+        $('#search_box')
         .suggest({ filter:'(all type:/music/artist)',
             flyout: false,
             css: { pane: "suggest_pane",
