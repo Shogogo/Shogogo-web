@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
     if @user.save!
       send_sms(parsed_phone, "Thank you for using Shogogo! Reply 'confirm' to verify your number or reply 'stop' to unsubscribe.")
-      sleep(10) #temporary solution - need to implement client side waiting for phone validation
+      sleep(5) #temporary solution - need to implement client side waiting for phone validation
       render :json => { :status => 'ok', :message => 'Success!'}
     else
       render :json => { :errors => @user.errors.full_messages }
