@@ -64,10 +64,12 @@ Shogogo.SessionsController.prototype = {
 
     _signupLinkListener: function() {
         var _this = this;
-        this.sessionsView.signupLink.addEventListener("click", function(e) {
-            e.preventDefault();
-            _this._getUserForm("/users/new");
-        }, false);
+        if (this.sessionsView.loginLink) {
+            this.sessionsView.signupLink.addEventListener("click", function(e) {
+                e.preventDefault();
+                _this._getUserForm("/users/new");
+            }, false);
+        }
     },
 
     _loginLinkListener: function() {
