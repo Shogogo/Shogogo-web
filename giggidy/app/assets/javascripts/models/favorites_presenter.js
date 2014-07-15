@@ -1,14 +1,12 @@
-FavoritesPresenter = function() {
-};
+Shogogo.FavoritesPresenter = function() {};
 
-FavoritesPresenter.prototype = {
+Shogogo.FavoritesPresenter.prototype = {
     present: function(favoriteList) {
         var favoritesMenuNode = document.createElement('div');
         var saveNode = document.createElement('button');
 
         favoritesMenuNode.className = "favorites_menu";
         saveNode.className = "favorites_save";
-            // Button will add favorites to notify list and request user phone - change text to something more descriptive.
         saveNode.textContent = "Notify Me!";
 
         for (i = 0; i < favoriteList.length; i++) {
@@ -31,13 +29,9 @@ FavoritesPresenter.prototype = {
             bandContainerNode.appendChild(bandImageNode);
             bandContainerNode.appendChild(bandNameNode);
             bandContainerNode.appendChild(removeBandNode);
-                // Testing only - remove text - use img of negative sign
-                // removeBandNode.src = "button image url";
             favoritesMenuNode.appendChild(bandContainerNode);
         }
-
         favoritesMenuNode.appendChild(saveNode);
-
         return favoritesMenuNode;
     },
     

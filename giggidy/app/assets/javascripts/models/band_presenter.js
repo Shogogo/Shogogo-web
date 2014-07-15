@@ -1,8 +1,8 @@
-BandPresenter = function(band) {
+Shogogo.BandPresenter = function(band) {
     this.band = band;
 };
 
-BandPresenter.prototype = {
+Shogogo.BandPresenter.prototype = {
     present: function() {
         var bandPanelNode = document.createElement('div');
         var imageNode = document.createElement('img');

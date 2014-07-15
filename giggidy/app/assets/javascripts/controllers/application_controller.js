@@ -1,5 +1,4 @@
-Shogogo.Controller = function() {
-};
+Shogogo.Controller = function() {};
 
 Shogogo.Controller.prototype = {
     init: function() {
@@ -9,15 +8,15 @@ Shogogo.Controller.prototype = {
     },
 
     _addControllers: function() {
-        this.favorites = new Shogogo.FavoritesController();
-        this.search = new Shogogo.SearchController(new Shogogo.SearchBox());
+        this.favorites = new Shogogo.FavoritesController(new Shogogo.FavoritesPresenter());
+        this.search = new Shogogo.SearchController(new Shogogo.SearchBox(new Shogogo.SeatGeekParser()));
         this.sessions = new Shogogo.SessionsController();
     },
 
     _defineViews: function() {
         this.sessions.defineView(new Shogogo.SessionsView(domElements), new Shogogo.SidebarView(domElements));
         this.search.defineView(new Shogogo.SearchView(domElements), new Shogogo.BandView(domElements));
-        this.favorites.defineView(new Shogogo.FavoritesView(domElements), new Shogogo.SidebarView(domElements), new Shogogo.BandView(domElements));
+        this.favorites.defineView(new Shogogo.SidebarView(domElements), new Shogogo.BandView(domElements));
     },
 
     _startListeners: function() {
