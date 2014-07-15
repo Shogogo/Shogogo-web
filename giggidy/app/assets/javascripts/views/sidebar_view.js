@@ -9,6 +9,11 @@ Shogogo.SidebarView = function(options) {
     this.search_message = document.querySelector(options.searchMessage);
     this.resultsContainer = options.resultsContainer;
     this.favoritesMenuNode = document.querySelector(options.favoritesMenuNode);
+    this.removeFavoriteButton = options.removeFavoriteButton;
+    this.favoriteNode = options.favoriteNode;
+    this.addFavoriteButton = options.addFavoriteButton;
+    this.favoriteId = options.favoriteId;
+
 };
 
 Shogogo.SidebarView.prototype = {

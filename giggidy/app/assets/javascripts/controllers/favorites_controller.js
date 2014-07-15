@@ -9,10 +9,10 @@ Shogogo.FavoritesController.prototype = {
     },
 
     removeFavorite: function(band) {
-        var bandName = band.find(this.favoritesView.favoriteNode).text();
-        var favoriteId = band.attr(this.favoritesView.favoriteId);
+        var bandName = band.find(this.sidebarView.favoriteNode).text();
+        var favoriteId = band.attr(this.sidebarView.favoriteId);
         var destroy_path = "/favorites/" + favoriteId;
-        this.favoritesView.remove(band);
+        this.sidebarView.remove(band);
         $.ajax({
              url: destroy_path,
              type: 'DELETE',
@@ -27,7 +27,7 @@ Shogogo.FavoritesController.prototype = {
 
     addFavoriteListener: function() {
         var _this = this;
-        $(this.favoritesView.resultsContainer).on('click', this.favoritesView.addFavoriteButton, function(e) {
+        $(this.bandView.resultsContainer).on('click', this.sidebarView.addFavoriteButton, function(e) {
             e.preventDefault();
             var artist = artistService.getArtist();
             _this.renderArtist(artist);
@@ -39,9 +39,9 @@ Shogogo.FavoritesController.prototype = {
 
     removeFavoriteListener: function() {
         var _this = this;
-        $(document).on('click', this.favoritesView.removeFavoriteButton, function(e) {
+        $(document).on('click', this.sidebarView.removeFavoriteButton, function(e) {
             e.preventDefault();
-            var band = $(this).closest(_this.favoritesView.favoriteNode);
+            var band = $(this).closest(_this.sidebarView.favoriteNode);
             _this.removeFavorite(band);
         });
     },
@@ -59,12 +59,11 @@ Shogogo.FavoritesController.prototype = {
             image_url_small: artist.image_url_small }, authenticity_token: authToken()
         }).done(function(data) {
             var favorite_id = data.id;
-            $(_this.favoritesView.favoriteNode).last().attr(_this.favoritesView.favoriteId, favorite_id);
+            $(_this.sidebarView.favoriteNode).last().attr(_this.sidebarView.favoriteId, favorite_id);
         });
     },
 
-    defineView: function(favoritesView, sidebarView, bandView) {
-        this.favoritesView = favoritesView;
+    defineView: function(sidebarView, bandView) {
         this.sidebarView = sidebarView;
         this.bandView = bandView;
     }
