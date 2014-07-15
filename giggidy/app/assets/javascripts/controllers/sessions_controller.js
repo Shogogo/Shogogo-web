@@ -1,5 +1,4 @@
-Shogogo.SessionsController = function() {
-};
+Shogogo.SessionsController = function() {};
 
 Shogogo.SessionsController.prototype = {
     defineView: function(sessionsView, sidebarView) {

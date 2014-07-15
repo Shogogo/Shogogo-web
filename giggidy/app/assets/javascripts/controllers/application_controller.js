@@ -9,7 +9,7 @@ Shogogo.Controller.prototype = {
     },
 
     _addControllers: function() {
-        this.favorites = new Shogogo.FavoritesController();
+        this.favorites = new Shogogo.FavoritesController(new Shogogo.FavoritesPresenter());
         this.search = new Shogogo.SearchController(new Shogogo.SearchBox());
         this.sessions = new Shogogo.SessionsController();
     },

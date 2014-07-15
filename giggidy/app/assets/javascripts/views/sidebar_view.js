@@ -13,7 +13,6 @@ Shogogo.SidebarView = function(options) {
     this.favoriteNode = options.favoriteNode;
     this.addFavoriteButton = options.addFavoriteButton;
     this.favoriteId = options.favoriteId;
-
 };
 
 Shogogo.SidebarView.prototype = {

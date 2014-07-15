@@ -3,30 +3,30 @@ Shogogo.SearchController = function(searchBox) {
 };
 
 Shogogo.SearchController.prototype = {
-    listeners: function() {
-        this.clearSearchListener();
-        this.searchListener();
-    },
-
-    clearSearch: function() {
-        this.searchView.resetSearchBox();
-    },
-
     defineView: function(searchView, bandView) {
         this.searchView = searchView;
         this.bandView = bandView;
         this.searchBox.defineView(searchView);
     },
 
-    clearSearchListener: function() {
+    listeners: function() {
+        this._clearSearchListener();
+        this._searchListener();
+    },
+
+    _clearSearch: function() {
+        this.searchView.resetSearchBox();
+    },
+
+    _clearSearchListener: function() {
         var _this = this;
          this.searchView.searchBox.addEventListener("click", function(e) {
             e.preventDefault();
-            _this.clearSearch();
+            _this._clearSearch();
         }, false);
     },
 
-    searchListener: function() {
+    _searchListener: function() {
         var _this = this;
         $('#search_box')
         .suggest({ filter:'(all type:/music/artist)',
@@ -43,11 +43,11 @@ Shogogo.SearchController.prototype = {
             $('input:text').focus(function(){
             $(this).val('');
          });
-        _this.getArtist(preparedArtistName);
+        _this._getArtist(preparedArtistName);
         });
     },
 
-    getArtist: function(preparedArtistName) {
+    _getArtist: function(preparedArtistName) {
         var _this = this;
         $.getJSON(preparedArtistName).done(function(artistInfo) {
             var artistData = artistInfo.performers[0];
