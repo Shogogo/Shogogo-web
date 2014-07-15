@@ -1,5 +1,4 @@
-Shogogo.Controller = function() {
-};
+Shogogo.Controller = function() {};
 
 Shogogo.Controller.prototype = {
     init: function() {
@@ -10,7 +9,7 @@ Shogogo.Controller.prototype = {
 
     _addControllers: function() {
         this.favorites = new Shogogo.FavoritesController(new Shogogo.FavoritesPresenter());
-        this.search = new Shogogo.SearchController(new Shogogo.SearchBox());
+        this.search = new Shogogo.SearchController(new Shogogo.SearchBox(new Shogogo.SeatGeekParser()));
         this.sessions = new Shogogo.SessionsController();
     },
 

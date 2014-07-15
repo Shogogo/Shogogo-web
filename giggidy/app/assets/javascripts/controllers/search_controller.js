@@ -38,12 +38,12 @@ Shogogo.SearchController.prototype = {
         })
         .bind('fb-select', function(e) {
             var artistName = _this.searchBox.getArtistName();
-            var preparedArtistName = _this.searchBox.preparedArtistQuery(artistName);
+            var preparedArtist = _this.searchBox.preparedArtist(artistName);
             _this.searchView.renderResultsView();
             $('input:text').focus(function(){
             $(this).val('');
          });
-        _this._getArtist(preparedArtistName);
+        _this._getArtist(preparedArtist);
         });
     },
 

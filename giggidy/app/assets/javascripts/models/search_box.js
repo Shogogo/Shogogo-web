@@ -1,4 +1,6 @@
-Shogogo.SearchBox = function(){};
+Shogogo.SearchBox = function(seatGeekParser){
+    this.seatGeekParser = seatGeekParser;
+};
 
 Shogogo.SearchBox.prototype = {
     searchSuggest: function() {
@@ -10,23 +12,12 @@ Shogogo.SearchBox.prototype = {
         return artistName;
     },
 
-    preparedArtistQuery: function(artistName) {
-        var words = artistName.replace(/(\.)?(\,)?(\&)?/g,'').split(/[ ]+/);
-        var lowercased_words = words.join('-').toLowerCase();
-        var preparedAristName = removeDiacritics(lowercased_words);
-        return 'http://api.seatgeek.com/2/performers?slug=' + preparedAristName;
+    preparedArtist: function(artistName) {
+        return this.seatGeekParser.preparedArtistQuery(artistName);
     },
 
     parseArtistInfo: function(artistInfo) {
-        var artist = {
-            name: artistInfo.name,
-            image_url_large: artistInfo.images.huge,
-            image_url_small: artistInfo.images.small || 'assets/guitarboat-square.jpeg',
-            id: artistInfo.id,
-            type: artistInfo.type,
-            tour_status: artistInfo.has_upcoming_events
-        };
-        return artist;
+        return this.seatGeekParser.parseArtistInfo(artistInfo);
     },
 
     defineView: function(searchView) {
