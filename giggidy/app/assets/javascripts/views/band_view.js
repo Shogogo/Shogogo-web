@@ -10,7 +10,7 @@ Shogogo.BandView = function(options) {
 
 Shogogo.BandView.prototype = {
     draw:function(band) {
-        var new_band_container = new BandPresenter(band).present();
+        var new_band_container = new Shogogo.BandPresenter(band).present();
         document.querySelector(this.resultsContainer).innerHTML = new_band_container.innerHTML;
         $(this.resultsContainer).fadeIn('fast');
     },
