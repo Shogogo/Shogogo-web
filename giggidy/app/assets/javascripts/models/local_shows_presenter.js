@@ -1,7 +1,6 @@
-var LocalShowsPresenter = function() {
-};
+Shogogo.LocalShowsPresenter = function() {};
 
-LocalShowsPresenter.prototype = {
+Shogogo.LocalShowsPresenter.prototype = {
     present: function(localShows) {
         var localShowsContainerNode = document.createElement('div');
 

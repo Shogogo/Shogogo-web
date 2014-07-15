@@ -16,7 +16,6 @@ Shogogo.SidebarView = function(options) {
 };
 
 Shogogo.SidebarView.prototype = {
-
     draw: function(view) {
         document.querySelector(this.sidebar).innerHTML = view;
     },
