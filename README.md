@@ -10,9 +10,6 @@ with a link to buy tickets.
 Alex Pan
 @alexanderdavidpan
 
-Justin Phelps
-@justinphelps
-
 Ryan Rebo
 @reboryan
 
