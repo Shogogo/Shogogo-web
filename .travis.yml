@@ -7,5 +7,4 @@ rvm:
 before install:
   - gem install selenium-webdriver
 script: 
-  - bundle exec rake db:test:prepare
   - bundle exec rspec
