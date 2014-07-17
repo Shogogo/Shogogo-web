@@ -1,7 +1,7 @@
 describe("BandPresenter", function() {
     var bandPresenter;
     beforeEach(function() {
-        bandPresenter = new BandPresenter(parsedFleetWoodMacArtistObject);
+        bandPresenter = new Shogogo.BandPresenter(parsedFleetWoodMacArtistObject);
     });
 
     it("has present method", function() {
