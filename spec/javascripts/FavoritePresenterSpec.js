@@ -1,7 +1,7 @@
 describe("FavoritesPresenter", function() {
     var favoritesPresenter;
     beforeEach(function() {
-        favoritesPresenter = new FavoritesPresenter();
+        favoritesPresenter = new Shogogo.FavoritesPresenter();
     });
 
     it("has present method", function() {
@@ -9,12 +9,7 @@ describe("FavoritesPresenter", function() {
     });
 
     it("creates a favorites menu div", function() {
-        var favoriteList = new FavoriteList();
-        
-        favoriteList.addBand(parsedMadonnaArtistObject);
-        favoriteList.addBand(parsedFleetWoodMacArtistObject);
-
-        testNode = favoritesPresenter.present(favoriteList.list);
+        testNode = favoritesPresenter.append(parsedMadonnaArtistObject);
 
         expect(testNode.innerHTML).toEqual(favoriteMenuTestNode);
     });
