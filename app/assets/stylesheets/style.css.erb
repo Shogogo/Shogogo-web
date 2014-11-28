@@ -1,5 +1,5 @@
 html, body { 
-  background: url(liveshowbackground.jpg) no-repeat center center fixed;
+  background: url(<%= asset_path 'liveshowbackground.jpg' %>) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -8,19 +8,19 @@ html, body {
 }
 
 body, html {
-    margin:         0;
-    padding:        0;
+  margin: 0;
+  padding: 0;
 }
 
 div.overlay {
-    display:        table;
-    position:       fixed;
-    top:            0;
-    left:           0;
-    width:          100%;
-    height:         100%;
-    background-color: black;
-    opacity: 0.75;
+  display: table;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.75;
 }
 
 div.overlay p {
@@ -32,11 +32,11 @@ div.overlay p {
 
 
 div.overlay > div {
-    display:        table-cell;
-    width:          100%;
-    height:         100%;
-    text-align:     center;
-    vertical-align: middle;
+  display:        table-cell;
+  width:          100%;
+  height:         100%;
+  text-align:     center;
+  vertical-align: middle;
 }
 
 
@@ -81,10 +81,10 @@ div.overlay > div {
 }
 
 .search_container {
- position: fixed;
- width: 50%;
- top: 44%;
- left: 25%;
+  position: fixed;
+  width: 50%;
+  top: 44%;
+  left: 25%;
 }
 
 .search_with_faves {
@@ -110,7 +110,6 @@ input:focus {
   outline: none;
 }
 
-
 input[type=text] {
   font-family: 'Roboto', Arial, sans-serif;
   font-weight: 500;
@@ -120,7 +119,7 @@ input[type=text] {
 }
 
 #user_create input[type=text] {
-	font-family: 'Roboto', Arial, sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
   font-weight: 500;
   text-indent: 5px;
   font-size: 1.3em;
@@ -182,18 +181,18 @@ input[type=text] {
 }
 
 .login {
- position: fixed;
- bottom: 5%;
- width: 50%;
- text-align: center;
- color: white;
- font-family: 'Roboto', Arial, sans-serif;
- font-weight: 200;
- letter-spacing: 0.0625em;
- text-shadow: 0px 0px 4px black , 0px 0px 4px black, -1px 0px 3px black,
- 0px -1px 3px black, 1px 2px 6px black;
- font-size: 1.0em;
- font-size: 1.25vw;
+  position: fixed;
+  bottom: 5%;
+  width: 50%;
+  text-align: center;
+  color: white;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-weight: 200;
+  letter-spacing: 0.0625em;
+  text-shadow: 0px 0px 4px black , 0px 0px 4px black, -1px 0px 3px black,
+  0px -1px 3px black, 1px 2px 6px black;
+  font-size: 1.0em;
+  font-size: 1.25vw;
 }
 
 
@@ -254,11 +253,11 @@ input[type=text] {
 }
 
 .band_image {
-	float: left;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 5px; 
-	width: 40%; 
+  float: left;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 5px; 
+  width: 40%; 
 }
 
 
