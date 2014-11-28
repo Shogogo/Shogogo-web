@@ -10,8 +10,8 @@ require 'capistrano/rbenv'
 require 'capistrano/bundler'
 
 set :rbenv_type, :system
-set :rbenv_ruby, '2.1.3'
-set :rbenv_custom_path, '/home/deploy/.rbenv/'
+set :rbenv_ruby, '2.0.0-p481'
+set :rbenv_custom_path, '/home/deploy/.rbenv'
 # 
 # require 'capistrano/rails/migrations'
 
