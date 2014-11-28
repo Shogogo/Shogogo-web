@@ -16,6 +16,7 @@ gem 'sprint'
 gem 'twilio-ruby', '~> 3.11'
 gem 'whenever', '~> 0.9.2', :require => false
 gem 'bitly', '~> 0.10.1'
+gem 'figaro'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.14.0'

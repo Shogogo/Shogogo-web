@@ -27,3 +27,5 @@ config/deploy.rb
 .rvmrc
 
 .DS_Store
+# Ignore application configuration
+/config/application.yml
